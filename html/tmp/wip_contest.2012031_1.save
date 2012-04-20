@@ -1,0 +1,1553 @@
+<?php
+if (!(isset($_COOKIE["wcuid"])))
+  header("Location: http://www.important-info.com/ncaa/");
+?>
+
+<html>
+<head>
+    <title>Monty Ajax Work Contest Page</title>
+    <link rel="stylesheet" href="css/wrestlingContestStyle.css" type="text/css" />
+</head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js?ver=1.4.0"></script>
+	<script language="javascript" type="text/javascript">
+<!-- 
+//Browser Support Code
+function pickContestFunction( weight ){
+	var ajaxRequest;  // The variable that makes Ajax possible!
+	
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var ajaxDisplay = document.getElementById('pick_contest_div');
+			ajaxDisplay.innerHTML = ajaxRequest.responseText;
+		}
+	}
+	var contest = document.getElementById('contest').value;
+	var queryString = "?contest=" + contest;
+	if( contest == "pick_all_americans" )
+	{
+		queryString = queryString + "&weight=" + weight;
+	}
+
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/get_contest.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function submitIndividualWinnerPicks(){
+	var ajaxRequest;  // The variable that makes Ajax possible!
+	
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var ajaxDisplay = document.getElementById('pick_contest_div');
+			ajaxDisplay.innerHTML = ajaxRequest.responseText;
+		}
+	}
+	var winner_125 = document.getElementById('125_lb_winner').value;
+	var winner_133 = document.getElementById('133_lb_winner').value;
+	var winner_141 = document.getElementById('141_lb_winner').value;
+	var winner_149 = document.getElementById('149_lb_winner').value;
+	var winner_157 = document.getElementById('157_lb_winner').value;
+	var winner_165 = document.getElementById('165_lb_winner').value;
+	var winner_174 = document.getElementById('174_lb_winner').value;
+	var winner_184 = document.getElementById('184_lb_winner').value;
+	var winner_197 = document.getElementById('197_lb_winner').value;
+	var winner_285 = document.getElementById('285_lb_winner').value;
+
+	var queryString = "?winner_125=" + winner_125;
+	queryString = queryString + "&winner_133=" + winner_133;
+	queryString = queryString + "&winner_141=" + winner_141;
+	queryString = queryString + "&winner_149=" + winner_149;
+	queryString = queryString + "&winner_157=" + winner_157;
+	queryString = queryString + "&winner_165=" + winner_165;
+	queryString = queryString + "&winner_174=" + winner_174;
+	queryString = queryString + "&winner_184=" + winner_184;
+	queryString = queryString + "&winner_197=" + winner_197;
+	queryString = queryString + "&winner_285=" + winner_285;
+	queryString = queryString + "&wcuid=" + getCookie( "wcuid" );
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/submit_pick_winners.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function submitAllAmericanPicks() {
+	var ajaxRequest;  // The variable that makes Ajax possible!
+
+	//alert("|" + document.getElementById('AA_125_lb_1') + "|" );
+
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var ajaxDisplay = document.getElementById('pick_contest_div');
+			ajaxDisplay.innerHTML = ajaxRequest.responseText;
+		}
+	}
+
+	var AA_125_lb_1 = document.getElementById('AA_125_lb_1').value;
+	var AA_125_lb_2 = document.getElementById('AA_125_lb_2').value;
+	var AA_125_lb_3 = document.getElementById('AA_125_lb_3').value;
+	var AA_125_lb_4 = document.getElementById('AA_125_lb_4').value;
+	var AA_125_lb_5 = document.getElementById('AA_125_lb_5').value;
+	var AA_125_lb_6 = document.getElementById('AA_125_lb_6').value;
+	var AA_125_lb_7 = document.getElementById('AA_125_lb_7').value;
+	var AA_125_lb_8 = document.getElementById('AA_125_lb_8').value;
+	if( (AA_125_lb_1 == AA_125_lb_2) || (AA_125_lb_1 == AA_125_lb_3) || (AA_125_lb_1 == AA_125_lb_4) || (AA_125_lb_1 == AA_125_lb_5) || (AA_125_lb_1 == AA_125_lb_6) || (AA_125_lb_1 == AA_125_lb_7) || (AA_125_lb_1 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_1 + " more than once." );
+		document.getElementById('AA_125_lb_1').focus();
+		return;
+	}
+	if( (AA_125_lb_2 == AA_125_lb_3) || (AA_125_lb_2 == AA_125_lb_4) || (AA_125_lb_2 == AA_125_lb_5) || (AA_125_lb_2 == AA_125_lb_6) || (AA_125_lb_2 == AA_125_lb_7) || (AA_125_lb_2 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_2 + " more than once." );
+		document.getElementById('AA_125_lb_2').focus();
+		return;
+	}
+	if( (AA_125_lb_3 == AA_125_lb_4) || (AA_125_lb_3 == AA_125_lb_5) || (AA_125_lb_3 == AA_125_lb_6) || (AA_125_lb_3 == AA_125_lb_7) || (AA_125_lb_3 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_3 + " more than once." );
+		document.getElementById('AA_125_lb_3').focus();
+		return;
+	}
+	if( (AA_125_lb_4 == AA_125_lb_5) || (AA_125_lb_4 == AA_125_lb_6) || (AA_125_lb_4 == AA_125_lb_7) || (AA_125_lb_4 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_4 + " more than once." );
+		document.getElementById('AA_125_lb_4').focus();
+		return;
+	}
+	if( (AA_125_lb_5 == AA_125_lb_6) || (AA_125_lb_5 == AA_125_lb_7) || (AA_125_lb_5 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_5 + " more than once." );
+		document.getElementById('AA_125_lb_5').focus();
+		return;
+	}
+	if( (AA_125_lb_6 == AA_125_lb_7) || (AA_125_lb_6 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_6 + " more than once." );
+		document.getElementById('AA_125_lb_6').focus();
+		return;
+	}
+	if( (AA_125_lb_7 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_7 + " more than once." );
+		document.getElementById('AA_125_lb_7').focus();
+		return;
+	}
+
+
+	var AA_133_lb_1 = document.getElementById('AA_133_lb_1').value;
+	var AA_133_lb_2 = document.getElementById('AA_133_lb_2').value;
+	var AA_133_lb_3 = document.getElementById('AA_133_lb_3').value;
+	var AA_133_lb_4 = document.getElementById('AA_133_lb_4').value;
+	var AA_133_lb_5 = document.getElementById('AA_133_lb_5').value;
+	var AA_133_lb_6 = document.getElementById('AA_133_lb_6').value;
+	var AA_133_lb_7 = document.getElementById('AA_133_lb_7').value;
+	var AA_133_lb_8 = document.getElementById('AA_133_lb_8').value;
+	if( (AA_133_lb_1 == AA_133_lb_2) || (AA_133_lb_1 == AA_133_lb_3) || (AA_133_lb_1 == AA_133_lb_4) || (AA_133_lb_1 == AA_133_lb_5) || (AA_133_lb_1 == AA_133_lb_6) || (AA_133_lb_1 == AA_133_lb_7) || (AA_133_lb_1 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_1 + " more than once." );
+		document.getElementById('AA_133_lb_1').focus();
+		return;
+	}
+	if( (AA_133_lb_2 == AA_133_lb_3) || (AA_133_lb_2 == AA_133_lb_4) || (AA_133_lb_2 == AA_133_lb_5) || (AA_133_lb_2 == AA_133_lb_6) || (AA_133_lb_2 == AA_133_lb_7) || (AA_133_lb_2 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_2 + " more than once." );
+		document.getElementById('AA_133_lb_2').focus();
+		return;
+	}
+	if( (AA_133_lb_3 == AA_133_lb_4) || (AA_133_lb_3 == AA_133_lb_5) || (AA_133_lb_3 == AA_133_lb_6) || (AA_133_lb_3 == AA_133_lb_7) || (AA_133_lb_3 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_3 + " more than once." );
+		document.getElementById('AA_133_lb_3').focus();
+		return;
+	}
+	if( (AA_133_lb_4 == AA_133_lb_5) || (AA_133_lb_4 == AA_133_lb_6) || (AA_133_lb_4 == AA_133_lb_7) || (AA_133_lb_4 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_4 + " more than once." );
+		document.getElementById('AA_133_lb_4').focus();
+		return;
+	}
+	if( (AA_133_lb_5 == AA_133_lb_6) || (AA_133_lb_5 == AA_133_lb_7) || (AA_133_lb_5 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_5 + " more than once." );
+		document.getElementById('AA_133_lb_5').focus();
+		return;
+	}
+	if( (AA_133_lb_6 == AA_133_lb_7) || (AA_133_lb_6 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_6 + " more than once." );
+		document.getElementById('AA_133_lb_6').focus();
+		return;
+	}
+	if( (AA_133_lb_7 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_7 + " more than once." );
+		document.getElementById('AA_133_lb_7').focus();
+		return;
+	}
+
+	var AA_141_lb_1 = document.getElementById('AA_141_lb_1').value;
+	var AA_141_lb_2 = document.getElementById('AA_141_lb_2').value;
+	var AA_141_lb_3 = document.getElementById('AA_141_lb_3').value;
+	var AA_141_lb_4 = document.getElementById('AA_141_lb_4').value;
+	var AA_141_lb_5 = document.getElementById('AA_141_lb_5').value;
+	var AA_141_lb_6 = document.getElementById('AA_141_lb_6').value;
+	var AA_141_lb_7 = document.getElementById('AA_141_lb_7').value;
+	var AA_141_lb_8 = document.getElementById('AA_141_lb_8').value;
+	if( (AA_141_lb_1 == AA_141_lb_2) || (AA_141_lb_1 == AA_141_lb_3) || (AA_141_lb_1 == AA_141_lb_4) || (AA_141_lb_1 == AA_141_lb_5) || (AA_141_lb_1 == AA_141_lb_6) || (AA_141_lb_1 == AA_141_lb_7) || (AA_141_lb_1 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_1 + " more than once." );
+		document.getElementById('AA_141_lb_1').focus();
+		return;
+	}
+	if( (AA_141_lb_2 == AA_141_lb_3) || (AA_141_lb_2 == AA_141_lb_4) || (AA_141_lb_2 == AA_141_lb_5) || (AA_141_lb_2 == AA_141_lb_6) || (AA_141_lb_2 == AA_141_lb_7) || (AA_141_lb_2 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_2 + " more than once." );
+		document.getElementById('AA_141_lb_2').focus();
+		return;
+	}
+	if( (AA_141_lb_3 == AA_141_lb_4) || (AA_141_lb_3 == AA_141_lb_5) || (AA_141_lb_3 == AA_141_lb_6) || (AA_141_lb_3 == AA_141_lb_7) || (AA_141_lb_3 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_3 + " more than once." );
+		document.getElementById('AA_141_lb_3').focus();
+		return;
+	}
+	if( (AA_141_lb_4 == AA_141_lb_5) || (AA_141_lb_4 == AA_141_lb_6) || (AA_141_lb_4 == AA_141_lb_7) || (AA_141_lb_4 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_4 + " more than once." );
+		document.getElementById('AA_141_lb_4').focus();
+		return;
+	}
+	if( (AA_141_lb_5 == AA_141_lb_6) || (AA_141_lb_5 == AA_141_lb_7) || (AA_141_lb_5 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_5 + " more than once." );
+		document.getElementById('AA_141_lb_5').focus();
+		return;
+	}
+	if( (AA_141_lb_6 == AA_141_lb_7) || (AA_141_lb_6 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_6 + " more than once." );
+		document.getElementById('AA_141_lb_6').focus();
+		return;
+	}
+	if( (AA_141_lb_7 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_7 + " more than once." );
+		document.getElementById('AA_141_lb_7').focus();
+		return;
+	}
+
+	var AA_149_lb_1 = document.getElementById('AA_149_lb_1').value;
+	var AA_149_lb_2 = document.getElementById('AA_149_lb_2').value;
+	var AA_149_lb_3 = document.getElementById('AA_149_lb_3').value;
+	var AA_149_lb_4 = document.getElementById('AA_149_lb_4').value;
+	var AA_149_lb_5 = document.getElementById('AA_149_lb_5').value;
+	var AA_149_lb_6 = document.getElementById('AA_149_lb_6').value;
+	var AA_149_lb_7 = document.getElementById('AA_149_lb_7').value;
+	var AA_149_lb_8 = document.getElementById('AA_149_lb_8').value;
+	if( (AA_149_lb_1 == AA_149_lb_2) || (AA_149_lb_1 == AA_149_lb_3) || (AA_149_lb_1 == AA_149_lb_4) || (AA_149_lb_1 == AA_149_lb_5) || (AA_149_lb_1 == AA_149_lb_6) || (AA_149_lb_1 == AA_149_lb_7) || (AA_149_lb_1 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_1 + " more than once." );
+		document.getElementById('AA_149_lb_1').focus();
+		return;
+	}
+	if( (AA_149_lb_2 == AA_149_lb_3) || (AA_149_lb_2 == AA_149_lb_4) || (AA_149_lb_2 == AA_149_lb_5) || (AA_149_lb_2 == AA_149_lb_6) || (AA_149_lb_2 == AA_149_lb_7) || (AA_149_lb_2 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_2 + " more than once." );
+		document.getElementById('AA_149_lb_2').focus();
+		return;
+	}
+	if( (AA_149_lb_3 == AA_149_lb_4) || (AA_149_lb_3 == AA_149_lb_5) || (AA_149_lb_3 == AA_149_lb_6) || (AA_149_lb_3 == AA_149_lb_7) || (AA_149_lb_3 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_3 + " more than once." );
+		document.getElementById('AA_149_lb_3').focus();
+		return;
+	}
+	if( (AA_149_lb_4 == AA_149_lb_5) || (AA_149_lb_4 == AA_149_lb_6) || (AA_149_lb_4 == AA_149_lb_7) || (AA_149_lb_4 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_4 + " more than once." );
+		document.getElementById('AA_149_lb_4').focus();
+		return;
+	}
+	if( (AA_149_lb_5 == AA_149_lb_6) || (AA_149_lb_5 == AA_149_lb_7) || (AA_149_lb_5 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_5 + " more than once." );
+		document.getElementById('AA_149_lb_5').focus();
+		return;
+	}
+	if( (AA_149_lb_6 == AA_149_lb_7) || (AA_149_lb_6 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_6 + " more than once." );
+		document.getElementById('AA_149_lb_6').focus();
+		return;
+	}
+	if( (AA_149_lb_7 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_7 + " more than once." );
+		document.getElementById('AA_149_lb_7').focus();
+		return;
+	}
+
+	var AA_157_lb_1 = document.getElementById('AA_157_lb_1').value;
+	var AA_157_lb_2 = document.getElementById('AA_157_lb_2').value;
+	var AA_157_lb_3 = document.getElementById('AA_157_lb_3').value;
+	var AA_157_lb_4 = document.getElementById('AA_157_lb_4').value;
+	var AA_157_lb_5 = document.getElementById('AA_157_lb_5').value;
+	var AA_157_lb_6 = document.getElementById('AA_157_lb_6').value;
+	var AA_157_lb_7 = document.getElementById('AA_157_lb_7').value;
+	var AA_157_lb_8 = document.getElementById('AA_157_lb_8').value;
+	if( (AA_157_lb_1 == AA_157_lb_2) || (AA_157_lb_1 == AA_157_lb_3) || (AA_157_lb_1 == AA_157_lb_4) || (AA_157_lb_1 == AA_157_lb_5) || (AA_157_lb_1 == AA_157_lb_6) || (AA_157_lb_1 == AA_157_lb_7) || (AA_157_lb_1 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_1 + " more than once." );
+		document.getElementById('AA_157_lb_1').focus();
+		return;
+	}
+	if( (AA_157_lb_2 == AA_157_lb_3) || (AA_157_lb_2 == AA_157_lb_4) || (AA_157_lb_2 == AA_157_lb_5) || (AA_157_lb_2 == AA_157_lb_6) || (AA_157_lb_2 == AA_157_lb_7) || (AA_157_lb_2 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_2 + " more than once." );
+		document.getElementById('AA_157_lb_2').focus();
+		return;
+	}
+	if( (AA_157_lb_3 == AA_157_lb_4) || (AA_157_lb_3 == AA_157_lb_5) || (AA_157_lb_3 == AA_157_lb_6) || (AA_157_lb_3 == AA_157_lb_7) || (AA_157_lb_3 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_3 + " more than once." );
+		document.getElementById('AA_157_lb_3').focus();
+		return;
+	}
+	if( (AA_157_lb_4 == AA_157_lb_5) || (AA_157_lb_4 == AA_157_lb_6) || (AA_157_lb_4 == AA_157_lb_7) || (AA_157_lb_4 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_4 + " more than once." );
+		document.getElementById('AA_157_lb_4').focus();
+		return;
+	}
+	if( (AA_157_lb_5 == AA_157_lb_6) || (AA_157_lb_5 == AA_157_lb_7) || (AA_157_lb_5 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_5 + " more than once." );
+		document.getElementById('AA_157_lb_5').focus();
+		return;
+	}
+	if( (AA_157_lb_6 == AA_157_lb_7) || (AA_157_lb_6 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_6 + " more than once." );
+		document.getElementById('AA_157_lb_6').focus();
+		return;
+	}
+	if( (AA_157_lb_7 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_7 + " more than once." );
+		document.getElementById('AA_157_lb_7').focus();
+		return;
+	}
+
+	var AA_165_lb_1 = document.getElementById('AA_165_lb_1').value;
+	var AA_165_lb_2 = document.getElementById('AA_165_lb_2').value;
+	var AA_165_lb_3 = document.getElementById('AA_165_lb_3').value;
+	var AA_165_lb_4 = document.getElementById('AA_165_lb_4').value;
+	var AA_165_lb_5 = document.getElementById('AA_165_lb_5').value;
+	var AA_165_lb_6 = document.getElementById('AA_165_lb_6').value;
+	var AA_165_lb_7 = document.getElementById('AA_165_lb_7').value;
+	var AA_165_lb_8 = document.getElementById('AA_165_lb_8').value;
+	if( (AA_165_lb_1 == AA_165_lb_2) || (AA_165_lb_1 == AA_165_lb_3) || (AA_165_lb_1 == AA_165_lb_4) || (AA_165_lb_1 == AA_165_lb_5) || (AA_165_lb_1 == AA_165_lb_6) || (AA_165_lb_1 == AA_165_lb_7) || (AA_165_lb_1 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_1 + " more than once." );
+		document.getElementById('AA_165_lb_1').focus();
+		return;
+	}
+	if( (AA_165_lb_2 == AA_165_lb_3) || (AA_165_lb_2 == AA_165_lb_4) || (AA_165_lb_2 == AA_165_lb_5) || (AA_165_lb_2 == AA_165_lb_6) || (AA_165_lb_2 == AA_165_lb_7) || (AA_165_lb_2 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_2 + " more than once." );
+		document.getElementById('AA_165_lb_2').focus();
+		return;
+	}
+	if( (AA_165_lb_3 == AA_165_lb_4) || (AA_165_lb_3 == AA_165_lb_5) || (AA_165_lb_3 == AA_165_lb_6) || (AA_165_lb_3 == AA_165_lb_7) || (AA_165_lb_3 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_3 + " more than once." );
+		document.getElementById('AA_165_lb_3').focus();
+		return;
+	}
+	if( (AA_165_lb_4 == AA_165_lb_5) || (AA_165_lb_4 == AA_165_lb_6) || (AA_165_lb_4 == AA_165_lb_7) || (AA_165_lb_4 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_4 + " more than once." );
+		document.getElementById('AA_165_lb_4').focus();
+		return;
+	}
+	if( (AA_165_lb_5 == AA_165_lb_6) || (AA_165_lb_5 == AA_165_lb_7) || (AA_165_lb_5 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_5 + " more than once." );
+		document.getElementById('AA_165_lb_5').focus();
+		return;
+	}
+	if( (AA_165_lb_6 == AA_165_lb_7) || (AA_165_lb_6 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_6 + " more than once." );
+		document.getElementById('AA_165_lb_6').focus();
+		return;
+	}
+	if( (AA_165_lb_7 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_7 + " more than once." );
+		document.getElementById('AA_165_lb_7').focus();
+		return;
+	}
+
+	var AA_174_lb_1 = document.getElementById('AA_174_lb_1').value;
+	var AA_174_lb_2 = document.getElementById('AA_174_lb_2').value;
+	var AA_174_lb_3 = document.getElementById('AA_174_lb_3').value;
+	var AA_174_lb_4 = document.getElementById('AA_174_lb_4').value;
+	var AA_174_lb_5 = document.getElementById('AA_174_lb_5').value;
+	var AA_174_lb_6 = document.getElementById('AA_174_lb_6').value;
+	var AA_174_lb_7 = document.getElementById('AA_174_lb_7').value;
+	var AA_174_lb_8 = document.getElementById('AA_174_lb_8').value;
+	if( (AA_174_lb_1 == AA_174_lb_2) || (AA_174_lb_1 == AA_174_lb_3) || (AA_174_lb_1 == AA_174_lb_4) || (AA_174_lb_1 == AA_174_lb_5) || (AA_174_lb_1 == AA_174_lb_6) || (AA_174_lb_1 == AA_174_lb_7) || (AA_174_lb_1 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_1 + " more than once." );
+		document.getElementById('AA_174_lb_1').focus();
+		return;
+	}
+	if( (AA_174_lb_2 == AA_174_lb_3) || (AA_174_lb_2 == AA_174_lb_4) || (AA_174_lb_2 == AA_174_lb_5) || (AA_174_lb_2 == AA_174_lb_6) || (AA_174_lb_2 == AA_174_lb_7) || (AA_174_lb_2 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_2 + " more than once." );
+		document.getElementById('AA_174_lb_2').focus();
+		return;
+	}
+	if( (AA_174_lb_3 == AA_174_lb_4) || (AA_174_lb_3 == AA_174_lb_5) || (AA_174_lb_3 == AA_174_lb_6) || (AA_174_lb_3 == AA_174_lb_7) || (AA_174_lb_3 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_3 + " more than once." );
+		document.getElementById('AA_174_lb_3').focus();
+		return;
+	}
+	if( (AA_174_lb_4 == AA_174_lb_5) || (AA_174_lb_4 == AA_174_lb_6) || (AA_174_lb_4 == AA_174_lb_7) || (AA_174_lb_4 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_4 + " more than once." );
+		document.getElementById('AA_174_lb_4').focus();
+		return;
+	}
+	if( (AA_174_lb_5 == AA_174_lb_6) || (AA_174_lb_5 == AA_174_lb_7) || (AA_174_lb_5 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_5 + " more than once." );
+		document.getElementById('AA_174_lb_5').focus();
+		return;
+	}
+	if( (AA_174_lb_6 == AA_174_lb_7) || (AA_174_lb_6 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_6 + " more than once." );
+		document.getElementById('AA_174_lb_6').focus();
+		return;
+	}
+	if( (AA_174_lb_7 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_7 + " more than once." );
+		document.getElementById('AA_174_lb_7').focus();
+		return;
+	}
+
+	var AA_184_lb_1 = document.getElementById('AA_184_lb_1').value;
+	var AA_184_lb_2 = document.getElementById('AA_184_lb_2').value;
+	var AA_184_lb_3 = document.getElementById('AA_184_lb_3').value;
+	var AA_184_lb_4 = document.getElementById('AA_184_lb_4').value;
+	var AA_184_lb_5 = document.getElementById('AA_184_lb_5').value;
+	var AA_184_lb_6 = document.getElementById('AA_184_lb_6').value;
+	var AA_184_lb_7 = document.getElementById('AA_184_lb_7').value;
+	var AA_184_lb_8 = document.getElementById('AA_184_lb_8').value;
+	if( (AA_184_lb_1 == AA_184_lb_2) || (AA_184_lb_1 == AA_184_lb_3) || (AA_184_lb_1 == AA_184_lb_4) || (AA_184_lb_1 == AA_184_lb_5) || (AA_184_lb_1 == AA_184_lb_6) || (AA_184_lb_1 == AA_184_lb_7) || (AA_184_lb_1 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_1 + " more than once." );
+		document.getElementById('AA_184_lb_1').focus();
+		return;
+	}
+	if( (AA_184_lb_2 == AA_184_lb_3) || (AA_184_lb_2 == AA_184_lb_4) || (AA_184_lb_2 == AA_184_lb_5) || (AA_184_lb_2 == AA_184_lb_6) || (AA_184_lb_2 == AA_184_lb_7) || (AA_184_lb_2 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_2 + " more than once." );
+		document.getElementById('AA_184_lb_2').focus();
+		return;
+	}
+	if( (AA_184_lb_3 == AA_184_lb_4) || (AA_184_lb_3 == AA_184_lb_5) || (AA_184_lb_3 == AA_184_lb_6) || (AA_184_lb_3 == AA_184_lb_7) || (AA_184_lb_3 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_3 + " more than once." );
+		document.getElementById('AA_184_lb_3').focus();
+		return;
+	}
+	if( (AA_184_lb_4 == AA_184_lb_5) || (AA_184_lb_4 == AA_184_lb_6) || (AA_184_lb_4 == AA_184_lb_7) || (AA_184_lb_4 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_4 + " more than once." );
+		document.getElementById('AA_184_lb_4').focus();
+		return;
+	}
+	if( (AA_184_lb_5 == AA_184_lb_6) || (AA_184_lb_5 == AA_184_lb_7) || (AA_184_lb_5 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_5 + " more than once." );
+		document.getElementById('AA_184_lb_5').focus();
+		return;
+	}
+	if( (AA_184_lb_6 == AA_184_lb_7) || (AA_184_lb_6 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_6 + " more than once." );
+		document.getElementById('AA_184_lb_6').focus();
+		return;
+	}
+	if( (AA_184_lb_7 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_7 + " more than once." );
+		document.getElementById('AA_184_lb_7').focus();
+		return;
+	}
+
+	var AA_197_lb_1 = document.getElementById('AA_197_lb_1').value;
+	var AA_197_lb_2 = document.getElementById('AA_197_lb_2').value;
+	var AA_197_lb_3 = document.getElementById('AA_197_lb_3').value;
+	var AA_197_lb_4 = document.getElementById('AA_197_lb_4').value;
+	var AA_197_lb_5 = document.getElementById('AA_197_lb_5').value;
+	var AA_197_lb_6 = document.getElementById('AA_197_lb_6').value;
+	var AA_197_lb_7 = document.getElementById('AA_197_lb_7').value;
+	var AA_197_lb_8 = document.getElementById('AA_197_lb_8').value;
+	if( (AA_197_lb_1 == AA_197_lb_2) || (AA_197_lb_1 == AA_197_lb_3) || (AA_197_lb_1 == AA_197_lb_4) || (AA_197_lb_1 == AA_197_lb_5) || (AA_197_lb_1 == AA_197_lb_6) || (AA_197_lb_1 == AA_197_lb_7) || (AA_197_lb_1 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_1 + " more than once." );
+		document.getElementById('AA_197_lb_1').focus();
+		return;
+	}
+	if( (AA_197_lb_2 == AA_197_lb_3) || (AA_197_lb_2 == AA_197_lb_4) || (AA_197_lb_2 == AA_197_lb_5) || (AA_197_lb_2 == AA_197_lb_6) || (AA_197_lb_2 == AA_197_lb_7) || (AA_197_lb_2 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_2 + " more than once." );
+		document.getElementById('AA_197_lb_2').focus();
+		return;
+	}
+	if( (AA_197_lb_3 == AA_197_lb_4) || (AA_197_lb_3 == AA_197_lb_5) || (AA_197_lb_3 == AA_197_lb_6) || (AA_197_lb_3 == AA_197_lb_7) || (AA_197_lb_3 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_3 + " more than once." );
+		document.getElementById('AA_197_lb_3').focus();
+		return;
+	}
+	if( (AA_197_lb_4 == AA_197_lb_5) || (AA_197_lb_4 == AA_197_lb_6) || (AA_197_lb_4 == AA_197_lb_7) || (AA_197_lb_4 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_4 + " more than once." );
+		document.getElementById('AA_197_lb_4').focus();
+		return;
+	}
+	if( (AA_197_lb_5 == AA_197_lb_6) || (AA_197_lb_5 == AA_197_lb_7) || (AA_197_lb_5 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_5 + " more than once." );
+		document.getElementById('AA_197_lb_5').focus();
+		return;
+	}
+	if( (AA_197_lb_6 == AA_197_lb_7) || (AA_197_lb_6 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_6 + " more than once." );
+		document.getElementById('AA_197_lb_6').focus();
+		return;
+	}
+	if( (AA_197_lb_7 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_7 + " more than once." );
+		document.getElementById('AA_197_lb_7').focus();
+		return;
+	}
+
+	var AA_285_lb_1 = document.getElementById('AA_285_lb_1').value;
+	var AA_285_lb_2 = document.getElementById('AA_285_lb_2').value;
+	var AA_285_lb_3 = document.getElementById('AA_285_lb_3').value;
+	var AA_285_lb_4 = document.getElementById('AA_285_lb_4').value;
+	var AA_285_lb_5 = document.getElementById('AA_285_lb_5').value;
+	var AA_285_lb_6 = document.getElementById('AA_285_lb_6').value;
+	var AA_285_lb_7 = document.getElementById('AA_285_lb_7').value;
+	var AA_285_lb_8 = document.getElementById('AA_285_lb_8').value;
+	if( (AA_285_lb_1 == AA_285_lb_2) || (AA_285_lb_1 == AA_285_lb_3) || (AA_285_lb_1 == AA_285_lb_4) || (AA_285_lb_1 == AA_285_lb_5) || (AA_285_lb_1 == AA_285_lb_6) || (AA_285_lb_1 == AA_285_lb_7) || (AA_285_lb_1 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_1 + " more than once." );
+		document.getElementById('AA_285_lb_1').focus();
+		return;
+	}
+	if( (AA_285_lb_2 == AA_285_lb_3) || (AA_285_lb_2 == AA_285_lb_4) || (AA_285_lb_2 == AA_285_lb_5) || (AA_285_lb_2 == AA_285_lb_6) || (AA_285_lb_2 == AA_285_lb_7) || (AA_285_lb_2 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_2 + " more than once." );
+		document.getElementById('AA_285_lb_2').focus();
+		return;
+	}
+	if( (AA_285_lb_3 == AA_285_lb_4) || (AA_285_lb_3 == AA_285_lb_5) || (AA_285_lb_3 == AA_285_lb_6) || (AA_285_lb_3 == AA_285_lb_7) || (AA_285_lb_3 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_3 + " more than once." );
+		document.getElementById('AA_285_lb_3').focus();
+		return;
+	}
+	if( (AA_285_lb_4 == AA_285_lb_5) || (AA_285_lb_4 == AA_285_lb_6) || (AA_285_lb_4 == AA_285_lb_7) || (AA_285_lb_4 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_4 + " more than once." );
+		document.getElementById('AA_285_lb_4').focus();
+		return;
+	}
+	if( (AA_285_lb_5 == AA_285_lb_6) || (AA_285_lb_5 == AA_285_lb_7) || (AA_285_lb_5 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_5 + " more than once." );
+		document.getElementById('AA_285_lb_5').focus();
+		return;
+	}
+	if( (AA_285_lb_6 == AA_285_lb_7) || (AA_285_lb_6 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_6 + " more than once." );
+		document.getElementById('AA_285_lb_6').focus();
+		return;
+	}
+	if( (AA_285_lb_7 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_7 + " more than once." );
+		document.getElementById('AA_285_lb_7').focus();
+		return;
+	}
+
+	var queryString = "?AA_125_lb_1=" + AA_125_lb_1;
+	queryString = queryString + "&AA_125_lb_2=" + AA_125_lb_2;
+	queryString = queryString + "&AA_125_lb_3=" + AA_125_lb_3;
+	queryString = queryString + "&AA_125_lb_4=" + AA_125_lb_4;
+	queryString = queryString + "&AA_125_lb_5=" + AA_125_lb_5;
+	queryString = queryString + "&AA_125_lb_6=" + AA_125_lb_6;
+	queryString = queryString + "&AA_125_lb_7=" + AA_125_lb_7;
+	queryString = queryString + "&AA_125_lb_8=" + AA_125_lb_8;
+
+	queryString = queryString + "&AA_133_lb_1=" + AA_133_lb_1;
+	queryString = queryString + "&AA_133_lb_2=" + AA_133_lb_2;
+	queryString = queryString + "&AA_133_lb_3=" + AA_133_lb_3;
+	queryString = queryString + "&AA_133_lb_4=" + AA_133_lb_4;
+	queryString = queryString + "&AA_133_lb_5=" + AA_133_lb_5;
+	queryString = queryString + "&AA_133_lb_6=" + AA_133_lb_6;
+	queryString = queryString + "&AA_133_lb_7=" + AA_133_lb_7;
+	queryString = queryString + "&AA_133_lb_8=" + AA_133_lb_8;
+
+	queryString = queryString + "&AA_141_lb_1=" + AA_141_lb_1;
+	queryString = queryString + "&AA_141_lb_2=" + AA_141_lb_2;
+	queryString = queryString + "&AA_141_lb_3=" + AA_141_lb_3;
+	queryString = queryString + "&AA_141_lb_4=" + AA_141_lb_4;
+	queryString = queryString + "&AA_141_lb_5=" + AA_141_lb_5;
+	queryString = queryString + "&AA_141_lb_6=" + AA_141_lb_6;
+	queryString = queryString + "&AA_141_lb_7=" + AA_141_lb_7;
+	queryString = queryString + "&AA_141_lb_8=" + AA_141_lb_8;
+
+	queryString = queryString + "&AA_149_lb_1=" + AA_149_lb_1;
+	queryString = queryString + "&AA_149_lb_2=" + AA_149_lb_2;
+	queryString = queryString + "&AA_149_lb_3=" + AA_149_lb_3;
+	queryString = queryString + "&AA_149_lb_4=" + AA_149_lb_4;
+	queryString = queryString + "&AA_149_lb_5=" + AA_149_lb_5;
+	queryString = queryString + "&AA_149_lb_6=" + AA_149_lb_6;
+	queryString = queryString + "&AA_149_lb_7=" + AA_149_lb_7;
+	queryString = queryString + "&AA_149_lb_8=" + AA_149_lb_8;
+
+	queryString = queryString + "&AA_157_lb_1=" + AA_157_lb_1;
+	queryString = queryString + "&AA_157_lb_2=" + AA_157_lb_2;
+	queryString = queryString + "&AA_157_lb_3=" + AA_157_lb_3;
+	queryString = queryString + "&AA_157_lb_4=" + AA_157_lb_4;
+	queryString = queryString + "&AA_157_lb_5=" + AA_157_lb_5;
+	queryString = queryString + "&AA_157_lb_6=" + AA_157_lb_6;
+	queryString = queryString + "&AA_157_lb_7=" + AA_157_lb_7;
+	queryString = queryString + "&AA_157_lb_8=" + AA_157_lb_8;
+
+	queryString = queryString + "&AA_165_lb_1=" + AA_165_lb_1;
+	queryString = queryString + "&AA_165_lb_2=" + AA_165_lb_2;
+	queryString = queryString + "&AA_165_lb_3=" + AA_165_lb_3;
+	queryString = queryString + "&AA_165_lb_4=" + AA_165_lb_4;
+	queryString = queryString + "&AA_165_lb_5=" + AA_165_lb_5;
+	queryString = queryString + "&AA_165_lb_6=" + AA_165_lb_6;
+	queryString = queryString + "&AA_165_lb_7=" + AA_165_lb_7;
+	queryString = queryString + "&AA_165_lb_8=" + AA_165_lb_8;
+
+	queryString = queryString + "&AA_174_lb_1=" + AA_174_lb_1;
+	queryString = queryString + "&AA_174_lb_2=" + AA_174_lb_2;
+	queryString = queryString + "&AA_174_lb_3=" + AA_174_lb_3;
+	queryString = queryString + "&AA_174_lb_4=" + AA_174_lb_4;
+	queryString = queryString + "&AA_174_lb_5=" + AA_174_lb_5;
+	queryString = queryString + "&AA_174_lb_6=" + AA_174_lb_6;
+	queryString = queryString + "&AA_174_lb_7=" + AA_174_lb_7;
+	queryString = queryString + "&AA_174_lb_8=" + AA_174_lb_8;
+
+	queryString = queryString + "&AA_184_lb_1=" + AA_184_lb_1;
+	queryString = queryString + "&AA_184_lb_2=" + AA_184_lb_2;
+	queryString = queryString + "&AA_184_lb_3=" + AA_184_lb_3;
+	queryString = queryString + "&AA_184_lb_4=" + AA_184_lb_4;
+	queryString = queryString + "&AA_184_lb_5=" + AA_184_lb_5;
+	queryString = queryString + "&AA_184_lb_6=" + AA_184_lb_6;
+	queryString = queryString + "&AA_184_lb_7=" + AA_184_lb_7;
+	queryString = queryString + "&AA_184_lb_8=" + AA_184_lb_8;
+
+	queryString = queryString + "&AA_197_lb_1=" + AA_197_lb_1;
+	queryString = queryString + "&AA_197_lb_2=" + AA_197_lb_2;
+	queryString = queryString + "&AA_197_lb_3=" + AA_197_lb_3;
+	queryString = queryString + "&AA_197_lb_4=" + AA_197_lb_4;
+	queryString = queryString + "&AA_197_lb_5=" + AA_197_lb_5;
+	queryString = queryString + "&AA_197_lb_6=" + AA_197_lb_6;
+	queryString = queryString + "&AA_197_lb_7=" + AA_197_lb_7;
+	queryString = queryString + "&AA_197_lb_8=" + AA_197_lb_8;
+
+	queryString = queryString + "&AA_285_lb_1=" + AA_285_lb_1;
+	queryString = queryString + "&AA_285_lb_2=" + AA_285_lb_2;
+	queryString = queryString + "&AA_285_lb_3=" + AA_285_lb_3;
+	queryString = queryString + "&AA_285_lb_4=" + AA_285_lb_4;
+	queryString = queryString + "&AA_285_lb_5=" + AA_285_lb_5;
+	queryString = queryString + "&AA_285_lb_6=" + AA_285_lb_6;
+	queryString = queryString + "&AA_285_lb_7=" + AA_285_lb_7;
+	queryString = queryString + "&AA_285_lb_8=" + AA_285_lb_8;
+
+	queryString = queryString + "&wcuid=" + getCookie( "wcuid" );
+
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/submit_all_americans.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function submitAllAmericanPlacementPicks()
+{
+	var ajaxRequest;  // The variable that makes Ajax possible!
+
+	//alert("|" + document.getElementById('AA_125_lb_1') + "|" );
+
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var ajaxDisplay = document.getElementById('pick_contest_div');
+			ajaxDisplay.innerHTML = ajaxRequest.responseText;
+		}
+	}
+
+	var AA_125_lb_1 = document.getElementById('AA_125_lb_1').value;
+	var AA_125_lb_2 = document.getElementById('AA_125_lb_2').value;
+	var AA_125_lb_3 = document.getElementById('AA_125_lb_3').value;
+	var AA_125_lb_4 = document.getElementById('AA_125_lb_4').value;
+	var AA_125_lb_5 = document.getElementById('AA_125_lb_5').value;
+	var AA_125_lb_6 = document.getElementById('AA_125_lb_6').value;
+	var AA_125_lb_7 = document.getElementById('AA_125_lb_7').value;
+	var AA_125_lb_8 = document.getElementById('AA_125_lb_8').value;
+	if( (AA_125_lb_1 == AA_125_lb_2) || (AA_125_lb_1 == AA_125_lb_3) || (AA_125_lb_1 == AA_125_lb_4) || (AA_125_lb_1 == AA_125_lb_5) || (AA_125_lb_1 == AA_125_lb_6) || (AA_125_lb_1 == AA_125_lb_7) || (AA_125_lb_1 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_1 + " more than once." );
+		document.getElementById('AA_125_lb_1').focus();
+		return;
+	}
+	if( (AA_125_lb_2 == AA_125_lb_3) || (AA_125_lb_2 == AA_125_lb_4) || (AA_125_lb_2 == AA_125_lb_5) || (AA_125_lb_2 == AA_125_lb_6) || (AA_125_lb_2 == AA_125_lb_7) || (AA_125_lb_2 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_2 + " more than once." );
+		document.getElementById('AA_125_lb_2').focus();
+		return;
+	}
+	if( (AA_125_lb_3 == AA_125_lb_4) || (AA_125_lb_3 == AA_125_lb_5) || (AA_125_lb_3 == AA_125_lb_6) || (AA_125_lb_3 == AA_125_lb_7) || (AA_125_lb_3 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_3 + " more than once." );
+		document.getElementById('AA_125_lb_3').focus();
+		return;
+	}
+	if( (AA_125_lb_4 == AA_125_lb_5) || (AA_125_lb_4 == AA_125_lb_6) || (AA_125_lb_4 == AA_125_lb_7) || (AA_125_lb_4 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_4 + " more than once." );
+		document.getElementById('AA_125_lb_4').focus();
+		return;
+	}
+	if( (AA_125_lb_5 == AA_125_lb_6) || (AA_125_lb_5 == AA_125_lb_7) || (AA_125_lb_5 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_5 + " more than once." );
+		document.getElementById('AA_125_lb_5').focus();
+		return;
+	}
+	if( (AA_125_lb_6 == AA_125_lb_7) || (AA_125_lb_6 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_6 + " more than once." );
+		document.getElementById('AA_125_lb_6').focus();
+		return;
+	}
+	if( (AA_125_lb_7 == AA_125_lb_8) )
+	{
+		alert("You have picked" + AA_125_lb_7 + " more than once." );
+		document.getElementById('AA_125_lb_7').focus();
+		return;
+	}
+
+
+	var AA_133_lb_1 = document.getElementById('AA_133_lb_1').value;
+	var AA_133_lb_2 = document.getElementById('AA_133_lb_2').value;
+	var AA_133_lb_3 = document.getElementById('AA_133_lb_3').value;
+	var AA_133_lb_4 = document.getElementById('AA_133_lb_4').value;
+	var AA_133_lb_5 = document.getElementById('AA_133_lb_5').value;
+	var AA_133_lb_6 = document.getElementById('AA_133_lb_6').value;
+	var AA_133_lb_7 = document.getElementById('AA_133_lb_7').value;
+	var AA_133_lb_8 = document.getElementById('AA_133_lb_8').value;
+	if( (AA_133_lb_1 == AA_133_lb_2) || (AA_133_lb_1 == AA_133_lb_3) || (AA_133_lb_1 == AA_133_lb_4) || (AA_133_lb_1 == AA_133_lb_5) || (AA_133_lb_1 == AA_133_lb_6) || (AA_133_lb_1 == AA_133_lb_7) || (AA_133_lb_1 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_1 + " more than once." );
+		document.getElementById('AA_133_lb_1').focus();
+		return;
+	}
+	if( (AA_133_lb_2 == AA_133_lb_3) || (AA_133_lb_2 == AA_133_lb_4) || (AA_133_lb_2 == AA_133_lb_5) || (AA_133_lb_2 == AA_133_lb_6) || (AA_133_lb_2 == AA_133_lb_7) || (AA_133_lb_2 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_2 + " more than once." );
+		document.getElementById('AA_133_lb_2').focus();
+		return;
+	}
+	if( (AA_133_lb_3 == AA_133_lb_4) || (AA_133_lb_3 == AA_133_lb_5) || (AA_133_lb_3 == AA_133_lb_6) || (AA_133_lb_3 == AA_133_lb_7) || (AA_133_lb_3 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_3 + " more than once." );
+		document.getElementById('AA_133_lb_3').focus();
+		return;
+	}
+	if( (AA_133_lb_4 == AA_133_lb_5) || (AA_133_lb_4 == AA_133_lb_6) || (AA_133_lb_4 == AA_133_lb_7) || (AA_133_lb_4 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_4 + " more than once." );
+		document.getElementById('AA_133_lb_4').focus();
+		return;
+	}
+	if( (AA_133_lb_5 == AA_133_lb_6) || (AA_133_lb_5 == AA_133_lb_7) || (AA_133_lb_5 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_5 + " more than once." );
+		document.getElementById('AA_133_lb_5').focus();
+		return;
+	}
+	if( (AA_133_lb_6 == AA_133_lb_7) || (AA_133_lb_6 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_6 + " more than once." );
+		document.getElementById('AA_133_lb_6').focus();
+		return;
+	}
+	if( (AA_133_lb_7 == AA_133_lb_8) )
+	{
+		alert("You have picked" + AA_133_lb_7 + " more than once." );
+		document.getElementById('AA_133_lb_7').focus();
+		return;
+	}
+
+	var AA_141_lb_1 = document.getElementById('AA_141_lb_1').value;
+	var AA_141_lb_2 = document.getElementById('AA_141_lb_2').value;
+	var AA_141_lb_3 = document.getElementById('AA_141_lb_3').value;
+	var AA_141_lb_4 = document.getElementById('AA_141_lb_4').value;
+	var AA_141_lb_5 = document.getElementById('AA_141_lb_5').value;
+	var AA_141_lb_6 = document.getElementById('AA_141_lb_6').value;
+	var AA_141_lb_7 = document.getElementById('AA_141_lb_7').value;
+	var AA_141_lb_8 = document.getElementById('AA_141_lb_8').value;
+	if( (AA_141_lb_1 == AA_141_lb_2) || (AA_141_lb_1 == AA_141_lb_3) || (AA_141_lb_1 == AA_141_lb_4) || (AA_141_lb_1 == AA_141_lb_5) || (AA_141_lb_1 == AA_141_lb_6) || (AA_141_lb_1 == AA_141_lb_7) || (AA_141_lb_1 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_1 + " more than once." );
+		document.getElementById('AA_141_lb_1').focus();
+		return;
+	}
+	if( (AA_141_lb_2 == AA_141_lb_3) || (AA_141_lb_2 == AA_141_lb_4) || (AA_141_lb_2 == AA_141_lb_5) || (AA_141_lb_2 == AA_141_lb_6) || (AA_141_lb_2 == AA_141_lb_7) || (AA_141_lb_2 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_2 + " more than once." );
+		document.getElementById('AA_141_lb_2').focus();
+		return;
+	}
+	if( (AA_141_lb_3 == AA_141_lb_4) || (AA_141_lb_3 == AA_141_lb_5) || (AA_141_lb_3 == AA_141_lb_6) || (AA_141_lb_3 == AA_141_lb_7) || (AA_141_lb_3 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_3 + " more than once." );
+		document.getElementById('AA_141_lb_3').focus();
+		return;
+	}
+	if( (AA_141_lb_4 == AA_141_lb_5) || (AA_141_lb_4 == AA_141_lb_6) || (AA_141_lb_4 == AA_141_lb_7) || (AA_141_lb_4 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_4 + " more than once." );
+		document.getElementById('AA_141_lb_4').focus();
+		return;
+	}
+	if( (AA_141_lb_5 == AA_141_lb_6) || (AA_141_lb_5 == AA_141_lb_7) || (AA_141_lb_5 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_5 + " more than once." );
+		document.getElementById('AA_141_lb_5').focus();
+		return;
+	}
+	if( (AA_141_lb_6 == AA_141_lb_7) || (AA_141_lb_6 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_6 + " more than once." );
+		document.getElementById('AA_141_lb_6').focus();
+		return;
+	}
+	if( (AA_141_lb_7 == AA_141_lb_8) )
+	{
+		alert("You have picked" + AA_141_lb_7 + " more than once." );
+		document.getElementById('AA_141_lb_7').focus();
+		return;
+	}
+
+	var AA_149_lb_1 = document.getElementById('AA_149_lb_1').value;
+	var AA_149_lb_2 = document.getElementById('AA_149_lb_2').value;
+	var AA_149_lb_3 = document.getElementById('AA_149_lb_3').value;
+	var AA_149_lb_4 = document.getElementById('AA_149_lb_4').value;
+	var AA_149_lb_5 = document.getElementById('AA_149_lb_5').value;
+	var AA_149_lb_6 = document.getElementById('AA_149_lb_6').value;
+	var AA_149_lb_7 = document.getElementById('AA_149_lb_7').value;
+	var AA_149_lb_8 = document.getElementById('AA_149_lb_8').value;
+	if( (AA_149_lb_1 == AA_149_lb_2) || (AA_149_lb_1 == AA_149_lb_3) || (AA_149_lb_1 == AA_149_lb_4) || (AA_149_lb_1 == AA_149_lb_5) || (AA_149_lb_1 == AA_149_lb_6) || (AA_149_lb_1 == AA_149_lb_7) || (AA_149_lb_1 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_1 + " more than once." );
+		document.getElementById('AA_149_lb_1').focus();
+		return;
+	}
+	if( (AA_149_lb_2 == AA_149_lb_3) || (AA_149_lb_2 == AA_149_lb_4) || (AA_149_lb_2 == AA_149_lb_5) || (AA_149_lb_2 == AA_149_lb_6) || (AA_149_lb_2 == AA_149_lb_7) || (AA_149_lb_2 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_2 + " more than once." );
+		document.getElementById('AA_149_lb_2').focus();
+		return;
+	}
+	if( (AA_149_lb_3 == AA_149_lb_4) || (AA_149_lb_3 == AA_149_lb_5) || (AA_149_lb_3 == AA_149_lb_6) || (AA_149_lb_3 == AA_149_lb_7) || (AA_149_lb_3 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_3 + " more than once." );
+		document.getElementById('AA_149_lb_3').focus();
+		return;
+	}
+	if( (AA_149_lb_4 == AA_149_lb_5) || (AA_149_lb_4 == AA_149_lb_6) || (AA_149_lb_4 == AA_149_lb_7) || (AA_149_lb_4 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_4 + " more than once." );
+		document.getElementById('AA_149_lb_4').focus();
+		return;
+	}
+	if( (AA_149_lb_5 == AA_149_lb_6) || (AA_149_lb_5 == AA_149_lb_7) || (AA_149_lb_5 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_5 + " more than once." );
+		document.getElementById('AA_149_lb_5').focus();
+		return;
+	}
+	if( (AA_149_lb_6 == AA_149_lb_7) || (AA_149_lb_6 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_6 + " more than once." );
+		document.getElementById('AA_149_lb_6').focus();
+		return;
+	}
+	if( (AA_149_lb_7 == AA_149_lb_8) )
+	{
+		alert("You have picked" + AA_149_lb_7 + " more than once." );
+		document.getElementById('AA_149_lb_7').focus();
+		return;
+	}
+
+	var AA_157_lb_1 = document.getElementById('AA_157_lb_1').value;
+	var AA_157_lb_2 = document.getElementById('AA_157_lb_2').value;
+	var AA_157_lb_3 = document.getElementById('AA_157_lb_3').value;
+	var AA_157_lb_4 = document.getElementById('AA_157_lb_4').value;
+	var AA_157_lb_5 = document.getElementById('AA_157_lb_5').value;
+	var AA_157_lb_6 = document.getElementById('AA_157_lb_6').value;
+	var AA_157_lb_7 = document.getElementById('AA_157_lb_7').value;
+	var AA_157_lb_8 = document.getElementById('AA_157_lb_8').value;
+	if( (AA_157_lb_1 == AA_157_lb_2) || (AA_157_lb_1 == AA_157_lb_3) || (AA_157_lb_1 == AA_157_lb_4) || (AA_157_lb_1 == AA_157_lb_5) || (AA_157_lb_1 == AA_157_lb_6) || (AA_157_lb_1 == AA_157_lb_7) || (AA_157_lb_1 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_1 + " more than once." );
+		document.getElementById('AA_157_lb_1').focus();
+		return;
+	}
+	if( (AA_157_lb_2 == AA_157_lb_3) || (AA_157_lb_2 == AA_157_lb_4) || (AA_157_lb_2 == AA_157_lb_5) || (AA_157_lb_2 == AA_157_lb_6) || (AA_157_lb_2 == AA_157_lb_7) || (AA_157_lb_2 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_2 + " more than once." );
+		document.getElementById('AA_157_lb_2').focus();
+		return;
+	}
+	if( (AA_157_lb_3 == AA_157_lb_4) || (AA_157_lb_3 == AA_157_lb_5) || (AA_157_lb_3 == AA_157_lb_6) || (AA_157_lb_3 == AA_157_lb_7) || (AA_157_lb_3 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_3 + " more than once." );
+		document.getElementById('AA_157_lb_3').focus();
+		return;
+	}
+	if( (AA_157_lb_4 == AA_157_lb_5) || (AA_157_lb_4 == AA_157_lb_6) || (AA_157_lb_4 == AA_157_lb_7) || (AA_157_lb_4 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_4 + " more than once." );
+		document.getElementById('AA_157_lb_4').focus();
+		return;
+	}
+	if( (AA_157_lb_5 == AA_157_lb_6) || (AA_157_lb_5 == AA_157_lb_7) || (AA_157_lb_5 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_5 + " more than once." );
+		document.getElementById('AA_157_lb_5').focus();
+		return;
+	}
+	if( (AA_157_lb_6 == AA_157_lb_7) || (AA_157_lb_6 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_6 + " more than once." );
+		document.getElementById('AA_157_lb_6').focus();
+		return;
+	}
+	if( (AA_157_lb_7 == AA_157_lb_8) )
+	{
+		alert("You have picked" + AA_157_lb_7 + " more than once." );
+		document.getElementById('AA_157_lb_7').focus();
+		return;
+	}
+
+	var AA_165_lb_1 = document.getElementById('AA_165_lb_1').value;
+	var AA_165_lb_2 = document.getElementById('AA_165_lb_2').value;
+	var AA_165_lb_3 = document.getElementById('AA_165_lb_3').value;
+	var AA_165_lb_4 = document.getElementById('AA_165_lb_4').value;
+	var AA_165_lb_5 = document.getElementById('AA_165_lb_5').value;
+	var AA_165_lb_6 = document.getElementById('AA_165_lb_6').value;
+	var AA_165_lb_7 = document.getElementById('AA_165_lb_7').value;
+	var AA_165_lb_8 = document.getElementById('AA_165_lb_8').value;
+	if( (AA_165_lb_1 == AA_165_lb_2) || (AA_165_lb_1 == AA_165_lb_3) || (AA_165_lb_1 == AA_165_lb_4) || (AA_165_lb_1 == AA_165_lb_5) || (AA_165_lb_1 == AA_165_lb_6) || (AA_165_lb_1 == AA_165_lb_7) || (AA_165_lb_1 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_1 + " more than once." );
+		document.getElementById('AA_165_lb_1').focus();
+		return;
+	}
+	if( (AA_165_lb_2 == AA_165_lb_3) || (AA_165_lb_2 == AA_165_lb_4) || (AA_165_lb_2 == AA_165_lb_5) || (AA_165_lb_2 == AA_165_lb_6) || (AA_165_lb_2 == AA_165_lb_7) || (AA_165_lb_2 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_2 + " more than once." );
+		document.getElementById('AA_165_lb_2').focus();
+		return;
+	}
+	if( (AA_165_lb_3 == AA_165_lb_4) || (AA_165_lb_3 == AA_165_lb_5) || (AA_165_lb_3 == AA_165_lb_6) || (AA_165_lb_3 == AA_165_lb_7) || (AA_165_lb_3 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_3 + " more than once." );
+		document.getElementById('AA_165_lb_3').focus();
+		return;
+	}
+	if( (AA_165_lb_4 == AA_165_lb_5) || (AA_165_lb_4 == AA_165_lb_6) || (AA_165_lb_4 == AA_165_lb_7) || (AA_165_lb_4 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_4 + " more than once." );
+		document.getElementById('AA_165_lb_4').focus();
+		return;
+	}
+	if( (AA_165_lb_5 == AA_165_lb_6) || (AA_165_lb_5 == AA_165_lb_7) || (AA_165_lb_5 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_5 + " more than once." );
+		document.getElementById('AA_165_lb_5').focus();
+		return;
+	}
+	if( (AA_165_lb_6 == AA_165_lb_7) || (AA_165_lb_6 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_6 + " more than once." );
+		document.getElementById('AA_165_lb_6').focus();
+		return;
+	}
+	if( (AA_165_lb_7 == AA_165_lb_8) )
+	{
+		alert("You have picked" + AA_165_lb_7 + " more than once." );
+		document.getElementById('AA_165_lb_7').focus();
+		return;
+	}
+
+	var AA_174_lb_1 = document.getElementById('AA_174_lb_1').value;
+	var AA_174_lb_2 = document.getElementById('AA_174_lb_2').value;
+	var AA_174_lb_3 = document.getElementById('AA_174_lb_3').value;
+	var AA_174_lb_4 = document.getElementById('AA_174_lb_4').value;
+	var AA_174_lb_5 = document.getElementById('AA_174_lb_5').value;
+	var AA_174_lb_6 = document.getElementById('AA_174_lb_6').value;
+	var AA_174_lb_7 = document.getElementById('AA_174_lb_7').value;
+	var AA_174_lb_8 = document.getElementById('AA_174_lb_8').value;
+	if( (AA_174_lb_1 == AA_174_lb_2) || (AA_174_lb_1 == AA_174_lb_3) || (AA_174_lb_1 == AA_174_lb_4) || (AA_174_lb_1 == AA_174_lb_5) || (AA_174_lb_1 == AA_174_lb_6) || (AA_174_lb_1 == AA_174_lb_7) || (AA_174_lb_1 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_1 + " more than once." );
+		document.getElementById('AA_174_lb_1').focus();
+		return;
+	}
+	if( (AA_174_lb_2 == AA_174_lb_3) || (AA_174_lb_2 == AA_174_lb_4) || (AA_174_lb_2 == AA_174_lb_5) || (AA_174_lb_2 == AA_174_lb_6) || (AA_174_lb_2 == AA_174_lb_7) || (AA_174_lb_2 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_2 + " more than once." );
+		document.getElementById('AA_174_lb_2').focus();
+		return;
+	}
+	if( (AA_174_lb_3 == AA_174_lb_4) || (AA_174_lb_3 == AA_174_lb_5) || (AA_174_lb_3 == AA_174_lb_6) || (AA_174_lb_3 == AA_174_lb_7) || (AA_174_lb_3 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_3 + " more than once." );
+		document.getElementById('AA_174_lb_3').focus();
+		return;
+	}
+	if( (AA_174_lb_4 == AA_174_lb_5) || (AA_174_lb_4 == AA_174_lb_6) || (AA_174_lb_4 == AA_174_lb_7) || (AA_174_lb_4 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_4 + " more than once." );
+		document.getElementById('AA_174_lb_4').focus();
+		return;
+	}
+	if( (AA_174_lb_5 == AA_174_lb_6) || (AA_174_lb_5 == AA_174_lb_7) || (AA_174_lb_5 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_5 + " more than once." );
+		document.getElementById('AA_174_lb_5').focus();
+		return;
+	}
+	if( (AA_174_lb_6 == AA_174_lb_7) || (AA_174_lb_6 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_6 + " more than once." );
+		document.getElementById('AA_174_lb_6').focus();
+		return;
+	}
+	if( (AA_174_lb_7 == AA_174_lb_8) )
+	{
+		alert("You have picked" + AA_174_lb_7 + " more than once." );
+		document.getElementById('AA_174_lb_7').focus();
+		return;
+	}
+
+	var AA_184_lb_1 = document.getElementById('AA_184_lb_1').value;
+	var AA_184_lb_2 = document.getElementById('AA_184_lb_2').value;
+	var AA_184_lb_3 = document.getElementById('AA_184_lb_3').value;
+	var AA_184_lb_4 = document.getElementById('AA_184_lb_4').value;
+	var AA_184_lb_5 = document.getElementById('AA_184_lb_5').value;
+	var AA_184_lb_6 = document.getElementById('AA_184_lb_6').value;
+	var AA_184_lb_7 = document.getElementById('AA_184_lb_7').value;
+	var AA_184_lb_8 = document.getElementById('AA_184_lb_8').value;
+	if( (AA_184_lb_1 == AA_184_lb_2) || (AA_184_lb_1 == AA_184_lb_3) || (AA_184_lb_1 == AA_184_lb_4) || (AA_184_lb_1 == AA_184_lb_5) || (AA_184_lb_1 == AA_184_lb_6) || (AA_184_lb_1 == AA_184_lb_7) || (AA_184_lb_1 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_1 + " more than once." );
+		document.getElementById('AA_184_lb_1').focus();
+		return;
+	}
+	if( (AA_184_lb_2 == AA_184_lb_3) || (AA_184_lb_2 == AA_184_lb_4) || (AA_184_lb_2 == AA_184_lb_5) || (AA_184_lb_2 == AA_184_lb_6) || (AA_184_lb_2 == AA_184_lb_7) || (AA_184_lb_2 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_2 + " more than once." );
+		document.getElementById('AA_184_lb_2').focus();
+		return;
+	}
+	if( (AA_184_lb_3 == AA_184_lb_4) || (AA_184_lb_3 == AA_184_lb_5) || (AA_184_lb_3 == AA_184_lb_6) || (AA_184_lb_3 == AA_184_lb_7) || (AA_184_lb_3 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_3 + " more than once." );
+		document.getElementById('AA_184_lb_3').focus();
+		return;
+	}
+	if( (AA_184_lb_4 == AA_184_lb_5) || (AA_184_lb_4 == AA_184_lb_6) || (AA_184_lb_4 == AA_184_lb_7) || (AA_184_lb_4 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_4 + " more than once." );
+		document.getElementById('AA_184_lb_4').focus();
+		return;
+	}
+	if( (AA_184_lb_5 == AA_184_lb_6) || (AA_184_lb_5 == AA_184_lb_7) || (AA_184_lb_5 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_5 + " more than once." );
+		document.getElementById('AA_184_lb_5').focus();
+		return;
+	}
+	if( (AA_184_lb_6 == AA_184_lb_7) || (AA_184_lb_6 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_6 + " more than once." );
+		document.getElementById('AA_184_lb_6').focus();
+		return;
+	}
+	if( (AA_184_lb_7 == AA_184_lb_8) )
+	{
+		alert("You have picked" + AA_184_lb_7 + " more than once." );
+		document.getElementById('AA_184_lb_7').focus();
+		return;
+	}
+
+	var AA_197_lb_1 = document.getElementById('AA_197_lb_1').value;
+	var AA_197_lb_2 = document.getElementById('AA_197_lb_2').value;
+	var AA_197_lb_3 = document.getElementById('AA_197_lb_3').value;
+	var AA_197_lb_4 = document.getElementById('AA_197_lb_4').value;
+	var AA_197_lb_5 = document.getElementById('AA_197_lb_5').value;
+	var AA_197_lb_6 = document.getElementById('AA_197_lb_6').value;
+	var AA_197_lb_7 = document.getElementById('AA_197_lb_7').value;
+	var AA_197_lb_8 = document.getElementById('AA_197_lb_8').value;
+	if( (AA_197_lb_1 == AA_197_lb_2) || (AA_197_lb_1 == AA_197_lb_3) || (AA_197_lb_1 == AA_197_lb_4) || (AA_197_lb_1 == AA_197_lb_5) || (AA_197_lb_1 == AA_197_lb_6) || (AA_197_lb_1 == AA_197_lb_7) || (AA_197_lb_1 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_1 + " more than once." );
+		document.getElementById('AA_197_lb_1').focus();
+		return;
+	}
+	if( (AA_197_lb_2 == AA_197_lb_3) || (AA_197_lb_2 == AA_197_lb_4) || (AA_197_lb_2 == AA_197_lb_5) || (AA_197_lb_2 == AA_197_lb_6) || (AA_197_lb_2 == AA_197_lb_7) || (AA_197_lb_2 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_2 + " more than once." );
+		document.getElementById('AA_197_lb_2').focus();
+		return;
+	}
+	if( (AA_197_lb_3 == AA_197_lb_4) || (AA_197_lb_3 == AA_197_lb_5) || (AA_197_lb_3 == AA_197_lb_6) || (AA_197_lb_3 == AA_197_lb_7) || (AA_197_lb_3 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_3 + " more than once." );
+		document.getElementById('AA_197_lb_3').focus();
+		return;
+	}
+	if( (AA_197_lb_4 == AA_197_lb_5) || (AA_197_lb_4 == AA_197_lb_6) || (AA_197_lb_4 == AA_197_lb_7) || (AA_197_lb_4 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_4 + " more than once." );
+		document.getElementById('AA_197_lb_4').focus();
+		return;
+	}
+	if( (AA_197_lb_5 == AA_197_lb_6) || (AA_197_lb_5 == AA_197_lb_7) || (AA_197_lb_5 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_5 + " more than once." );
+		document.getElementById('AA_197_lb_5').focus();
+		return;
+	}
+	if( (AA_197_lb_6 == AA_197_lb_7) || (AA_197_lb_6 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_6 + " more than once." );
+		document.getElementById('AA_197_lb_6').focus();
+		return;
+	}
+	if( (AA_197_lb_7 == AA_197_lb_8) )
+	{
+		alert("You have picked" + AA_197_lb_7 + " more than once." );
+		document.getElementById('AA_197_lb_7').focus();
+		return;
+	}
+
+	var AA_285_lb_1 = document.getElementById('AA_285_lb_1').value;
+	var AA_285_lb_2 = document.getElementById('AA_285_lb_2').value;
+	var AA_285_lb_3 = document.getElementById('AA_285_lb_3').value;
+	var AA_285_lb_4 = document.getElementById('AA_285_lb_4').value;
+	var AA_285_lb_5 = document.getElementById('AA_285_lb_5').value;
+	var AA_285_lb_6 = document.getElementById('AA_285_lb_6').value;
+	var AA_285_lb_7 = document.getElementById('AA_285_lb_7').value;
+	var AA_285_lb_8 = document.getElementById('AA_285_lb_8').value;
+	if( (AA_285_lb_1 == AA_285_lb_2) || (AA_285_lb_1 == AA_285_lb_3) || (AA_285_lb_1 == AA_285_lb_4) || (AA_285_lb_1 == AA_285_lb_5) || (AA_285_lb_1 == AA_285_lb_6) || (AA_285_lb_1 == AA_285_lb_7) || (AA_285_lb_1 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_1 + " more than once." );
+		document.getElementById('AA_285_lb_1').focus();
+		return;
+	}
+	if( (AA_285_lb_2 == AA_285_lb_3) || (AA_285_lb_2 == AA_285_lb_4) || (AA_285_lb_2 == AA_285_lb_5) || (AA_285_lb_2 == AA_285_lb_6) || (AA_285_lb_2 == AA_285_lb_7) || (AA_285_lb_2 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_2 + " more than once." );
+		document.getElementById('AA_285_lb_2').focus();
+		return;
+	}
+	if( (AA_285_lb_3 == AA_285_lb_4) || (AA_285_lb_3 == AA_285_lb_5) || (AA_285_lb_3 == AA_285_lb_6) || (AA_285_lb_3 == AA_285_lb_7) || (AA_285_lb_3 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_3 + " more than once." );
+		document.getElementById('AA_285_lb_3').focus();
+		return;
+	}
+	if( (AA_285_lb_4 == AA_285_lb_5) || (AA_285_lb_4 == AA_285_lb_6) || (AA_285_lb_4 == AA_285_lb_7) || (AA_285_lb_4 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_4 + " more than once." );
+		document.getElementById('AA_285_lb_4').focus();
+		return;
+	}
+	if( (AA_285_lb_5 == AA_285_lb_6) || (AA_285_lb_5 == AA_285_lb_7) || (AA_285_lb_5 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_5 + " more than once." );
+		document.getElementById('AA_285_lb_5').focus();
+		return;
+	}
+	if( (AA_285_lb_6 == AA_285_lb_7) || (AA_285_lb_6 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_6 + " more than once." );
+		document.getElementById('AA_285_lb_6').focus();
+		return;
+	}
+	if( (AA_285_lb_7 == AA_285_lb_8) )
+	{
+		alert("You have picked" + AA_285_lb_7 + " more than once." );
+		document.getElementById('AA_285_lb_7').focus();
+		return;
+	}
+
+	var queryString = "?AA_125_lb_1=" + AA_125_lb_1;
+	queryString = queryString + "&AA_125_lb_2=" + AA_125_lb_2;
+	queryString = queryString + "&AA_125_lb_3=" + AA_125_lb_3;
+	queryString = queryString + "&AA_125_lb_4=" + AA_125_lb_4;
+	queryString = queryString + "&AA_125_lb_5=" + AA_125_lb_5;
+	queryString = queryString + "&AA_125_lb_6=" + AA_125_lb_6;
+	queryString = queryString + "&AA_125_lb_7=" + AA_125_lb_7;
+	queryString = queryString + "&AA_125_lb_8=" + AA_125_lb_8;
+
+	queryString = queryString + "&AA_133_lb_1=" + AA_133_lb_1;
+	queryString = queryString + "&AA_133_lb_2=" + AA_133_lb_2;
+	queryString = queryString + "&AA_133_lb_3=" + AA_133_lb_3;
+	queryString = queryString + "&AA_133_lb_4=" + AA_133_lb_4;
+	queryString = queryString + "&AA_133_lb_5=" + AA_133_lb_5;
+	queryString = queryString + "&AA_133_lb_6=" + AA_133_lb_6;
+	queryString = queryString + "&AA_133_lb_7=" + AA_133_lb_7;
+	queryString = queryString + "&AA_133_lb_8=" + AA_133_lb_8;
+
+	queryString = queryString + "&AA_141_lb_1=" + AA_141_lb_1;
+	queryString = queryString + "&AA_141_lb_2=" + AA_141_lb_2;
+	queryString = queryString + "&AA_141_lb_3=" + AA_141_lb_3;
+	queryString = queryString + "&AA_141_lb_4=" + AA_141_lb_4;
+	queryString = queryString + "&AA_141_lb_5=" + AA_141_lb_5;
+	queryString = queryString + "&AA_141_lb_6=" + AA_141_lb_6;
+	queryString = queryString + "&AA_141_lb_7=" + AA_141_lb_7;
+	queryString = queryString + "&AA_141_lb_8=" + AA_141_lb_8;
+
+	queryString = queryString + "&AA_149_lb_1=" + AA_149_lb_1;
+	queryString = queryString + "&AA_149_lb_2=" + AA_149_lb_2;
+	queryString = queryString + "&AA_149_lb_3=" + AA_149_lb_3;
+	queryString = queryString + "&AA_149_lb_4=" + AA_149_lb_4;
+	queryString = queryString + "&AA_149_lb_5=" + AA_149_lb_5;
+	queryString = queryString + "&AA_149_lb_6=" + AA_149_lb_6;
+	queryString = queryString + "&AA_149_lb_7=" + AA_149_lb_7;
+	queryString = queryString + "&AA_149_lb_8=" + AA_149_lb_8;
+
+	queryString = queryString + "&AA_157_lb_1=" + AA_157_lb_1;
+	queryString = queryString + "&AA_157_lb_2=" + AA_157_lb_2;
+	queryString = queryString + "&AA_157_lb_3=" + AA_157_lb_3;
+	queryString = queryString + "&AA_157_lb_4=" + AA_157_lb_4;
+	queryString = queryString + "&AA_157_lb_5=" + AA_157_lb_5;
+	queryString = queryString + "&AA_157_lb_6=" + AA_157_lb_6;
+	queryString = queryString + "&AA_157_lb_7=" + AA_157_lb_7;
+	queryString = queryString + "&AA_157_lb_8=" + AA_157_lb_8;
+
+	queryString = queryString + "&AA_165_lb_1=" + AA_165_lb_1;
+	queryString = queryString + "&AA_165_lb_2=" + AA_165_lb_2;
+	queryString = queryString + "&AA_165_lb_3=" + AA_165_lb_3;
+	queryString = queryString + "&AA_165_lb_4=" + AA_165_lb_4;
+	queryString = queryString + "&AA_165_lb_5=" + AA_165_lb_5;
+	queryString = queryString + "&AA_165_lb_6=" + AA_165_lb_6;
+	queryString = queryString + "&AA_165_lb_7=" + AA_165_lb_7;
+	queryString = queryString + "&AA_165_lb_8=" + AA_165_lb_8;
+
+	queryString = queryString + "&AA_174_lb_1=" + AA_174_lb_1;
+	queryString = queryString + "&AA_174_lb_2=" + AA_174_lb_2;
+	queryString = queryString + "&AA_174_lb_3=" + AA_174_lb_3;
+	queryString = queryString + "&AA_174_lb_4=" + AA_174_lb_4;
+	queryString = queryString + "&AA_174_lb_5=" + AA_174_lb_5;
+	queryString = queryString + "&AA_174_lb_6=" + AA_174_lb_6;
+	queryString = queryString + "&AA_174_lb_7=" + AA_174_lb_7;
+	queryString = queryString + "&AA_174_lb_8=" + AA_174_lb_8;
+
+	queryString = queryString + "&AA_184_lb_1=" + AA_184_lb_1;
+	queryString = queryString + "&AA_184_lb_2=" + AA_184_lb_2;
+	queryString = queryString + "&AA_184_lb_3=" + AA_184_lb_3;
+	queryString = queryString + "&AA_184_lb_4=" + AA_184_lb_4;
+	queryString = queryString + "&AA_184_lb_5=" + AA_184_lb_5;
+	queryString = queryString + "&AA_184_lb_6=" + AA_184_lb_6;
+	queryString = queryString + "&AA_184_lb_7=" + AA_184_lb_7;
+	queryString = queryString + "&AA_184_lb_8=" + AA_184_lb_8;
+
+	queryString = queryString + "&AA_197_lb_1=" + AA_197_lb_1;
+	queryString = queryString + "&AA_197_lb_2=" + AA_197_lb_2;
+	queryString = queryString + "&AA_197_lb_3=" + AA_197_lb_3;
+	queryString = queryString + "&AA_197_lb_4=" + AA_197_lb_4;
+	queryString = queryString + "&AA_197_lb_5=" + AA_197_lb_5;
+	queryString = queryString + "&AA_197_lb_6=" + AA_197_lb_6;
+	queryString = queryString + "&AA_197_lb_7=" + AA_197_lb_7;
+	queryString = queryString + "&AA_197_lb_8=" + AA_197_lb_8;
+
+	queryString = queryString + "&AA_285_lb_1=" + AA_285_lb_1;
+	queryString = queryString + "&AA_285_lb_2=" + AA_285_lb_2;
+	queryString = queryString + "&AA_285_lb_3=" + AA_285_lb_3;
+	queryString = queryString + "&AA_285_lb_4=" + AA_285_lb_4;
+	queryString = queryString + "&AA_285_lb_5=" + AA_285_lb_5;
+	queryString = queryString + "&AA_285_lb_6=" + AA_285_lb_6;
+	queryString = queryString + "&AA_285_lb_7=" + AA_285_lb_7;
+	queryString = queryString + "&AA_285_lb_8=" + AA_285_lb_8;
+
+	queryString = queryString + "&wcuid=" + getCookie( "wcuid" );
+
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/submit_all_americans_placement.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function getCookie(c_name)
+{
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0;i<ARRcookies.length;i++)
+	{
+		x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+		y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+		x=x.replace(/^\s+|\s+$/g,"");
+		if (x==c_name)
+		{
+			return unescape(y);
+		}
+	}
+}
+
+function setCookie(c_name,value,exdays)
+{
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	document.cookie=c_name + "=" + c_value;
+}
+
+function checkCookie()
+{
+	var username=getCookie("username");
+	if (username!=null && username!="")
+	{
+		alert("Welcome again " + username);
+	}
+	else 
+	{
+		username=prompt("Please enter your name:","");
+		if (username!=null && username!="")
+		{
+			setCookie("username",username,365);
+		}
+	}
+}
+
+function deleteCookie() {
+document.cookie = 'wcuid=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+document.cookie = 'wcun=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+}
+
+$(document).ready(function() {
+   $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+   setInterval(function() {
+   $('#show_leaders').load('http://www.important-info.com/ncaa/php/get_leaders.php');
+}, 5000); // the "5000" here refers to the time to refresh the div.  it is in milliseconds.
+});
+
+//-->
+</script>
+
+<body id="body-color-tag">
+		<table border="0">
+			<tr>
+				<td id="masthead" colspan="3"> 
+
+					<div id="masthead_div">
+						<table id="masthead_table" border="0">
+							<tr>
+								<td id="masthead_logo">
+									<image id="logo_image" src="./images/wc_logo_small.jpg" class="styled-logo">
+								</td>
+
+								<td id="masthead_title">
+									NCAA Wrestling Championships - Pick'm Contests
+								</td>
+
+								<td id="masthead_username">
+
+									<font size="2px">
+									<?php   
+										if (isset($_COOKIE["wcun"]))
+											echo "Welcome " . $_COOKIE["wcun"] . "<br />"; 
+										else    
+									?>  
+									</font>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td id="nav" colspan="3"> 
+					<div id="nav_div">
+						&nbsp; <a href="#"> Contests </a>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+
+				<td id="lsidebar"> 
+					<div id="left_sidebar_div">
+						<p id="home-content-leaderboard-title"> <b>Leader Board:</b> </p>
+						<div id="show_leaders">
+						</div>
+
+						<p id="home-content-contest"><b>See other users picks:</b></p>
+						<br />
+							<a href="#"><div id="left_sidebar_indent">Pick Individual Winners</div></a>
+							<a href="#"><div id="left_sidebar_indent">Pick All American Placement</div></a>
+							<a href="#"><div id="left_sidebar_indent">Pick All Americans</div></a>
+							<a href="#"><div id="left_sidebar_indent">Pick Bout by Bout</div></a>
+					</div>
+				</td>
+
+				<td id="content">
+					<div id="content_div">
+
+						<image src="./images/Header11.jpg" width="100%" height="300" class="styled-logo">
+						<div class="styled-select">
+						<div id="pick_contest">
+							<form name='myForm'>
+								<br />
+								Choose Contest: 
+								<br />
+
+								<table border="0">
+									<tr>
+										<td>
+											<select id='contest'>
+											<option value='pick_winners'>Pick Individual Winners</option>
+											<option value='pick_all_americans_placement'>Pick All American Placement</option>
+											<option value='pick_all_americans'>Pick All Americans</option>
+											<option value='pick_bout_by_bout'>Pick Bout by Bout</option>
+											</select>
+										</td>
+										<td>
+											<input type='button' class="styled-button" onclick='pickContestFunction(125)' value='Start Contest' />
+										</td>
+									</tr>
+								</table>
+
+							</form>
+							<div id='pick_contest_div'>Your Contest will display here</div>
+							<br />
+						</div>
+						</div>
+					</div>
+				</td>
+
+				<td id="rsidebar"> 
+					<div id="right_sidebar_div">
+						<!--
+						Right Sidebar 
+						-->
+					</div>
+				</td>
+
+			</tr>
+
+			<tr>
+				<td id="footer" colspan="3">
+					<div id="footer_div">
+						<br />
+						&nbsp; <a href="http://www.important-info.com/ncaa/wip_index.html" onclick='deleteCookie()'> Log out </a>
+						<br />
+					<div>
+				<td>
+			</tr>
+	</table>
+</body>
+</html>
+

@@ -1,0 +1,122 @@
+<html>
+<head>
+    <title>NCAA Wrestling Championships - Pick'm Contests - Login</title>
+    <link rel="stylesheet" href="css/wrestlingContestStyle.css" type="text/css" />
+</head>
+<script type="text/javascript" src="http://www.important-info.com/ncaa/jquery/jquery-1.7.2.min.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- 
+
+function advanceWrestler() {
+	//var userid=getCookie("wcuid");
+	//var wrestler1 = document.getElementById('wrestler-1');
+	//var wrestler2 = document.getElementById('wrestler_2');
+	//var queryString = "?winner_bout_1=" + wrestler1;
+	//$.get('http://www.important-info.com/ncaa/php/advance_wrester.php'+ queryString, true);
+	//$.get('http://www.important-info.com/ncaa/php/advance_wrester.php', true);
+	//return false;
+
+	//$.get(
+		//"http://www.important-info.com/ncaa/php/advance_wrester.php",
+		//"{winner:wrestler1}",
+		//function(data) { alert(data); },
+		//"text"
+	//);
+
+	$.ajax(
+	{
+		url: "http://www.important-info.com/ncaa/php/advance_wrester.php",
+		data: "wrestler=" + $("#wrestler-1").val(),
+		success: function(data) {
+		$('#left_sidebar_div').html(data);
+	},
+	error: function() { alert(arguments[2]); }
+});
+
+
+}
+
+</script>
+
+<body id="body-color-tag">
+	<table border="0">
+		<tr>
+			<td id="masthead" colspan="3"> 
+
+				<div id="masthead_div">
+					<table id="masthead_table" border="0">
+						<tr>
+							<td id="masthead_logo">
+								<image id="logo_image" src="./images/wc_logo_small.jpg" class="styled-logo">
+							</td>
+
+							<td id="masthead_title">
+								NCAA Wrestling Championships - Pick'm Contests
+							</td>
+
+							<td id="masthead_username">
+
+							</td>
+
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td id="lsidebar"> 
+				<div id="left_sidebar_div">
+					Left Sidebar
+				</div>
+			</td>
+
+			<td id="content">
+				<div id="content_div">
+					<image src="./images/Header11.jpg" width="100%" height="300" class="styled-finals-image">
+
+					<div id="content_text" class="content_text">
+
+						<table class="bracket-table" >
+							<tr>
+								<td id="wrestler_1" class="bracket-wretler-1" > <a href="#" onclick='advanceWrestler()'><div id="wrestler-1">Wrestler_1</div></a></td>
+								<td class="bracket-top-right-empty" ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number" >bout 1</td>
+								<td class="bracket-winner-bout-1" > <div id="winner-bout-1">Winner</div></td>
+							</tr>
+							<tr>
+								<td id="wrestler_2" class="bracket-wretler-2" > <a href="#" onclick='advanceWrestler()'>Wrestler_2</a></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td ></td>
+								<td ></td>
+							</tr>
+						</table>
+
+					</div>
+				</div>
+			</td>
+
+			<td id="rsidebar_home"> 
+				<div id="right_sidebar_div">
+				Right Sidebar
+
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="footer" colspan="3">
+				<div id="footer_div">
+					<br />
+					<br />
+				<div>
+			<td>
+		</tr>
+	</table>
+</body>
+
+</html>
+

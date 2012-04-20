@@ -1,0 +1,64 @@
+<?php
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+	//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+	//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+	// Retrieve data from Query String
+
+$wcuid = $_GET['wcuid'];
+$weight = $_GET['weight'];
+
+$ident_string_1 = "AA_".weight."_lb_1";
+$ident_string_2 = "AA_".weight."_lb_2";
+$ident_string_3 = "AA_".weight."_lb_3";
+$ident_string_4 = "AA_".weight."_lb_4";
+$ident_string_5 = "AA_".weight."_lb_5";
+$ident_string_6 = "AA_".weight."_lb_6";
+$ident_string_7 = "AA_".weight."_lb_7";
+$ident_string_8 = "AA_".weight."_lb_8";
+
+$aa_125_lb_1 = $_GET[$ident_string_1];
+$aa_125_lb_2 = $_GET[$ident_string_2];
+$aa_125_lb_3 = $_GET[$ident_string_3];
+$aa_125_lb_4 = $_GET[$ident_string_4];
+$aa_125_lb_5 = $_GET[$ident_string_5];
+$aa_125_lb_6 = $_GET[$ident_string_6];
+$aa_125_lb_7 = $_GET[$ident_string_7];
+$aa_125_lb_8 = $_GET[$ident_string_8];
+
+$wcuid = mysql_real_escape_string($wcuid);
+$weight = mysql_real_escape_string($weight);
+
+$aa_125_lb_1 = mysql_real_escape_string($aa_125_lb_1);
+$aa_125_lb_2 = mysql_real_escape_string($aa_125_lb_2);
+$aa_125_lb_3 = mysql_real_escape_string($aa_125_lb_3);
+$aa_125_lb_4 = mysql_real_escape_string($aa_125_lb_4);
+$aa_125_lb_5 = mysql_real_escape_string($aa_125_lb_5);
+$aa_125_lb_6 = mysql_real_escape_string($aa_125_lb_6);
+$aa_125_lb_7 = mysql_real_escape_string($aa_125_lb_7);
+$aa_125_lb_8 = mysql_real_escape_string($aa_125_lb_8);
+
+$display_string .= $ident_string_1;
+//$aa_1_id_number = getWrestlerId( $aa_125_lb_1 );
+
+
+
+
+echo "$display_string";
+//echo "GOT HERE.";
+
+function getWrestlerId( $wrester_info )
+{
+	$wrester_info_array = explode(" ", $wrester_info);
+	$query = "SELECT id FROM wrestlers WHERE weight=".$wrester_info_array[0]." AND fname=\"".$wrester_info_array[1]."\" AND lname=\"".$wrester_info_array[2]."\"";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+	return $row['id'];
+}
+
+?>

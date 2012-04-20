@@ -1,0 +1,108 @@
+<?php
+
+function buildResultSnippet($array_rows, $weight_string)
+{
+	//Build Result String
+	$return_string .= "<select value=\"$weight_string\">";
+	// Insert a new row in the table for each person returned
+	while($row = mysql_fetch_array($array_rows))
+	{
+		$return_string .= "<option>";
+		$return_string .= "$row[weight]";
+		$return_string .= "-";
+		$return_string .= "$row[fname]";
+		$return_string .= " ";
+		$return_string .= "$row[lname]";
+		$return_string .= " (";
+		if( $row[seed] == 0)
+		{
+			$return_string .= "NS";
+			$return_string .= ")";
+		}
+		else
+		{
+			$return_string .= "$row[seed]";
+			$return_string .= ")";
+		}
+		$return_string .= "</option>";
+		
+	}
+	$return_string .= "</select><br>";
+	return $return_string;
+}
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+	//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+	//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+	// Retrieve data from Query String
+$contest = $_GET['contest'];
+if( $contest == "pick_winners" )
+{
+	$weight = mysql_real_escape_string($weight);
+
+	//build query
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=125";
+	//Execute query
+	$qry_result_125 = mysql_query($query) or die(mysql_error());
+
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=133";
+	$qry_result_133 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=141";
+	$qry_result_141 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=149";
+	$qry_result_149 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=157";
+	$qry_result_157 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=165";
+	$qry_result_165 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=174";
+	$qry_result_174 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=184";
+	$qry_result_184 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=197";
+	$qry_result_197 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=285";
+	$qry_result_285 = mysql_query($query) or die(mysql_error());
+
+	$display_string .= buildResultSnippet( $qry_result_125, "125");
+	$display_string .= buildResultSnippet( $qry_result_133, "133");
+	$display_string .= buildResultSnippet( $qry_result_141, "141");
+	$display_string .= buildResultSnippet( $qry_result_149, "149");
+	$display_string .= buildResultSnippet( $qry_result_157, "157");
+	$display_string .= buildResultSnippet( $qry_result_165, "165");
+	$display_string .= buildResultSnippet( $qry_result_174, "174");
+	$display_string .= buildResultSnippet( $qry_result_184, "184");
+	$display_string .= buildResultSnippet( $qry_result_197, "197");
+	$display_string .= buildResultSnippet( $qry_result_285, "285");
+
+	$display_string .= "<br/>";
+	$display_string .= "<form name='formSubmit'>";
+	$display_string .= "<input type='button' onclick='submitIndividualWinnerPicks('a_file.php', '125')' value='Submit Picks' />";
+	$display_string .= "</form>";
+
+	echo $display_string;
+
+}
+else if( $contest == "pick_all_americans" )
+{
+	echo "Pick All Americans Contest Not Ready";
+}
+else if( $contest == "pick_bout_by_bout" )
+{
+	echo "Bout by Bout Contest Not Ready";
+}
+else if( $contest == "pick_all_americans_placement" )
+{
+	echo "Pick All American Placement Contest Not Ready";
+}
+else
+{
+	echo "NOT VALID";
+}
+	
+?>

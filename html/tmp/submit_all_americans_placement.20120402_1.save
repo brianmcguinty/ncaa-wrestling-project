@@ -1,0 +1,555 @@
+<?php
+
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+	//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+	//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+	// Retrieve data from Query String
+
+$wcuid = $_GET['wcuid'];
+
+$aa_125_lb_1 = $_GET['AA_125_lb_1'];
+$aa_125_lb_2 = $_GET['AA_125_lb_2'];
+$aa_125_lb_3 = $_GET['AA_125_lb_3'];
+$aa_125_lb_4 = $_GET['AA_125_lb_4'];
+$aa_125_lb_5 = $_GET['AA_125_lb_5'];
+$aa_125_lb_6 = $_GET['AA_125_lb_6'];
+$aa_125_lb_7 = $_GET['AA_125_lb_7'];
+$aa_125_lb_8 = $_GET['AA_125_lb_8'];
+$aa_133_lb_1 = $_GET['AA_133_lb_1'];
+$aa_133_lb_2 = $_GET['AA_133_lb_2'];
+$aa_133_lb_3 = $_GET['AA_133_lb_3'];
+$aa_133_lb_4 = $_GET['AA_133_lb_4'];
+$aa_133_lb_5 = $_GET['AA_133_lb_5'];
+$aa_133_lb_6 = $_GET['AA_133_lb_6'];
+$aa_133_lb_7 = $_GET['AA_133_lb_7'];
+$aa_133_lb_8 = $_GET['AA_133_lb_8'];
+$aa_141_lb_1 = $_GET['AA_141_lb_1'];
+$aa_141_lb_2 = $_GET['AA_141_lb_2'];
+$aa_141_lb_3 = $_GET['AA_141_lb_3'];
+$aa_141_lb_4 = $_GET['AA_141_lb_4'];
+$aa_141_lb_5 = $_GET['AA_141_lb_5'];
+$aa_141_lb_6 = $_GET['AA_141_lb_6'];
+$aa_141_lb_7 = $_GET['AA_141_lb_7'];
+$aa_141_lb_8 = $_GET['AA_141_lb_8'];
+$aa_149_lb_1 = $_GET['AA_149_lb_1'];
+$aa_149_lb_2 = $_GET['AA_149_lb_2'];
+$aa_149_lb_3 = $_GET['AA_149_lb_3'];
+$aa_149_lb_4 = $_GET['AA_149_lb_4'];
+$aa_149_lb_5 = $_GET['AA_149_lb_5'];
+$aa_149_lb_6 = $_GET['AA_149_lb_6'];
+$aa_149_lb_7 = $_GET['AA_149_lb_7'];
+$aa_149_lb_8 = $_GET['AA_149_lb_8'];
+$aa_157_lb_1 = $_GET['AA_157_lb_1'];
+$aa_157_lb_2 = $_GET['AA_157_lb_2'];
+$aa_157_lb_3 = $_GET['AA_157_lb_3'];
+$aa_157_lb_4 = $_GET['AA_157_lb_4'];
+$aa_157_lb_5 = $_GET['AA_157_lb_5'];
+$aa_157_lb_6 = $_GET['AA_157_lb_6'];
+$aa_157_lb_7 = $_GET['AA_157_lb_7'];
+$aa_157_lb_8 = $_GET['AA_157_lb_8'];
+$aa_165_lb_1 = $_GET['AA_165_lb_1'];
+$aa_165_lb_2 = $_GET['AA_165_lb_2'];
+$aa_165_lb_3 = $_GET['AA_165_lb_3'];
+$aa_165_lb_4 = $_GET['AA_165_lb_4'];
+$aa_165_lb_5 = $_GET['AA_165_lb_5'];
+$aa_165_lb_6 = $_GET['AA_165_lb_6'];
+$aa_165_lb_7 = $_GET['AA_165_lb_7'];
+$aa_165_lb_8 = $_GET['AA_165_lb_8'];
+$aa_174_lb_1 = $_GET['AA_174_lb_1'];
+$aa_174_lb_2 = $_GET['AA_174_lb_2'];
+$aa_174_lb_3 = $_GET['AA_174_lb_3'];
+$aa_174_lb_4 = $_GET['AA_174_lb_4'];
+$aa_174_lb_5 = $_GET['AA_174_lb_5'];
+$aa_174_lb_6 = $_GET['AA_174_lb_6'];
+$aa_174_lb_7 = $_GET['AA_174_lb_7'];
+$aa_174_lb_8 = $_GET['AA_174_lb_8'];
+$aa_184_lb_1 = $_GET['AA_184_lb_1'];
+$aa_184_lb_2 = $_GET['AA_184_lb_2'];
+$aa_184_lb_3 = $_GET['AA_184_lb_3'];
+$aa_184_lb_4 = $_GET['AA_184_lb_4'];
+$aa_184_lb_5 = $_GET['AA_184_lb_5'];
+$aa_184_lb_6 = $_GET['AA_184_lb_6'];
+$aa_184_lb_7 = $_GET['AA_184_lb_7'];
+$aa_184_lb_8 = $_GET['AA_184_lb_8'];
+$aa_197_lb_1 = $_GET['AA_197_lb_1'];
+$aa_197_lb_2 = $_GET['AA_197_lb_2'];
+$aa_197_lb_3 = $_GET['AA_197_lb_3'];
+$aa_197_lb_4 = $_GET['AA_197_lb_4'];
+$aa_197_lb_5 = $_GET['AA_197_lb_5'];
+$aa_197_lb_6 = $_GET['AA_197_lb_6'];
+$aa_197_lb_7 = $_GET['AA_197_lb_7'];
+$aa_197_lb_8 = $_GET['AA_197_lb_8'];
+$aa_285_lb_1 = $_GET['AA_285_lb_1'];
+$aa_285_lb_2 = $_GET['AA_285_lb_2'];
+$aa_285_lb_3 = $_GET['AA_285_lb_3'];
+$aa_285_lb_4 = $_GET['AA_285_lb_4'];
+$aa_285_lb_5 = $_GET['AA_285_lb_5'];
+$aa_285_lb_6 = $_GET['AA_285_lb_6'];
+$aa_285_lb_7 = $_GET['AA_285_lb_7'];
+$aa_285_lb_8 = $_GET['AA_285_lb_8'];
+
+$wcuid = mysql_real_escape_string($wcuid);
+
+$aa_125_lb_1 = mysql_real_escape_string($aa_125_lb_1);
+$aa_125_lb_2 = mysql_real_escape_string($aa_125_lb_2);
+$aa_125_lb_3 = mysql_real_escape_string($aa_125_lb_3);
+$aa_125_lb_4 = mysql_real_escape_string($aa_125_lb_4);
+$aa_125_lb_5 = mysql_real_escape_string($aa_125_lb_5);
+$aa_125_lb_6 = mysql_real_escape_string($aa_125_lb_6);
+$aa_125_lb_7 = mysql_real_escape_string($aa_125_lb_7);
+$aa_125_lb_8 = mysql_real_escape_string($aa_125_lb_8);
+$aa_133_lb_1 = mysql_real_escape_string($aa_133_lb_1);
+$aa_133_lb_2 = mysql_real_escape_string($aa_133_lb_2);
+$aa_133_lb_3 = mysql_real_escape_string($aa_133_lb_3);
+$aa_133_lb_4 = mysql_real_escape_string($aa_133_lb_4);
+$aa_133_lb_5 = mysql_real_escape_string($aa_133_lb_5);
+$aa_133_lb_6 = mysql_real_escape_string($aa_133_lb_6);
+$aa_133_lb_7 = mysql_real_escape_string($aa_133_lb_7);
+$aa_133_lb_8 = mysql_real_escape_string($aa_133_lb_8);
+$aa_141_lb_1 = mysql_real_escape_string($aa_141_lb_1);
+$aa_141_lb_2 = mysql_real_escape_string($aa_141_lb_2);
+$aa_141_lb_3 = mysql_real_escape_string($aa_141_lb_3);
+$aa_141_lb_4 = mysql_real_escape_string($aa_141_lb_4);
+$aa_141_lb_5 = mysql_real_escape_string($aa_141_lb_5);
+$aa_141_lb_6 = mysql_real_escape_string($aa_141_lb_6);
+$aa_141_lb_7 = mysql_real_escape_string($aa_141_lb_7);
+$aa_141_lb_8 = mysql_real_escape_string($aa_141_lb_8);
+$aa_149_lb_1 = mysql_real_escape_string($aa_149_lb_1);
+$aa_149_lb_2 = mysql_real_escape_string($aa_149_lb_2);
+$aa_149_lb_3 = mysql_real_escape_string($aa_149_lb_3);
+$aa_149_lb_4 = mysql_real_escape_string($aa_149_lb_4);
+$aa_149_lb_5 = mysql_real_escape_string($aa_149_lb_5);
+$aa_149_lb_6 = mysql_real_escape_string($aa_149_lb_6);
+$aa_149_lb_7 = mysql_real_escape_string($aa_149_lb_7);
+$aa_149_lb_8 = mysql_real_escape_string($aa_149_lb_8);
+$aa_157_lb_1 = mysql_real_escape_string($aa_157_lb_1);
+$aa_157_lb_2 = mysql_real_escape_string($aa_157_lb_2);
+$aa_157_lb_3 = mysql_real_escape_string($aa_157_lb_3);
+$aa_157_lb_4 = mysql_real_escape_string($aa_157_lb_4);
+$aa_157_lb_5 = mysql_real_escape_string($aa_157_lb_5);
+$aa_157_lb_6 = mysql_real_escape_string($aa_157_lb_6);
+$aa_157_lb_7 = mysql_real_escape_string($aa_157_lb_7);
+$aa_157_lb_8 = mysql_real_escape_string($aa_157_lb_8);
+$aa_165_lb_1 = mysql_real_escape_string($aa_165_lb_1);
+$aa_165_lb_2 = mysql_real_escape_string($aa_165_lb_2);
+$aa_165_lb_3 = mysql_real_escape_string($aa_165_lb_3);
+$aa_165_lb_4 = mysql_real_escape_string($aa_165_lb_4);
+$aa_165_lb_5 = mysql_real_escape_string($aa_165_lb_5);
+$aa_165_lb_6 = mysql_real_escape_string($aa_165_lb_6);
+$aa_165_lb_7 = mysql_real_escape_string($aa_165_lb_7);
+$aa_165_lb_8 = mysql_real_escape_string($aa_165_lb_8);
+$aa_174_lb_1 = mysql_real_escape_string($aa_174_lb_1);
+$aa_174_lb_2 = mysql_real_escape_string($aa_174_lb_2);
+$aa_174_lb_3 = mysql_real_escape_string($aa_174_lb_3);
+$aa_174_lb_4 = mysql_real_escape_string($aa_174_lb_4);
+$aa_174_lb_5 = mysql_real_escape_string($aa_174_lb_5);
+$aa_174_lb_6 = mysql_real_escape_string($aa_174_lb_6);
+$aa_174_lb_7 = mysql_real_escape_string($aa_174_lb_7);
+$aa_174_lb_8 = mysql_real_escape_string($aa_174_lb_8);
+$aa_184_lb_1 = mysql_real_escape_string($aa_184_lb_1);
+$aa_184_lb_2 = mysql_real_escape_string($aa_184_lb_2);
+$aa_184_lb_3 = mysql_real_escape_string($aa_184_lb_3);
+$aa_184_lb_4 = mysql_real_escape_string($aa_184_lb_4);
+$aa_184_lb_5 = mysql_real_escape_string($aa_184_lb_5);
+$aa_184_lb_6 = mysql_real_escape_string($aa_184_lb_6);
+$aa_184_lb_7 = mysql_real_escape_string($aa_184_lb_7);
+$aa_184_lb_8 = mysql_real_escape_string($aa_184_lb_8);
+$aa_197_lb_1 = mysql_real_escape_string($aa_197_lb_1);
+$aa_197_lb_2 = mysql_real_escape_string($aa_197_lb_2);
+$aa_197_lb_3 = mysql_real_escape_string($aa_197_lb_3);
+$aa_197_lb_4 = mysql_real_escape_string($aa_197_lb_4);
+$aa_197_lb_5 = mysql_real_escape_string($aa_197_lb_5);
+$aa_197_lb_6 = mysql_real_escape_string($aa_197_lb_6);
+$aa_197_lb_7 = mysql_real_escape_string($aa_197_lb_7);
+$aa_197_lb_8 = mysql_real_escape_string($aa_197_lb_8);
+$aa_285_lb_1 = mysql_real_escape_string($aa_285_lb_1);
+$aa_285_lb_2 = mysql_real_escape_string($aa_285_lb_2);
+$aa_285_lb_3 = mysql_real_escape_string($aa_285_lb_3);
+$aa_285_lb_4 = mysql_real_escape_string($aa_285_lb_4);
+$aa_285_lb_5 = mysql_real_escape_string($aa_285_lb_5);
+$aa_285_lb_6 = mysql_real_escape_string($aa_285_lb_6);
+$aa_285_lb_7 = mysql_real_escape_string($aa_285_lb_7);
+$aa_285_lb_8 = mysql_real_escape_string($aa_285_lb_8);
+
+$aa125_1_id_number = getWrestlerId( $aa_125_lb_1 );
+$aa125_1_points = getPotentialPoints( $aa125_1_id_number, 1 );
+$aa125_2_id_number = getWrestlerId( $aa_125_lb_2 );
+$aa125_2_points = getPotentialPoints( $aa125_2_id_number, 2 );
+$aa125_3_id_number = getWrestlerId( $aa_125_lb_3 );
+$aa125_3_points = getPotentialPoints( $aa125_3_id_number, 3 );
+$aa125_4_id_number = getWrestlerId( $aa_125_lb_4 );
+$aa125_4_points = getPotentialPoints( $aa125_4_id_number, 4 );
+$aa125_5_id_number = getWrestlerId( $aa_125_lb_5 );
+$aa125_5_points = getPotentialPoints( $aa125_5_id_number, 5 );
+$aa125_6_id_number = getWrestlerId( $aa_125_lb_6 );
+$aa125_6_points = getPotentialPoints( $aa125_6_id_number, 6 );
+$aa125_7_id_number = getWrestlerId( $aa_125_lb_7 );
+$aa125_7_points = getPotentialPoints( $aa125_7_id_number, 7 );
+$aa125_8_id_number = getWrestlerId( $aa_125_lb_8 );
+$aa125_8_points = getPotentialPoints( $aa125_8_id_number, 8 );
+
+$aa133_1_id_number = getWrestlerId( $aa_133_lb_1 );
+$aa133_1_points = getPotentialPoints( $aa133_1_id_number, 1 );
+$aa133_2_id_number = getWrestlerId( $aa_133_lb_2 );
+$aa133_2_points = getPotentialPoints( $aa133_2_id_number, 2 );
+$aa133_3_id_number = getWrestlerId( $aa_133_lb_3 );
+$aa133_3_points = getPotentialPoints( $aa133_3_id_number, 3 );
+$aa133_4_id_number = getWrestlerId( $aa_133_lb_4 );
+$aa133_4_points = getPotentialPoints( $aa133_4_id_number, 4 );
+$aa133_5_id_number = getWrestlerId( $aa_133_lb_5 );
+$aa133_5_points = getPotentialPoints( $aa133_5_id_number, 5 );
+$aa133_6_id_number = getWrestlerId( $aa_133_lb_6 );
+$aa133_6_points = getPotentialPoints( $aa133_6_id_number, 6 );
+$aa133_7_id_number = getWrestlerId( $aa_133_lb_7 );
+$aa133_7_points = getPotentialPoints( $aa133_7_id_number, 7 );
+$aa133_8_id_number = getWrestlerId( $aa_133_lb_8 );
+$aa133_8_points = getPotentialPoints( $aa133_8_id_number, 8 );
+
+$aa141_1_id_number = getWrestlerId( $aa_141_lb_1 );
+$aa141_1_points = getPotentialPoints( $aa141_1_id_number, 1 );
+$aa141_2_id_number = getWrestlerId( $aa_141_lb_2 );
+$aa141_2_points = getPotentialPoints( $aa141_2_id_number, 2 );
+$aa141_3_id_number = getWrestlerId( $aa_141_lb_3 );
+$aa141_3_points = getPotentialPoints( $aa141_3_id_number, 3 );
+$aa141_4_id_number = getWrestlerId( $aa_141_lb_4 );
+$aa141_4_points = getPotentialPoints( $aa141_4_id_number, 4 );
+$aa141_5_id_number = getWrestlerId( $aa_141_lb_5 );
+$aa141_5_points = getPotentialPoints( $aa141_5_id_number, 5 );
+$aa141_6_id_number = getWrestlerId( $aa_141_lb_6 );
+$aa141_6_points = getPotentialPoints( $aa141_6_id_number, 6 );
+$aa141_7_id_number = getWrestlerId( $aa_141_lb_7 );
+$aa141_7_points = getPotentialPoints( $aa141_7_id_number, 7 );
+$aa141_8_id_number = getWrestlerId( $aa_141_lb_8 );
+$aa141_8_points = getPotentialPoints( $aa141_8_id_number, 8 );
+
+$aa149_1_id_number = getWrestlerId( $aa_149_lb_1 );
+$aa149_1_points = getPotentialPoints( $aa149_1_id_number, 1 );
+$aa149_2_id_number = getWrestlerId( $aa_149_lb_2 );
+$aa149_2_points = getPotentialPoints( $aa149_2_id_number, 2 );
+$aa149_3_id_number = getWrestlerId( $aa_149_lb_3 );
+$aa149_3_points = getPotentialPoints( $aa149_3_id_number, 3 );
+$aa149_4_id_number = getWrestlerId( $aa_149_lb_4 );
+$aa149_4_points = getPotentialPoints( $aa149_4_id_number, 4 );
+$aa149_5_id_number = getWrestlerId( $aa_149_lb_5 );
+$aa149_5_points = getPotentialPoints( $aa149_5_id_number, 5 );
+$aa149_6_id_number = getWrestlerId( $aa_149_lb_6 );
+$aa149_6_points = getPotentialPoints( $aa149_6_id_number, 6 );
+$aa149_7_id_number = getWrestlerId( $aa_149_lb_7 );
+$aa149_7_points = getPotentialPoints( $aa149_7_id_number, 7 );
+$aa149_8_id_number = getWrestlerId( $aa_149_lb_8 );
+$aa149_8_points = getPotentialPoints( $aa149_8_id_number, 8 );
+
+$aa157_1_id_number = getWrestlerId( $aa_157_lb_1 );
+$aa157_1_points = getPotentialPoints( $aa157_1_id_number, 1 );
+$aa157_2_id_number = getWrestlerId( $aa_157_lb_2 );
+$aa157_2_points = getPotentialPoints( $aa157_2_id_number, 2 );
+$aa157_3_id_number = getWrestlerId( $aa_157_lb_3 );
+$aa157_3_points = getPotentialPoints( $aa157_3_id_number, 3 );
+$aa157_4_id_number = getWrestlerId( $aa_157_lb_4 );
+$aa157_4_points = getPotentialPoints( $aa157_4_id_number, 4 );
+$aa157_5_id_number = getWrestlerId( $aa_157_lb_5 );
+$aa157_5_points = getPotentialPoints( $aa157_5_id_number, 5 );
+$aa157_6_id_number = getWrestlerId( $aa_157_lb_6 );
+$aa157_6_points = getPotentialPoints( $aa157_6_id_number, 6 );
+$aa157_7_id_number = getWrestlerId( $aa_157_lb_7 );
+$aa157_7_points = getPotentialPoints( $aa157_7_id_number, 7 );
+$aa157_8_id_number = getWrestlerId( $aa_157_lb_8 );
+$aa157_8_points = getPotentialPoints( $aa157_8_id_number, 8 );
+
+$aa165_1_id_number = getWrestlerId( $aa_165_lb_1 );
+$aa165_1_points = getPotentialPoints( $aa165_1_id_number, 1 );
+$aa165_2_id_number = getWrestlerId( $aa_165_lb_2 );
+$aa165_2_points = getPotentialPoints( $aa165_2_id_number, 2 );
+$aa165_3_id_number = getWrestlerId( $aa_165_lb_3 );
+$aa165_3_points = getPotentialPoints( $aa165_3_id_number, 3 );
+$aa165_4_id_number = getWrestlerId( $aa_165_lb_4 );
+$aa165_4_points = getPotentialPoints( $aa165_4_id_number, 4 );
+$aa165_5_id_number = getWrestlerId( $aa_165_lb_5 );
+$aa165_5_points = getPotentialPoints( $aa165_5_id_number, 5 );
+$aa165_6_id_number = getWrestlerId( $aa_165_lb_6 );
+$aa165_6_points = getPotentialPoints( $aa165_6_id_number, 6 );
+$aa165_7_id_number = getWrestlerId( $aa_165_lb_7 );
+$aa165_7_points = getPotentialPoints( $aa165_7_id_number, 7 );
+$aa165_8_id_number = getWrestlerId( $aa_165_lb_8 );
+$aa165_8_points = getPotentialPoints( $aa165_8_id_number, 8 );
+
+$aa174_1_id_number = getWrestlerId( $aa_174_lb_1 );
+$aa174_1_points = getPotentialPoints( $aa174_1_id_number, 1 );
+$aa174_2_id_number = getWrestlerId( $aa_174_lb_2 );
+$aa174_2_points = getPotentialPoints( $aa174_2_id_number, 2 );
+$aa174_3_id_number = getWrestlerId( $aa_174_lb_3 );
+$aa174_3_points = getPotentialPoints( $aa174_3_id_number, 3 );
+$aa174_4_id_number = getWrestlerId( $aa_174_lb_4 );
+$aa174_4_points = getPotentialPoints( $aa174_4_id_number, 4 );
+$aa174_5_id_number = getWrestlerId( $aa_174_lb_5 );
+$aa174_5_points = getPotentialPoints( $aa174_5_id_number, 5 );
+$aa174_6_id_number = getWrestlerId( $aa_174_lb_6 );
+$aa174_6_points = getPotentialPoints( $aa174_6_id_number, 6 );
+$aa174_7_id_number = getWrestlerId( $aa_174_lb_7 );
+$aa174_7_points = getPotentialPoints( $aa174_7_id_number, 7 );
+$aa174_8_id_number = getWrestlerId( $aa_174_lb_8 );
+$aa174_8_points = getPotentialPoints( $aa174_8_id_number, 8 );
+
+$aa184_1_id_number = getWrestlerId( $aa_184_lb_1 );
+$aa184_1_points = getPotentialPoints( $aa184_1_id_number, 1 );
+$aa184_2_id_number = getWrestlerId( $aa_184_lb_2 );
+$aa184_2_points = getPotentialPoints( $aa184_2_id_number, 2 );
+$aa184_3_id_number = getWrestlerId( $aa_184_lb_3 );
+$aa184_3_points = getPotentialPoints( $aa184_3_id_number, 3 );
+$aa184_4_id_number = getWrestlerId( $aa_184_lb_4 );
+$aa184_4_points = getPotentialPoints( $aa184_4_id_number, 4 );
+$aa184_5_id_number = getWrestlerId( $aa_184_lb_5 );
+$aa184_5_points = getPotentialPoints( $aa184_5_id_number, 5 );
+$aa184_6_id_number = getWrestlerId( $aa_184_lb_6 );
+$aa184_6_points = getPotentialPoints( $aa184_6_id_number, 6 );
+$aa184_7_id_number = getWrestlerId( $aa_184_lb_7 );
+$aa184_7_points = getPotentialPoints( $aa184_7_id_number, 7 );
+$aa184_8_id_number = getWrestlerId( $aa_184_lb_8 );
+$aa184_8_points = getPotentialPoints( $aa184_8_id_number, 8 );
+
+$aa197_1_id_number = getWrestlerId( $aa_197_lb_1 );
+$aa197_1_points = getPotentialPoints( $aa197_1_id_number, 1 );
+$aa197_2_id_number = getWrestlerId( $aa_197_lb_2 );
+$aa197_2_points = getPotentialPoints( $aa197_2_id_number, 2 );
+$aa197_3_id_number = getWrestlerId( $aa_197_lb_3 );
+$aa197_3_points = getPotentialPoints( $aa197_3_id_number, 3 );
+$aa197_4_id_number = getWrestlerId( $aa_197_lb_4 );
+$aa197_4_points = getPotentialPoints( $aa197_4_id_number, 4 );
+$aa197_5_id_number = getWrestlerId( $aa_197_lb_5 );
+$aa197_5_points = getPotentialPoints( $aa197_5_id_number, 5 );
+$aa197_6_id_number = getWrestlerId( $aa_197_lb_6 );
+$aa197_6_points = getPotentialPoints( $aa197_6_id_number, 6 );
+$aa197_7_id_number = getWrestlerId( $aa_197_lb_7 );
+$aa197_7_points = getPotentialPoints( $aa197_7_id_number, 7 );
+$aa197_8_id_number = getWrestlerId( $aa_197_lb_8 );
+$aa197_8_points = getPotentialPoints( $aa197_8_id_number, 8 );
+
+$aa285_1_id_number = getWrestlerId( $aa_285_lb_1 );
+$aa285_1_points = getPotentialPoints( $aa285_1_id_number, 1 );
+$aa285_2_id_number = getWrestlerId( $aa_285_lb_2 );
+$aa285_2_points = getPotentialPoints( $aa285_2_id_number, 2 );
+$aa285_3_id_number = getWrestlerId( $aa_285_lb_3 );
+$aa285_3_points = getPotentialPoints( $aa285_3_id_number, 3 );
+$aa285_4_id_number = getWrestlerId( $aa_285_lb_4 );
+$aa285_4_points = getPotentialPoints( $aa285_4_id_number, 4 );
+$aa285_5_id_number = getWrestlerId( $aa_285_lb_5 );
+$aa285_5_points = getPotentialPoints( $aa285_5_id_number, 5 );
+$aa285_6_id_number = getWrestlerId( $aa_285_lb_6 );
+$aa285_6_points = getPotentialPoints( $aa285_6_id_number, 6 );
+$aa285_7_id_number = getWrestlerId( $aa_285_lb_7 );
+$aa285_7_points = getPotentialPoints( $aa285_7_id_number, 7 );
+$aa285_8_id_number = getWrestlerId( $aa_285_lb_8 );
+$aa285_8_points = getPotentialPoints( $aa285_8_id_number, 8 );
+
+//////////////////////////
+//////////////////////////
+
+// We need to fix it so the user can not submit more than once on the same user id
+$query = "SELECT user_id FROM pick_all_americans_placement WHERE user_id=".$wcuid;
+$valid_user_id_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($valid_user_id_result);
+$valid_user_id = $row['user_id'];
+
+// This user alread has a skew of picks in the database for this contest
+if( $valid_user_id == $wcuid )
+{
+	// Delete their current picks
+	$query = "DELETE FROM pick_all_americans_placement WHERE user_id=".$wcuid;
+	$success = mysql_query($query) or die(mysql_error());
+	$display_string = "Your old selections have been updated.";
+	$display_string .= "<br/>";
+	$display_string .= "<br/>";
+}
+
+// Put the picks into the table
+$query = "INSERT INTO pick_all_americans_placement( user_id, aa_125_1, aa_125_2, aa_125_3, aa_125_4, aa_125_5, aa_125_6, aa_125_7, aa_125_8, aa_133_1, aa_133_2, aa_133_3, aa_133_4, aa_133_5, aa_133_6, aa_133_7, aa_133_8, aa_141_1, aa_141_2, aa_141_3, aa_141_4, aa_141_5, aa_141_6, aa_141_7, aa_141_8, aa_149_1, aa_149_2, aa_149_3, aa_149_4, aa_149_5, aa_149_6, aa_149_7, aa_149_8, aa_157_1, aa_157_2, aa_157_3, aa_157_4, aa_157_5, aa_157_6, aa_157_7, aa_157_8, aa_165_1, aa_165_2, aa_165_3, aa_165_4, aa_165_5, aa_165_6, aa_165_7, aa_165_8, aa_174_1, aa_174_2, aa_174_3, aa_174_4, aa_174_5, aa_174_6, aa_174_7, aa_174_8, aa_184_1, aa_184_2, aa_184_3, aa_184_4, aa_184_5, aa_184_6, aa_184_7, aa_184_8, aa_197_1, aa_197_2, aa_197_3, aa_197_4, aa_197_5, aa_197_6, aa_197_7, aa_197_8, aa_285_1, aa_285_2, aa_285_3, aa_285_4, aa_285_5, aa_285_6, aa_285_7, aa_285_8 ) VALUES ( ".$wcuid.", ".$aa125_1_id_number.", ".$aa125_2_id_number.", ".$aa125_3_id_number.", ".$aa125_4_id_number.", ".$aa125_5_id_number.", ".$aa125_6_id_number.", ".$aa125_7_id_number.", ".$aa125_8_id_number.", ".$aa133_1_id_number.", ".$aa133_2_id_number.", ".$aa133_3_id_number.", ".$aa133_4_id_number.", ".$aa133_5_id_number.", ".$aa133_6_id_number.", ".$aa133_7_id_number.", ".$aa133_8_id_number.", ".$aa141_1_id_number.", ".$aa141_2_id_number.", ".$aa141_3_id_number.", ".$aa141_4_id_number.", ".$aa141_5_id_number.", ".$aa141_6_id_number.", ".$aa141_7_id_number.", ".$aa141_8_id_number.", ".$aa149_1_id_number.", ".$aa149_2_id_number.", ".$aa149_3_id_number.", ".$aa149_4_id_number.", ".$aa149_5_id_number.", ".$aa149_6_id_number.", ".$aa149_7_id_number.", ".$aa149_8_id_number.", ".$aa157_1_id_number.", ".$aa157_2_id_number.", ".$aa157_3_id_number.", ".$aa157_4_id_number.", ".$aa157_5_id_number.", ".$aa157_6_id_number.", ".$aa157_7_id_number.", ".$aa157_8_id_number.", ".$aa165_1_id_number.", ".$aa165_2_id_number.", ".$aa165_3_id_number.", ".$aa165_4_id_number.", ".$aa165_5_id_number.", ".$aa165_6_id_number.", ".$aa165_7_id_number.", ".$aa165_8_id_number.", ".$aa174_1_id_number.", ".$aa174_2_id_number.", ".$aa174_3_id_number.", ".$aa174_4_id_number.", ".$aa174_5_id_number.", ".$aa174_6_id_number.", ".$aa174_7_id_number.", ".$aa174_8_id_number.", ".$aa184_1_id_number.", ".$aa184_2_id_number.", ".$aa184_3_id_number.", ".$aa184_4_id_number.", ".$aa184_5_id_number.", ".$aa184_6_id_number.", ".$aa184_7_id_number.", ".$aa184_8_id_number.", ".$aa197_1_id_number.", ".$aa197_2_id_number.", ".$aa197_3_id_number.", ".$aa197_4_id_number.", ".$aa197_5_id_number.", ".$aa197_6_id_number.", ".$aa197_7_id_number.", ".$aa197_8_id_number.", ".$aa285_1_id_number.", ".$aa285_2_id_number.", ".$aa285_3_id_number.", ".$aa285_4_id_number.", ".$aa285_5_id_number.", ".$aa285_6_id_number.", ".$aa285_7_id_number.", ".$aa285_8_id_number." )";
+$success = mysql_query($query) or die(mysql_error());
+
+// Put the points into the table
+$query = "UPDATE pick_all_americans_placement SET points_125_1=".$aa125_1_points.", points_125_2=".$aa125_2_points.", points_125_3=".$aa125_3_points.", points_125_4=".$aa125_4_points.", points_125_5=".$aa125_5_points.", points_125_6=".$aa125_6_points.", points_125_7=".$aa125_7_points.", points_125_8=".$aa125_8_points.", points_133_1=".$aa133_1_points.", points_133_2=".$aa133_2_points.", points_133_3=".$aa133_3_points.", points_133_4=".$aa133_4_points.", points_133_5=".$aa133_5_points.", points_133_6=".$aa133_6_points.", points_133_7=".$aa133_7_points.", points_133_8=".$aa133_8_points.", points_141_1=".$aa141_1_points.", points_141_2=".$aa141_2_points.", points_141_3=".$aa141_3_points.", points_141_4=".$aa141_4_points.", points_141_5=".$aa141_5_points.", points_141_6=".$aa141_6_points.", points_141_7=".$aa141_7_points.", points_141_8=".$aa141_8_points.", points_149_1=".$aa149_1_points.", points_149_2=".$aa149_2_points.", points_149_3=".$aa149_3_points.", points_149_4=".$aa149_4_points.", points_149_5=".$aa149_5_points.", points_149_6=".$aa149_6_points.", points_149_7=".$aa149_7_points.", points_149_8=".$aa149_8_points.", points_157_1=".$aa157_1_points.", points_157_2=".$aa157_2_points.", points_157_3=".$aa157_3_points.", points_157_4=".$aa157_4_points.", points_157_5=".$aa157_5_points.", points_157_6=".$aa157_6_points.", points_157_7=".$aa157_7_points.", points_157_8=".$aa157_8_points.", points_165_1=".$aa165_1_points.", points_165_2=".$aa165_2_points.", points_165_3=".$aa165_3_points.", points_165_4=".$aa165_4_points.", points_165_5=".$aa165_5_points.", points_165_6=".$aa165_6_points.", points_165_7=".$aa165_7_points.", points_165_8=".$aa165_8_points.", points_174_1=".$aa174_1_points.", points_174_2=".$aa174_2_points.", points_174_3=".$aa174_3_points.", points_174_4=".$aa174_4_points.", points_174_5=".$aa174_5_points.", points_174_6=".$aa174_6_points.", points_174_7=".$aa174_7_points.", points_174_8=".$aa174_8_points.", points_184_1=".$aa184_1_points.", points_184_2=".$aa184_2_points.", points_184_3=".$aa184_3_points.", points_184_4=".$aa184_4_points.", points_184_5=".$aa184_5_points.", points_184_6=".$aa184_6_points.", points_184_7=".$aa184_7_points.", points_184_8=".$aa184_8_points.", points_197_1=".$aa197_1_points.", points_197_2=".$aa197_2_points.", points_197_3=".$aa197_3_points.", points_197_4=".$aa197_4_points.", points_197_5=".$aa197_5_points.", points_197_6=".$aa197_6_points.", points_197_7=".$aa197_7_points.", points_197_8=".$aa197_8_points.", points_285_1=".$aa285_1_points.", points_285_2=".$aa285_2_points.", points_285_3=".$aa285_3_points.", points_285_4=".$aa285_4_points.", points_285_5=".$aa285_5_points.", points_285_6=".$aa285_6_points.", points_285_7=".$aa285_7_points.", points_285_8=".$aa285_8_points." WHERE user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+
+// Tally up the user points and put them in the points table
+$query = "UPDATE user_points set pick_aa_place=( SELECT (SELECT points_125_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_125_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_133_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_141_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_149_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_157_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_165_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_174_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_184_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_197_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_1 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_2 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_3 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_4 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_5 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_6 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_7 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") + (SELECT points_285_8 FROM pick_all_americans_placement WHERE user_id=".$wcuid.") ) where user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+
+// Re tally the total_points
+$query = "UPDATE user_points set total_points = pick_winners + pick_aa + pick_aa_place + pick_bouts WHERE user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+
+$display_string .= "<table border=\"0\">";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_125_lb_1."<br/>";
+$display_string .= $aa_125_lb_2."<br/>";
+$display_string .= $aa_125_lb_3."<br/>";
+$display_string .= $aa_125_lb_4."<br/>";
+$display_string .= $aa_125_lb_5."<br/>";
+$display_string .= $aa_125_lb_6."<br/>";
+$display_string .= $aa_125_lb_7."<br/>";
+$display_string .= $aa_125_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_133_lb_1."<br/>";
+$display_string .= $aa_133_lb_2."<br/>";
+$display_string .= $aa_133_lb_3."<br/>";
+$display_string .= $aa_133_lb_4."<br/>";
+$display_string .= $aa_133_lb_5."<br/>";
+$display_string .= $aa_133_lb_6."<br/>";
+$display_string .= $aa_133_lb_7."<br/>";
+$display_string .= $aa_133_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_141_lb_1."<br/>";
+$display_string .= $aa_141_lb_2."<br/>";
+$display_string .= $aa_141_lb_3."<br/>";
+$display_string .= $aa_141_lb_4."<br/>";
+$display_string .= $aa_141_lb_5."<br/>";
+$display_string .= $aa_141_lb_6."<br/>";
+$display_string .= $aa_141_lb_7."<br/>";
+$display_string .= $aa_141_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_149_lb_1."<br/>";
+$display_string .= $aa_149_lb_2."<br/>";
+$display_string .= $aa_149_lb_3."<br/>";
+$display_string .= $aa_149_lb_4."<br/>";
+$display_string .= $aa_149_lb_5."<br/>";
+$display_string .= $aa_149_lb_6."<br/>";
+$display_string .= $aa_149_lb_7."<br/>";
+$display_string .= $aa_149_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_157_lb_1."<br/>";
+$display_string .= $aa_157_lb_2."<br/>";
+$display_string .= $aa_157_lb_3."<br/>";
+$display_string .= $aa_157_lb_4."<br/>";
+$display_string .= $aa_157_lb_5."<br/>";
+$display_string .= $aa_157_lb_6."<br/>";
+$display_string .= $aa_157_lb_7."<br/>";
+$display_string .= $aa_157_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_165_lb_1."<br/>";
+$display_string .= $aa_165_lb_2."<br/>";
+$display_string .= $aa_165_lb_3."<br/>";
+$display_string .= $aa_165_lb_4."<br/>";
+$display_string .= $aa_165_lb_5."<br/>";
+$display_string .= $aa_165_lb_6."<br/>";
+$display_string .= $aa_165_lb_7."<br/>";
+$display_string .= $aa_165_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_174_lb_1."<br/>";
+$display_string .= $aa_174_lb_2."<br/>";
+$display_string .= $aa_174_lb_3."<br/>";
+$display_string .= $aa_174_lb_4."<br/>";
+$display_string .= $aa_174_lb_5."<br/>";
+$display_string .= $aa_174_lb_6."<br/>";
+$display_string .= $aa_174_lb_7."<br/>";
+$display_string .= $aa_174_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_184_lb_1."<br/>";
+$display_string .= $aa_184_lb_2."<br/>";
+$display_string .= $aa_184_lb_3."<br/>";
+$display_string .= $aa_184_lb_4."<br/>";
+$display_string .= $aa_184_lb_5."<br/>";
+$display_string .= $aa_184_lb_6."<br/>";
+$display_string .= $aa_184_lb_7."<br/>";
+$display_string .= $aa_184_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_197_lb_1."<br/>";
+$display_string .= $aa_197_lb_2."<br/>";
+$display_string .= $aa_197_lb_3."<br/>";
+$display_string .= $aa_197_lb_4."<br/>";
+$display_string .= $aa_197_lb_5."<br/>";
+$display_string .= $aa_197_lb_6."<br/>";
+$display_string .= $aa_197_lb_7."<br/>";
+$display_string .= $aa_197_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_285_lb_1."<br/>";
+$display_string .= $aa_285_lb_2."<br/>";
+$display_string .= $aa_285_lb_3."<br/>";
+$display_string .= $aa_285_lb_4."<br/>";
+$display_string .= $aa_285_lb_5."<br/>";
+$display_string .= $aa_285_lb_6."<br/>";
+$display_string .= $aa_285_lb_7."<br/>";
+$display_string .= $aa_285_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "</table>";
+
+echo "$display_string";
+//echo "GOT HERE.";
+
+function getWrestlerId( $wrester_info )
+{
+	$wrester_info_array = explode(" ", $wrester_info);
+	$query = "SELECT id FROM wrestlers WHERE weight=".$wrester_info_array[0]." AND fname=\"".$wrester_info_array[1]."\" AND lname=\"".$wrester_info_array[2]."\"";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+	return $row['id'];
+}
+
+function getPotentialPoints( $wrestler_id, $wrestlers_projected_finish )
+{
+	$query = "SELECT seed FROM wrestlers WHERE id=".$wrestler_id;
+	$wrestler_seed_result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($wrestler_seed_result);
+	$wrestlers_seed = $row['seed'];
+
+	if( $wrestlers_seed == 0 )
+	{
+		$wrestlers_seed = 15;
+	}
+
+	if( $wrestlers_seed == $wrestlers_projected_finish )
+	{
+		return 1;
+	}
+	if( $wrestlers_seed > $wrestlers_projected_finish )
+	{
+		return $wrestlers_seed - $wrestlers_projected_finish;
+	}
+	if( $wrestlers_seed < $wrestlers_projected_finish )
+	{
+		return $wrestlers_projected_finish - $wrestlers_seed;
+	}
+
+	
+}
+
+?>

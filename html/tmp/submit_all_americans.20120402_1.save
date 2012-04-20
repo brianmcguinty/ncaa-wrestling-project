@@ -1,0 +1,302 @@
+<?php
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+	//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+	//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+	// Retrieve data from Query String
+
+$wcuid = $_GET['wcuid'];
+$weight = $_GET['weight'];
+
+$ident_string_1 = "AA_".$weight."_lb_1";
+$ident_string_2 = "AA_".$weight."_lb_2";
+$ident_string_3 = "AA_".$weight."_lb_3";
+$ident_string_4 = "AA_".$weight."_lb_4";
+$ident_string_5 = "AA_".$weight."_lb_5";
+$ident_string_6 = "AA_".$weight."_lb_6";
+$ident_string_7 = "AA_".$weight."_lb_7";
+$ident_string_8 = "AA_".$weight."_lb_8";
+
+$aa_125_lb_1 = $_GET[$ident_string_1];
+$aa_125_lb_2 = $_GET[$ident_string_2];
+$aa_125_lb_3 = $_GET[$ident_string_3];
+$aa_125_lb_4 = $_GET[$ident_string_4];
+$aa_125_lb_5 = $_GET[$ident_string_5];
+$aa_125_lb_6 = $_GET[$ident_string_6];
+$aa_125_lb_7 = $_GET[$ident_string_7];
+$aa_125_lb_8 = $_GET[$ident_string_8];
+
+$wcuid = mysql_real_escape_string($wcuid);
+$weight = mysql_real_escape_string($weight);
+
+$aa_125_lb_1 = mysql_real_escape_string($aa_125_lb_1);
+$aa_125_lb_2 = mysql_real_escape_string($aa_125_lb_2);
+$aa_125_lb_3 = mysql_real_escape_string($aa_125_lb_3);
+$aa_125_lb_4 = mysql_real_escape_string($aa_125_lb_4);
+$aa_125_lb_5 = mysql_real_escape_string($aa_125_lb_5);
+$aa_125_lb_6 = mysql_real_escape_string($aa_125_lb_6);
+$aa_125_lb_7 = mysql_real_escape_string($aa_125_lb_7);
+$aa_125_lb_8 = mysql_real_escape_string($aa_125_lb_8);
+
+$aa_1_id_number = getWrestlerId( $aa_125_lb_1 );
+$aa_2_id_number = getWrestlerId( $aa_125_lb_2 );
+$aa_3_id_number = getWrestlerId( $aa_125_lb_3 );
+$aa_4_id_number = getWrestlerId( $aa_125_lb_4 );
+$aa_5_id_number = getWrestlerId( $aa_125_lb_5 );
+$aa_6_id_number = getWrestlerId( $aa_125_lb_6 );
+$aa_7_id_number = getWrestlerId( $aa_125_lb_7 );
+$aa_8_id_number = getWrestlerId( $aa_125_lb_8 );
+$aa_1_points = getPotentialPoints( $aa_1_id_number, 1 );
+$aa_2_points = getPotentialPoints( $aa_2_id_number, 2 );
+$aa_3_points = getPotentialPoints( $aa_3_id_number, 3 );
+$aa_4_points = getPotentialPoints( $aa_4_id_number, 4 );
+$aa_5_points = getPotentialPoints( $aa_5_id_number, 5 );
+$aa_6_points = getPotentialPoints( $aa_6_id_number, 6 );
+$aa_7_points = getPotentialPoints( $aa_7_id_number, 7 );
+$aa_8_points = getPotentialPoints( $aa_8_id_number, 8 );
+
+
+// Table column names
+$place_1 = "aa_".$weight."_1";
+$place_2 = "aa_".$weight."_2";
+$place_3 = "aa_".$weight."_3";
+$place_4 = "aa_".$weight."_4";
+$place_5 = "aa_".$weight."_5";
+$place_6 = "aa_".$weight."_6";
+$place_7 = "aa_".$weight."_7";
+$place_8 = "aa_".$weight."_8";
+$points_1 = "points_".$weight."_1";
+$points_2 = "points_".$weight."_2";
+$points_3 = "points_".$weight."_3";
+$points_4 = "points_".$weight."_4";
+$points_5 = "points_".$weight."_5";
+$points_6 = "points_".$weight."_6";
+$points_7 = "points_".$weight."_7";
+$points_8 = "points_".$weight."_8";
+
+// We need to fix it so the user can not submit more than once on the same user id
+$query = "SELECT user_id FROM pick_all_americans WHERE user_id=".$wcuid;
+$valid_user_id_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($valid_user_id_result);
+$valid_user_id = $row['user_id'];
+
+// If this is true then we have an entrty in the pick_all_americans tabke for this user
+// All we're going to do is update that skew
+if( $valid_user_id != $wcuid )
+{
+	$query = "INSERT INTO pick_all_americans ( user_id ) VALUES (".$wcuid.")";
+	$success = mysql_query($query) or die(mysql_error());
+}
+
+// Put in the picks
+$query = "UPDATE pick_all_americans SET ".$place_1."=".$aa_1_id_number.", ".$place_2."=".$aa_2_id_number.", ".$place_3."=".$aa_3_id_number.", ".$place_4."=".$aa_4_id_number.", ".$place_5."=".$aa_5_id_number.", ".$place_6."=".$aa_6_id_number.", ".$place_7."=".$aa_7_id_number.", ".$place_8."=".$aa_8_id_number." WHERE user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+	
+// Put in the points for the picks
+$query = "UPDATE pick_all_americans SET ".$points_1."=".$aa_1_points.", ".$points_2."=".$aa_2_points.", ".$points_3."=".$aa_3_points.", ".$points_4."=".$aa_4_points.", ".$points_5."=".$aa_5_points.", ".$points_6."=".$aa_6_points.", ".$points_7."=".$aa_7_points.", ".$points_8."=".$aa_8_points." WHERE user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+
+$query = "UPDATE user_points set pick_aa=( SELECT (SELECT points_125_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_125_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_133_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_141_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_149_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_157_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_165_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_174_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_184_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_197_8 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_1 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_2 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_3 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_4 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_5 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_6 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_7 FROM pick_all_americans WHERE user_id=".$wcuid.") + (SELECT points_285_8 FROM pick_all_americans WHERE user_id=".$wcuid.") ) where user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+
+// Re tally the total_points
+$query = "UPDATE user_points set total_points = pick_winners + pick_aa + pick_aa_place + pick_bouts WHERE user_id=".$wcuid;
+$success = mysql_query($query) or die(mysql_error());
+
+//////////////////////////////
+	//build query
+
+	switch($weight){
+		case "125":
+			$contest_weight = "133";
+			break;
+		case "133":
+			$contest_weight = "141";
+			break;
+		case "141":
+			$contest_weight = "149";
+			break;
+		case "149":
+			$contest_weight = "157";
+			break;
+		case "157":
+			$contest_weight = "165";
+			break;
+		case "165":
+			$contest_weight = "174";
+			break;
+		case "174":
+			$contest_weight = "184";
+			break;
+		case "184":
+			$contest_weight = "197";
+			break;
+		case "197":
+			$contest_weight = "285";
+			break;
+		case "285":
+			$contest_weight = "125";
+			break;
+}
+
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=".$contest_weight;
+
+	//Execute query
+	$qry_result_125 = mysql_query($query) or die(mysql_error());
+
+	$display_string .= "<table border=\"0\">";
+
+	$display_string .= "<tr>";
+
+	$display_string .= "<td class=\"aa-picks-panel\">";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_125, $contest_weight);
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160; &#160; &#160; &#160; &#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td class=\"vertical-button-panel\">";
+
+	// This builds the table of vertical weight buttons
+	$display_string .= buildTableForWeightBottons($contest_weight);
+
+	$display_string .= "</td>";
+
+	$display_string .= "</tr>";
+
+	$display_string .= "</table>";
+
+	$display_string .= "<br/>";
+	$display_string .= "<form name='submitAllAmericans'>";
+	$display_string .= "<input type='button' class='styled-button' onclick='submitAllAmericanPicks($contest_weight)' value='Submit $contest_weight AAs' />";
+	$display_string .= "</form>";
+
+//////////////////////////////
+$file = '/tmp/people.txt';
+// Open the file to get existing content
+$current = file_get_contents($file);
+// Append a new person to the file
+$current .= $display_string;
+// Write the contents back to the file
+file_put_contents($file, $current);
+//////////////////////////////
+
+echo "$display_string";
+//echo "GOT HERE.";
+
+function getWrestlerId( $wrester_info )
+{
+	$wrester_info_array = explode(" ", $wrester_info);
+	$query = "SELECT id FROM wrestlers WHERE weight=".$wrester_info_array[0]." AND fname=\"".$wrester_info_array[1]."\" AND lname=\"".$wrester_info_array[2]."\"";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+	return $row['id'];
+}
+
+function getPotentialPoints( $wrestler_id, $wrestlers_projected_finish )
+{
+	$query = "SELECT seed FROM wrestlers WHERE id=".$wrestler_id;
+	$wrestler_seed_result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($wrestler_seed_result);
+	$wrestlers_seed = $row['seed'];
+
+	if( ($wrestlers_seed == 0) || ($wrestlers_seed > 8) )
+	{
+		return 2;
+	}
+	else
+	{
+		return 1;
+	}
+
+}
+
+function buildTableForWeightBottons( $weight_string )
+{
+	$return_string = "";
+	$local_weights_array = array( "125", "133", "141", "149", "157", "165", "174", "184", "197", "285" );
+
+	$return_string .= "<table border\"0\">";
+
+	for( $local_count = 0; $local_count <= 9; $local_count += 1)
+	{
+		if( $weight_string == $local_weights_array[$local_count] )
+		{
+		}
+		else
+		{
+			$return_string .= "<tr>";
+			$return_string .= "<td>";
+			$return_string .= "<input type='button' class='styled-button' onclick='pickContestFunction($local_weights_array[$local_count])' value='$local_weights_array[$local_count]' />";
+			$return_string .= "</td>";
+			$return_string .= "</tr>";
+		}
+	}
+
+	$return_string .= "</table>";
+
+	return $return_string;
+}
+
+function buildResultSnippetForPickAllAmericans($array_rows, $weight_string)
+{
+	$name_string = "AA_";
+	$name_string .= $weight_string;
+	$name_string .= "_lb_";
+	$counter = 0;
+	$fname = array();
+	$lname = array();
+	$seed = array();
+	while($row = mysql_fetch_array($array_rows))
+	{
+		$fname[$counter] = $row[fname];
+		$lname[$counter] = $row[lname];
+		if( $row[seed] == 0)
+		{
+			$seed[$counter] = "NS";
+		}
+		else
+		{
+			$seed[$counter] = $row[seed];
+		}
+		++$counter;
+	}
+
+	for( $local_count = 1; $local_count <= 8; $local_count += 1)
+	{
+		$local_name_string = $name_string.$local_count;
+		$return_string .= "<select id=\"$local_name_string\">";
+
+		for( $local_count_inner = 0; $local_count_inner < $counter; $local_count_inner += 1)
+		{
+			if( $local_count == $seed[$local_count_inner] )
+			{
+				$return_string .= "<option selected=\"selected\">";
+			}
+			else
+			{
+				$return_string .= "<option>";
+			}
+			$return_string .= "$weight_string";
+			$return_string .= " ";
+			$return_string .= "$fname[$local_count_inner]";
+			$return_string .= " ";
+			$return_string .= "$lname[$local_count_inner]";
+			$return_string .= " (";
+			$return_string .= "$seed[$local_count_inner]";
+			$return_string .= ")";
+			$return_string .= "</option>";
+		}
+		$return_string .= "</select><br>";
+		$local_name_string = "";
+	}
+	return $return_string;
+}
+
+?>

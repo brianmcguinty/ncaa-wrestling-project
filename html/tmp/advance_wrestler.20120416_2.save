@@ -1,0 +1,151 @@
+<?php
+
+// Read & Parse the incoming URL
+// Update the current bout row with winner and loser
+// Figure out if winner is red or green for next bout
+// Update the upcoming bout row in database for that wrester
+// Figure out if the loser is red or green for next bout
+// Update the upcoming bout row in database for that wrester
+// Set up the resturn respond that has Name, weight, current bout, winner bout, loser bout
+
+// Get name of loser
+// Set up the resturn respond that has Name, weight, current bout, winner bout, loser bout
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+
+$wcuid = $_GET['wcuid'];
+$wcuid = mysql_real_escape_string($wcuid);
+$winner = $_GET['winner'];
+$winner = mysql_real_escape_string($winner);
+$loser = $_GET['loser'];
+$loser = mysql_real_escape_string($loser);
+$bout_number = $_GET['bout_number'];
+$bout_number = mysql_real_escape_string($bout_number);
+$weight = $_GET['weight'];
+$weight = mysql_real_escape_string($weight);
+$winner_bout_number = $_GET['winner_bout_number'];
+$winner_bout_number = mysql_real_escape_string($winner_bout_number);
+$loser_bout_number = $_GET['loser_bout_number'];
+$loser_bout_number = mysql_real_escape_string($loser_bout_number);
+
+$bracket_table_name = "bouts_".$weight."_".$wcuid;
+
+
+if( $winner != "" )
+{
+	$loser_id = "";
+
+	// SELECT wrestlers.seed, wrestlers.id, schools.abrv, bouts_125_2.w_bout_number, bouts_125_2.l_bout_number FROM wrestlers, schools, bouts_125_2 WHERE ((wrestlers.lname="Patterson" AND wrestlers.weight="125") AND (wrestlers.school=schools.id) AND (bouts_125_2.id=1));
+	// New and improved
+	//SELECT wrestlers.seed, wrestlers.id, schools.abrv, bouts_125_2.w_bout_number, bouts_125_2.l_bout_number, bouts_125_2.red, bouts_125_2.green FROM wrestlers, schools, bouts_125_2 WHERE ((wrestlers.lname="Patterson" AND wrestlers.weight="125") AND (wrestlers.school=schools.id) AND (bouts_125_2.id=1));
+
+	$query = "SELECT wrestlers.seed, wrestlers.id, schools.abrv, ".$bracket_table_name.".w_bout_number, ".$bracket_table_name.".l_bout_number, ".$bracket_table_name.".red, ".$bracket_table_name.".green FROM wrestlers, schools, ".$bracket_table_name." WHERE ((wrestlers.lname=\"".$winner."\" AND wrestlers.weight=".$weight.") AND (wrestlers.school=schools.id) AND ".$bracket_table_name.".id=".$bout_number.")";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+	$wrestler_id = $row['id'];
+	$seed = $row['seed'];
+	$school = $row['abrv'];
+	$winner_bout_number = $row['w_bout_number'];
+	$loser_bout_number = $row['l_bout_number'];
+	$red_wrestler_id = $row['red'];
+	$green_wrestler_id = $row['green'];
+
+	if( $wrestler_id == $red_wrestler_id )
+	{
+		// Green is the loser
+		$loser_id = $green_wrestler_id;
+	}
+	else
+	{
+		// red is the loser
+		$loser_id = $red_wrestler_id;
+	}
+
+	// Update the winner and loser for the bout in question
+	$query = "UPDATE ".$bracket_table_name." SET winner=".$wrestler_id.", loser=".$loser_id." WHERE id=".$bout_number;
+	$success = mysql_query($query) or die(mysql_error());
+
+	// A result of 0 means they will be the red wrestler in next bout
+	$mod_result = $bout_number % 2;
+
+	// Update the winner to wrestle in their next bout under the correct color anklet
+	if( $bout_number != 32)
+	{
+		if( $mod_result == 0 )
+		{
+			$query = "UPDATE ".$bracket_table_name." SET red=".$wrestler_id." WHERE id=".$winner_bout_number;
+			$success = mysql_query($query) or die(mysql_error());
+		}
+		else
+		{
+			$query = "UPDATE ".$bracket_table_name." SET green=".$wrestler_id." WHERE id=".$winner_bout_number;
+			$success = mysql_query($query) or die(mysql_error());
+		}
+	}
+
+	// Update the participants in the next bout
+
+
+	$query = "SELECT w_bout_number, l_bout_number FROM ".$bracket_table_name." WHERE id=".$winner_bout_number;
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+	$next_bout_winner_bout_number = $row['w_bout_number'];
+	$next_bout_loser_bout_number = $row['l_bout_number'];
+
+	if( $seed != 0 )
+	{
+		$return_string = "<a href=\"#winner-bout-".$bout_number."\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", ".$winner_bout_number.", ".$next_bout_winner_bout_number.", ".$next_bout_loser_bout_number.")'>(".$seed.")".$winner."</a>";
+	}
+	else
+	{
+		$return_string = "<a href=\"#winner-bout-".$bout_number."\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", ".$winner_bout_number.", ".$next_bout_winner_bout_number.", ".$next_bout_loser_bout_number.")'>".$winner."</a>";
+	}
+}
+
+if( $loser != "" )
+{
+	// select wrestlers.id, wrestlers.lname, bouts_125_2.l_bout_number from wrestlers, bouts_125_2 where ((bouts_125_2.id=1) AND (wrestlers.id=bouts_125_2.loser));
+	$query = "SELECT wrestlers.id, wrestlers.lname, ".$bracket_table_name.".l_bout_number, wrestlers.seed FROM wrestlers, ".$bracket_table_name." WHERE ((".$bracket_table_name.".id=".$bout_number.") AND (wrestlers.id=".$bracket_table_name.".loser))";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+	$wrestler_id = $row['id'];
+	$loser_name = $row['lname'];
+	$seed = $row['seed'];
+	$loser_bout_number_local_scope = $row['l_bout_number'];
+
+	// A result of 1 means they will be the red wrestler in next bout
+	$mod_result = $bout_number % 2;
+
+	// Update the winner to wrestle in their next bout under the correct color anklet
+	if( $mod_result == 0 )
+	{
+		$query = "UPDATE ".$bracket_table_name." SET green=".$wrestler_id." WHERE id=".$loser_bout_number;
+		$success = mysql_query($query) or die(mysql_error());
+	}
+	else
+	{
+		$query = "UPDATE ".$bracket_table_name." SET red=".$wrestler_id." WHERE id=".$loser_bout_number;
+		$success = mysql_query($query) or die(mysql_error());
+	}
+
+
+	if( $seed != 0 )
+	{
+		$return_string = "<a href=\"#loser-bout-".$bout_number."\" onclick='advanceWrestler(\"".$loser_name."\", ".$weight.", ".$loser_bout_number_local_scope.")'>(".$seed.")".$loser_name."</a>";
+	}
+	else
+	{
+		$return_string = "<a href=\"#winner-bout-".$bout_number."\" onclick='advanceWrestler(\"".$loser_name."\", ".$weight.", ".$loser_bout_number_local_scope.")'>".$loser_name."</a>";
+	}
+}
+
+echo $return_string;;
+
+?>

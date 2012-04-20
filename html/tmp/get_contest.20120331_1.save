@@ -1,0 +1,456 @@
+<?php
+
+function buildResultSnippetForPickWinners($array_rows, $weight_string)
+{
+	$name_string = $weight_string;
+	$name_string .= "_lb_winner";
+
+	//Build Result String
+	//$return_string .= "<div id=\"$name_string\">";
+	$return_string .= "<select id=\"$name_string\">";
+	// Insert a new row in the table for each person returned
+	while($row = mysql_fetch_array($array_rows))
+	{
+		$return_string .= "<option>";
+		$return_string .= "$row[weight]";
+		$return_string .= " ";
+		$return_string .= "$row[fname]";
+		$return_string .= " ";
+		$return_string .= "$row[lname]";
+		$return_string .= " (";
+		if( $row[seed] == 0)
+		{
+			$return_string .= "NS";
+			$return_string .= ")";
+		}
+		else
+		{
+			$return_string .= "$row[seed]";
+			$return_string .= ")";
+		}
+		$return_string .= "</option>";
+		
+	}
+	$return_string .= "</select><br>";
+	//$reutnr_string .= "</div>";
+	return $return_string;
+}
+
+function buildResultSnippetForPickAllAmericans($array_rows, $weight_string)
+{
+	$name_string = "AA_";
+	$name_string .= $weight_string;
+	$name_string .= "_lb_";
+	$counter = 0;
+	$fname = array();
+	$lname = array();
+	$seed = array();
+	while($row = mysql_fetch_array($array_rows))
+	{
+		$fname[$counter] = $row[fname];
+		$lname[$counter] = $row[lname];
+		if( $row[seed] == 0)
+		{
+			$seed[$counter] = "NS";
+		}
+		else
+		{
+			$seed[$counter] = $row[seed];
+		}
+		++$counter;
+	}
+
+	for( $local_count = 1; $local_count <= 8; $local_count += 1)
+	{
+		$local_name_string = $name_string.$local_count;
+		$return_string .= "<select id=\"$local_name_string\">";
+
+		for( $local_count_inner = 0; $local_count_inner < $counter; $local_count_inner += 1)
+		{
+			if( $local_count == $seed[$local_count_inner] )
+			{
+				$return_string .= "<option selected=\"selected\">";
+			}
+			else
+			{
+				$return_string .= "<option>";
+			}
+			$return_string .= "$weight_string";
+			$return_string .= " ";
+			$return_string .= "$fname[$local_count_inner]";
+			$return_string .= " ";
+			$return_string .= "$lname[$local_count_inner]";
+			$return_string .= " (";
+			$return_string .= "$seed[$local_count_inner]";
+			$return_string .= ")";
+			$return_string .= "</option>";
+		}
+		$return_string .= "</select><br>";
+		$local_name_string = "";
+	}
+	return $return_string;
+}
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+	//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+	//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+	// Retrieve data from Query String
+$contest = $_GET['contest'];
+if( $contest == "pick_winners" )
+{
+	//$weight = mysql_real_escape_string($weight);
+
+	//build query
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=125";
+	//Execute query
+	$qry_result_125 = mysql_query($query) or die(mysql_error());
+
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=133";
+	$qry_result_133 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=141";
+	$qry_result_141 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=149";
+	$qry_result_149 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=157";
+	$qry_result_157 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=165";
+	$qry_result_165 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=174";
+	$qry_result_174 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=184";
+	$qry_result_184 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=197";
+	$qry_result_197 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=285";
+	$qry_result_285 = mysql_query($query) or die(mysql_error());
+
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_125, "125");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_133, "133");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_141, "141");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_149, "149");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_157, "157");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_165, "165");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_174, "174");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_184, "184");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_197, "197");
+	$display_string .= buildResultSnippetForPickWinners( $qry_result_285, "285");
+
+	$display_string .= "<br/>";
+	$display_string .= "<form name='submitWinners'>";
+	$display_string .= "<input type='button' class='styled-button' onclick='submitIndividualWinnerPicks()' value='Submit Winners' />";
+	$display_string .= "</form>";
+
+	echo $display_string;
+
+}
+else if( $contest == "pick_all_americans" )
+{
+	//build query
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=125";
+	//Execute query
+	$qry_result_125 = mysql_query($query) or die(mysql_error());
+
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=133";
+	$qry_result_133 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=141";
+	$qry_result_141 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=149";
+	$qry_result_149 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=157";
+	$qry_result_157 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=165";
+	$qry_result_165 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=174";
+	$qry_result_174 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=184";
+	$qry_result_184 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=197";
+	$qry_result_197 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=285";
+	$qry_result_285 = mysql_query($query) or die(mysql_error());
+
+	$display_string .= "<table border=\"0\">";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "125 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_125, "125");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "133 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_133, "133");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "141 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_141, "141");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "149 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_149, "149");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "157 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_157, "157");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "165 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_165, "165");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "174 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_174, "174");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "184 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_184, "184");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "197 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_197, "197");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "285 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_285, "285");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "</table>";
+
+	$display_string .= "<br/>";
+	$display_string .= "<form name='submitAllAmericans'>";
+	$display_string .= "<input type='button' class='styled-button' onclick='submitAllAmericanPicks()' value='Submit AAs' />";
+	$display_string .= "</form>";
+
+	echo $display_string;
+
+	//echo "Pick All Americans Contest Not Ready";
+}
+else if( $contest == "pick_all_americans_placement" )
+{
+	//build query
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=125";
+	//Execute query
+	$qry_result_125 = mysql_query($query) or die(mysql_error());
+
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=133";
+	$qry_result_133 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=141";
+	$qry_result_141 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=149";
+	$qry_result_149 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=157";
+	$qry_result_157 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=165";
+	$qry_result_165 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=174";
+	$qry_result_174 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=184";
+	$qry_result_184 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=197";
+	$qry_result_197 = mysql_query($query) or die(mysql_error());
+	$query = "SELECT fname, lname, seed, weight FROM wrestlers where weight=285";
+	$qry_result_285 = mysql_query($query) or die(mysql_error());
+
+	$display_string .= "<table border=\"0\">";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "125 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_125, "125");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "133 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_133, "133");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "141 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_141, "141");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "149 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_149, "149");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "157 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_157, "157");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "165 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_165, "165");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "174 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_174, "174");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "184 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_184, "184");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td colspan=\"3\">";
+	$display_string .= "<br />";
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "<tr>";
+	$display_string .= "<td>";
+	$display_string .= "197 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_197, "197");
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "&#160;";
+	$display_string .= "&#160;";
+	$display_string .= "</td>";
+
+	$display_string .= "<td>";
+	$display_string .= "285 lb All Americans";
+	$display_string .= buildResultSnippetForPickAllAmericans( $qry_result_285, "285");
+	$display_string .= "</td>";
+	$display_string .= "</tr>";
+
+	$display_string .= "</table>";
+
+	$display_string .= "<br/>";
+	$display_string .= "<form name='submitAllAmericansPlacement'>";
+	$display_string .= "<input type='button' class='styled-button' onclick='submitAllAmericanPlacementPicks()' value='Submit AAs Placement' />";
+	$display_string .= "</form>";
+
+	echo $display_string;
+
+	//echo "Pick All Americans Contest Not Ready";
+}
+else if( $contest == "pick_bout_by_bout" )
+{
+	echo "Bout by Bout Contest Not Ready";
+}
+else
+{
+	echo "ERROR - END OF FUNCTION CALL";
+}
+	
+?>

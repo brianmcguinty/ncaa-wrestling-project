@@ -1,0 +1,33 @@
+#wrapper {
+    background-color:rgb(30,144,255);
+    margin: 0 auto;
+    width: 700px;
+}
+#content {
+    width: 100%;
+}
+#pick_contest {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+#sign_in_block {
+	margin-left: 45%;
+	margin-right: 25%;
+	font-family: Arial, Sans-Serif;
+	font-size: 23px;
+	margin-bottom: 5px;
+	display: block;
+	padding: 4px;
+	width: 300px;
+}
+#new_user_block {
+	margin-left: 20%;
+	margin-right: 20%;
+	font-family: Arial, Sans-Serif;
+	font-size: 23px;
+	margin-bottom: 5px;
+	display: block;
+	padding: 4px;
+	width: 300px;
+}
+

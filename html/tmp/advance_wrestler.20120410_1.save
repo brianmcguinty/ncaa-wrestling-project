@@ -1,0 +1,89 @@
+<?php
+
+//$wcuid = $_GET['wcuid'];
+//$wcuid = mysql_real_escape_string($wcuid);
+$winner = $_GET['winner'];
+$winner = mysql_real_escape_string($winner);
+$loser = $_GET['loser'];
+$loser = mysql_real_escape_string($loser);
+$bout_number = $_GET['bout_number'];
+$bout_number = mysql_real_escape_string($bout_number);
+$weight = $_GET['weight'];
+$weight = mysql_real_escape_string($weight);
+
+switch($bout_number)
+{
+	case 1:
+		if( $winner != "" )
+		{
+			$return_string = "<a href=\"#winner-bout-1\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 14)'>".$winner."</a>";
+		}
+		break;
+	case 2:
+	case 3:
+		$return_string = "<a href=\"#\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 18)'>".$winner."</a>";
+		break;
+	case 4:
+	case 5:
+		$return_string = "<a href=\"#\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 19)'>".$winner."</a>";
+		break;
+	case 6:
+	case 7:
+		$return_string = "<a href=\"#winner-bout-18\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 20)'>".$winner."</a>";
+		break;
+	case 8:
+	case 9:
+		$return_string = "<a href=\"#winner-bout-18\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 21)'>".$winner."</a>";
+		break;
+	case 10:
+	case 11:
+		$return_string = "<a href=\"#winner-bout-27\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 22)'>".$winner."</a>";
+		break;
+	case 12:
+	case 13:
+		$return_string = "<a href=\"#winner-bout-27\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 23)'>".$winner."</a>";
+		break;
+	case 14:
+	case 15:
+		$return_string = "<a href=\"#bottom\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 24)'>".$winner."</a>";
+		break;
+	case 16:
+	case 17:
+		$return_string = "<a href=\"#bottom\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 25)'>".$winner."</a>";
+		break;
+	case 18:
+	case 19:
+		$return_string = "<a href=\"#\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 26)'>".$winner."</a>";
+		break;
+	case 20:
+	case 21:
+		$return_string = "<a href=\"#\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 27)'>".$winner."</a>";
+		break;
+	case 22:
+	case 23:
+		$return_string = "<a href=\"#bottom\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 28)'>".$winner."</a>";
+		break;
+	case 24:
+	case 25:
+		$return_string = "<a href=\"#bottom\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 29)'>".$winner."</a>";
+		break;
+	case 26:
+	case 27:
+		$return_string = "<a href=\"#winner-boout-30\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 30)'>".$winner."</a>";
+		break;
+	case 28:
+	case 29:
+		$return_string = "<a href=\"#winner-bout-30\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 31)'>".$winner."</a>";
+		break;
+	case 30:
+	case 31:
+		$return_string = "<a href=\"#winner-bout-30\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 32)'>".$winner."</a>";
+		break;
+	case 32:
+		$return_string = "<a href=\"#winner-bout-30\" onclick='advanceWrestler(\"".$winner."\", ".$weight.", 99)'>".$winner."</a>";
+		break;
+}
+
+echo $return_string;;
+
+?>

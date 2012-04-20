@@ -1,0 +1,183 @@
+<?php
+if (!(isset($_COOKIE["wcuid"])))
+  header("Location: http://www.important-info.com/ncaa/");
+?>
+
+<html>
+<head>
+    <title>Monty Ajax Work Contest Page</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+<body>
+	<div id="wrapper">
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js?ver=1.4.0"></script>
+	<script language="javascript" type="text/javascript">
+<!-- 
+//Browser Support Code
+function pickContestFunction(){
+	var ajaxRequest;  // The variable that makes Ajax possible!
+	
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var ajaxDisplay = document.getElementById('ajaxDiv');
+			ajaxDisplay.innerHTML = ajaxRequest.responseText;
+		}
+	}
+	var contest = document.getElementById('contest').value;
+	var queryString = "?contest=" + contest;
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/get_contest.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function submitIndividualWinnerPicks(){
+	var ajaxRequest;  // The variable that makes Ajax possible!
+	
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var ajaxDisplay = document.getElementById('ajaxDiv');
+			ajaxDisplay.innerHTML = ajaxRequest.responseText;
+		}
+	}
+	var winner_125 = document.getElementById('125_lb_winner').value;
+	var winner_133 = document.getElementById('133_lb_winner').value;
+	var winner_141 = document.getElementById('141_lb_winner').value;
+	var winner_149 = document.getElementById('149_lb_winner').value;
+	var winner_157 = document.getElementById('157_lb_winner').value;
+	var winner_165 = document.getElementById('165_lb_winner').value;
+	var winner_174 = document.getElementById('174_lb_winner').value;
+	var winner_184 = document.getElementById('184_lb_winner').value;
+	var winner_197 = document.getElementById('197_lb_winner').value;
+	var winner_285 = document.getElementById('285_lb_winner').value;
+
+	var queryString = "?winner_125=" + winner_125;
+	queryString = queryString + "&winner_133=" + winner_133;
+	queryString = queryString + "&winner_141=" + winner_141;
+	queryString = queryString + "&winner_149=" + winner_149;
+	queryString = queryString + "&winner_157=" + winner_157;
+	queryString = queryString + "&winner_165=" + winner_165;
+	queryString = queryString + "&winner_174=" + winner_174;
+	queryString = queryString + "&winner_184=" + winner_184;
+	queryString = queryString + "&winner_197=" + winner_197;
+	queryString = queryString + "&winner_285=" + winner_285;
+	queryString = queryString + "&wcuid=" + getCookie( "wcuid" );
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/submit_pick_winners.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function getCookie(c_name)
+{
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0;i<ARRcookies.length;i++)
+	{
+		x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+		y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+		x=x.replace(/^\s+|\s+$/g,"");
+		if (x==c_name)
+		{
+			return unescape(y);
+		}
+	}
+}
+
+function setCookie(c_name,value,exdays)
+{
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	document.cookie=c_name + "=" + c_value;
+}
+
+function checkCookie()
+{
+	var username=getCookie("username");
+	if (username!=null && username!="")
+	{
+		alert("Welcome again " + username);
+	}
+	else 
+	{
+		username=prompt("Please enter your name:","");
+		if (username!=null && username!="")
+		{
+			setCookie("username",username,365);
+		}
+	}
+}
+
+function deleteCookie() {
+document.cookie = 'wcuid=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+document.cookie = 'wcun=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+}
+
+//-->
+</script>
+
+	<div id="content">
+		<?php   
+			if (isset($_COOKIE["wcun"]))
+				echo "Welcome " . $_COOKIE["wcun"] . "<br />"; 
+			else    
+		?>  
+		<image src="./images/Header11.jpg" width="700" height="350">
+		<div id="pick_contest">
+			<form name='myForm'>
+			<br />
+			Choose Contest: <select id='contest'>
+			<option value='pick_winners'>Pick Individual Winners</option>
+			<option value='pick_all_americans_placement'>Pick All American Placement</option>
+			<option value='pick_all_americans'>Pick All Americans</option>
+			<option value='pick_bout_by_bout'>Pick Bout by Bout</option>
+			</select>
+			<input type='button' onclick='pickContestFunction()' value='Start Contest' />
+			</form>
+			<div id='ajaxDiv'>Your Contest will display here</div>
+	
+			<form name='submitWinners'>
+			<input type='button' onclick='submitIndividualWinnerPicks()' value='Submit Picks' />
+			</form>
+		</div>
+	</div>
+
+</div>
+<a href="http://www.important-info.com/ncaa/index.html" onclick='deleteCookie()'> Log out </a>
+</body>
+</html>
+

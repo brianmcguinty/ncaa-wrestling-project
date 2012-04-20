@@ -1,0 +1,819 @@
+<?php
+
+$dbhost = "localhost";
+$dbuser = "ncaa";
+$dbpass = "n0rth0f25";
+$dbname = "wrestling";
+	//Connect to MySQL Server
+mysql_connect($dbhost, $dbuser, $dbpass);
+	//Select Database
+mysql_select_db($dbname) or die(mysql_error());
+	// Retrieve data from Query String
+
+$wcuid = $_GET['wcuid'];
+
+$aa_125_lb_1 = $_GET['AA_125_lb_1'];
+$aa_125_lb_2 = $_GET['AA_125_lb_2'];
+$aa_125_lb_3 = $_GET['AA_125_lb_3'];
+$aa_125_lb_4 = $_GET['AA_125_lb_4'];
+$aa_125_lb_5 = $_GET['AA_125_lb_5'];
+$aa_125_lb_6 = $_GET['AA_125_lb_6'];
+$aa_125_lb_7 = $_GET['AA_125_lb_7'];
+$aa_125_lb_8 = $_GET['AA_125_lb_8'];
+$aa_133_lb_1 = $_GET['AA_133_lb_1'];
+$aa_133_lb_2 = $_GET['AA_133_lb_2'];
+$aa_133_lb_3 = $_GET['AA_133_lb_3'];
+$aa_133_lb_4 = $_GET['AA_133_lb_4'];
+$aa_133_lb_5 = $_GET['AA_133_lb_5'];
+$aa_133_lb_6 = $_GET['AA_133_lb_6'];
+$aa_133_lb_7 = $_GET['AA_133_lb_7'];
+$aa_133_lb_8 = $_GET['AA_133_lb_8'];
+$aa_141_lb_1 = $_GET['AA_141_lb_1'];
+$aa_141_lb_2 = $_GET['AA_141_lb_2'];
+$aa_141_lb_3 = $_GET['AA_141_lb_3'];
+$aa_141_lb_4 = $_GET['AA_141_lb_4'];
+$aa_141_lb_5 = $_GET['AA_141_lb_5'];
+$aa_141_lb_6 = $_GET['AA_141_lb_6'];
+$aa_141_lb_7 = $_GET['AA_141_lb_7'];
+$aa_141_lb_8 = $_GET['AA_141_lb_8'];
+$aa_149_lb_1 = $_GET['AA_149_lb_1'];
+$aa_149_lb_2 = $_GET['AA_149_lb_2'];
+$aa_149_lb_3 = $_GET['AA_149_lb_3'];
+$aa_149_lb_4 = $_GET['AA_149_lb_4'];
+$aa_149_lb_5 = $_GET['AA_149_lb_5'];
+$aa_149_lb_6 = $_GET['AA_149_lb_6'];
+$aa_149_lb_7 = $_GET['AA_149_lb_7'];
+$aa_149_lb_8 = $_GET['AA_149_lb_8'];
+$aa_157_lb_1 = $_GET['AA_157_lb_1'];
+$aa_157_lb_2 = $_GET['AA_157_lb_2'];
+$aa_157_lb_3 = $_GET['AA_157_lb_3'];
+$aa_157_lb_4 = $_GET['AA_157_lb_4'];
+$aa_157_lb_5 = $_GET['AA_157_lb_5'];
+$aa_157_lb_6 = $_GET['AA_157_lb_6'];
+$aa_157_lb_7 = $_GET['AA_157_lb_7'];
+$aa_157_lb_8 = $_GET['AA_157_lb_8'];
+$aa_165_lb_1 = $_GET['AA_165_lb_1'];
+$aa_165_lb_2 = $_GET['AA_165_lb_2'];
+$aa_165_lb_3 = $_GET['AA_165_lb_3'];
+$aa_165_lb_4 = $_GET['AA_165_lb_4'];
+$aa_165_lb_5 = $_GET['AA_165_lb_5'];
+$aa_165_lb_6 = $_GET['AA_165_lb_6'];
+$aa_165_lb_7 = $_GET['AA_165_lb_7'];
+$aa_165_lb_8 = $_GET['AA_165_lb_8'];
+$aa_174_lb_1 = $_GET['AA_174_lb_1'];
+$aa_174_lb_2 = $_GET['AA_174_lb_2'];
+$aa_174_lb_3 = $_GET['AA_174_lb_3'];
+$aa_174_lb_4 = $_GET['AA_174_lb_4'];
+$aa_174_lb_5 = $_GET['AA_174_lb_5'];
+$aa_174_lb_6 = $_GET['AA_174_lb_6'];
+$aa_174_lb_7 = $_GET['AA_174_lb_7'];
+$aa_174_lb_8 = $_GET['AA_174_lb_8'];
+$aa_184_lb_1 = $_GET['AA_184_lb_1'];
+$aa_184_lb_2 = $_GET['AA_184_lb_2'];
+$aa_184_lb_3 = $_GET['AA_184_lb_3'];
+$aa_184_lb_4 = $_GET['AA_184_lb_4'];
+$aa_184_lb_5 = $_GET['AA_184_lb_5'];
+$aa_184_lb_6 = $_GET['AA_184_lb_6'];
+$aa_184_lb_7 = $_GET['AA_184_lb_7'];
+$aa_184_lb_8 = $_GET['AA_184_lb_8'];
+$aa_197_lb_1 = $_GET['AA_197_lb_1'];
+$aa_197_lb_2 = $_GET['AA_197_lb_2'];
+$aa_197_lb_3 = $_GET['AA_197_lb_3'];
+$aa_197_lb_4 = $_GET['AA_197_lb_4'];
+$aa_197_lb_5 = $_GET['AA_197_lb_5'];
+$aa_197_lb_6 = $_GET['AA_197_lb_6'];
+$aa_197_lb_7 = $_GET['AA_197_lb_7'];
+$aa_197_lb_8 = $_GET['AA_197_lb_8'];
+$aa_285_lb_1 = $_GET['AA_285_lb_1'];
+$aa_285_lb_2 = $_GET['AA_285_lb_2'];
+$aa_285_lb_3 = $_GET['AA_285_lb_3'];
+$aa_285_lb_4 = $_GET['AA_285_lb_4'];
+$aa_285_lb_5 = $_GET['AA_285_lb_5'];
+$aa_285_lb_6 = $_GET['AA_285_lb_6'];
+$aa_285_lb_7 = $_GET['AA_285_lb_7'];
+$aa_285_lb_8 = $_GET['AA_285_lb_8'];
+
+$wcuid = mysql_real_escape_string($wcuid);
+
+$aa_125_lb_1 = mysql_real_escape_string($aa_125_lb_1);
+$aa_125_lb_2 = mysql_real_escape_string($aa_125_lb_2);
+$aa_125_lb_3 = mysql_real_escape_string($aa_125_lb_3);
+$aa_125_lb_4 = mysql_real_escape_string($aa_125_lb_4);
+$aa_125_lb_5 = mysql_real_escape_string($aa_125_lb_5);
+$aa_125_lb_6 = mysql_real_escape_string($aa_125_lb_6);
+$aa_125_lb_7 = mysql_real_escape_string($aa_125_lb_7);
+$aa_125_lb_8 = mysql_real_escape_string($aa_125_lb_8);
+$aa_133_lb_1 = mysql_real_escape_string($aa_133_lb_1);
+$aa_133_lb_2 = mysql_real_escape_string($aa_133_lb_2);
+$aa_133_lb_3 = mysql_real_escape_string($aa_133_lb_3);
+$aa_133_lb_4 = mysql_real_escape_string($aa_133_lb_4);
+$aa_133_lb_5 = mysql_real_escape_string($aa_133_lb_5);
+$aa_133_lb_6 = mysql_real_escape_string($aa_133_lb_6);
+$aa_133_lb_7 = mysql_real_escape_string($aa_133_lb_7);
+$aa_133_lb_8 = mysql_real_escape_string($aa_133_lb_8);
+$aa_141_lb_1 = mysql_real_escape_string($aa_141_lb_1);
+$aa_141_lb_2 = mysql_real_escape_string($aa_141_lb_2);
+$aa_141_lb_3 = mysql_real_escape_string($aa_141_lb_3);
+$aa_141_lb_4 = mysql_real_escape_string($aa_141_lb_4);
+$aa_141_lb_5 = mysql_real_escape_string($aa_141_lb_5);
+$aa_141_lb_6 = mysql_real_escape_string($aa_141_lb_6);
+$aa_141_lb_7 = mysql_real_escape_string($aa_141_lb_7);
+$aa_141_lb_8 = mysql_real_escape_string($aa_141_lb_8);
+$aa_149_lb_1 = mysql_real_escape_string($aa_149_lb_1);
+$aa_149_lb_2 = mysql_real_escape_string($aa_149_lb_2);
+$aa_149_lb_3 = mysql_real_escape_string($aa_149_lb_3);
+$aa_149_lb_4 = mysql_real_escape_string($aa_149_lb_4);
+$aa_149_lb_5 = mysql_real_escape_string($aa_149_lb_5);
+$aa_149_lb_6 = mysql_real_escape_string($aa_149_lb_6);
+$aa_149_lb_7 = mysql_real_escape_string($aa_149_lb_7);
+$aa_149_lb_8 = mysql_real_escape_string($aa_149_lb_8);
+$aa_157_lb_1 = mysql_real_escape_string($aa_157_lb_1);
+$aa_157_lb_2 = mysql_real_escape_string($aa_157_lb_2);
+$aa_157_lb_3 = mysql_real_escape_string($aa_157_lb_3);
+$aa_157_lb_4 = mysql_real_escape_string($aa_157_lb_4);
+$aa_157_lb_5 = mysql_real_escape_string($aa_157_lb_5);
+$aa_157_lb_6 = mysql_real_escape_string($aa_157_lb_6);
+$aa_157_lb_7 = mysql_real_escape_string($aa_157_lb_7);
+$aa_157_lb_8 = mysql_real_escape_string($aa_157_lb_8);
+$aa_165_lb_1 = mysql_real_escape_string($aa_165_lb_1);
+$aa_165_lb_2 = mysql_real_escape_string($aa_165_lb_2);
+$aa_165_lb_3 = mysql_real_escape_string($aa_165_lb_3);
+$aa_165_lb_4 = mysql_real_escape_string($aa_165_lb_4);
+$aa_165_lb_5 = mysql_real_escape_string($aa_165_lb_5);
+$aa_165_lb_6 = mysql_real_escape_string($aa_165_lb_6);
+$aa_165_lb_7 = mysql_real_escape_string($aa_165_lb_7);
+$aa_165_lb_8 = mysql_real_escape_string($aa_165_lb_8);
+$aa_174_lb_1 = mysql_real_escape_string($aa_174_lb_1);
+$aa_174_lb_2 = mysql_real_escape_string($aa_174_lb_2);
+$aa_174_lb_3 = mysql_real_escape_string($aa_174_lb_3);
+$aa_174_lb_4 = mysql_real_escape_string($aa_174_lb_4);
+$aa_174_lb_5 = mysql_real_escape_string($aa_174_lb_5);
+$aa_174_lb_6 = mysql_real_escape_string($aa_174_lb_6);
+$aa_174_lb_7 = mysql_real_escape_string($aa_174_lb_7);
+$aa_174_lb_8 = mysql_real_escape_string($aa_174_lb_8);
+$aa_184_lb_1 = mysql_real_escape_string($aa_184_lb_1);
+$aa_184_lb_2 = mysql_real_escape_string($aa_184_lb_2);
+$aa_184_lb_3 = mysql_real_escape_string($aa_184_lb_3);
+$aa_184_lb_4 = mysql_real_escape_string($aa_184_lb_4);
+$aa_184_lb_5 = mysql_real_escape_string($aa_184_lb_5);
+$aa_184_lb_6 = mysql_real_escape_string($aa_184_lb_6);
+$aa_184_lb_7 = mysql_real_escape_string($aa_184_lb_7);
+$aa_184_lb_8 = mysql_real_escape_string($aa_184_lb_8);
+$aa_197_lb_1 = mysql_real_escape_string($aa_197_lb_1);
+$aa_197_lb_2 = mysql_real_escape_string($aa_197_lb_2);
+$aa_197_lb_3 = mysql_real_escape_string($aa_197_lb_3);
+$aa_197_lb_4 = mysql_real_escape_string($aa_197_lb_4);
+$aa_197_lb_5 = mysql_real_escape_string($aa_197_lb_5);
+$aa_197_lb_6 = mysql_real_escape_string($aa_197_lb_6);
+$aa_197_lb_7 = mysql_real_escape_string($aa_197_lb_7);
+$aa_197_lb_8 = mysql_real_escape_string($aa_197_lb_8);
+$aa_285_lb_1 = mysql_real_escape_string($aa_285_lb_1);
+$aa_285_lb_2 = mysql_real_escape_string($aa_285_lb_2);
+$aa_285_lb_3 = mysql_real_escape_string($aa_285_lb_3);
+$aa_285_lb_4 = mysql_real_escape_string($aa_285_lb_4);
+$aa_285_lb_5 = mysql_real_escape_string($aa_285_lb_5);
+$aa_285_lb_6 = mysql_real_escape_string($aa_285_lb_6);
+$aa_285_lb_7 = mysql_real_escape_string($aa_285_lb_7);
+$aa_285_lb_8 = mysql_real_escape_string($aa_285_lb_8);
+
+$aa125_1_array = explode(" ", $aa_125_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_1_array[0]." AND fname=\"".$aa125_1_array[1]."\" AND lname=\"".$aa125_1_array[2]."\"";
+$aa125_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_1_result);
+$aa125_1_id_number = $row['id'];
+
+$aa125_2_array = explode(" ", $aa_125_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_2_array[0]." AND fname=\"".$aa125_2_array[1]."\" AND lname=\"".$aa125_2_array[2]."\"";
+$aa125_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_2_result);
+$aa125_2_id_number = $row['id'];
+
+$aa125_3_array = explode(" ", $aa_125_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_3_array[0]." AND fname=\"".$aa125_3_array[1]."\" AND lname=\"".$aa125_3_array[2]."\"";
+$aa125_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_3_result);
+$aa125_3_id_number = $row['id'];
+
+$aa125_4_array = explode(" ", $aa_125_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_4_array[0]." AND fname=\"".$aa125_4_array[1]."\" AND lname=\"".$aa125_4_array[2]."\"";
+$aa125_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_4_result);
+$aa125_4_id_number = $row['id'];
+
+$aa125_5_array = explode(" ", $aa_125_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_5_array[0]." AND fname=\"".$aa125_5_array[1]."\" AND lname=\"".$aa125_5_array[2]."\"";
+$aa125_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_5_result);
+$aa125_5_id_number = $row['id'];
+
+$aa125_6_array = explode(" ", $aa_125_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_6_array[0]." AND fname=\"".$aa125_6_array[1]."\" AND lname=\"".$aa125_6_array[2]."\"";
+$aa125_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_6_result);
+$aa125_6_id_number = $row['id'];
+
+$aa125_7_array = explode(" ", $aa_125_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_7_array[0]." AND fname=\"".$aa125_7_array[1]."\" AND lname=\"".$aa125_7_array[2]."\"";
+$aa125_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_7_result);
+$aa125_7_id_number = $row['id'];
+
+$aa125_8_array = explode(" ", $aa_125_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa125_8_array[0]." AND fname=\"".$aa125_8_array[1]."\" AND lname=\"".$aa125_8_array[2]."\"";
+$aa125_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa125_8_result);
+$aa125_8_id_number = $row['id'];
+
+$aa133_1_array = explode(" ", $aa_133_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_1_array[0]." AND fname=\"".$aa133_1_array[1]."\" AND lname=\"".$aa133_1_array[2]."\"";
+$aa133_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_1_result);
+$aa133_1_id_number = $row['id'];
+
+$aa133_2_array = explode(" ", $aa_133_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_2_array[0]." AND fname=\"".$aa133_2_array[1]."\" AND lname=\"".$aa133_2_array[2]."\"";
+$aa133_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_2_result);
+$aa133_2_id_number = $row['id'];
+
+$aa133_3_array = explode(" ", $aa_133_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_3_array[0]." AND fname=\"".$aa133_3_array[1]."\" AND lname=\"".$aa133_3_array[2]."\"";
+$aa133_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_3_result);
+$aa133_3_id_number = $row['id'];
+
+$aa133_4_array = explode(" ", $aa_133_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_4_array[0]." AND fname=\"".$aa133_4_array[1]."\" AND lname=\"".$aa133_4_array[2]."\"";
+$aa133_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_4_result);
+$aa133_4_id_number = $row['id'];
+
+$aa133_5_array = explode(" ", $aa_133_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_5_array[0]." AND fname=\"".$aa133_5_array[1]."\" AND lname=\"".$aa133_5_array[2]."\"";
+$aa133_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_5_result);
+$aa133_5_id_number = $row['id'];
+
+$aa133_6_array = explode(" ", $aa_133_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_6_array[0]." AND fname=\"".$aa133_6_array[1]."\" AND lname=\"".$aa133_6_array[2]."\"";
+$aa133_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_6_result);
+$aa133_6_id_number = $row['id'];
+
+$aa133_7_array = explode(" ", $aa_133_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_7_array[0]." AND fname=\"".$aa133_7_array[1]."\" AND lname=\"".$aa133_7_array[2]."\"";
+$aa133_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_7_result);
+$aa133_7_id_number = $row['id'];
+
+$aa133_8_array = explode(" ", $aa_133_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa133_8_array[0]." AND fname=\"".$aa133_8_array[1]."\" AND lname=\"".$aa133_8_array[2]."\"";
+$aa133_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa133_8_result);
+$aa133_8_id_number = $row['id'];
+
+$aa141_1_array = explode(" ", $aa_141_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_1_array[0]." AND fname=\"".$aa141_1_array[1]."\" AND lname=\"".$aa141_1_array[2]."\"";
+$aa141_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_1_result);
+$aa141_1_id_number = $row['id'];
+
+$aa141_2_array = explode(" ", $aa_141_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_2_array[0]." AND fname=\"".$aa141_2_array[1]."\" AND lname=\"".$aa141_2_array[2]."\"";
+$aa141_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_2_result);
+$aa141_2_id_number = $row['id'];
+
+$aa141_3_array = explode(" ", $aa_141_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_3_array[0]." AND fname=\"".$aa141_3_array[1]."\" AND lname=\"".$aa141_3_array[2]."\"";
+$aa141_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_3_result);
+$aa141_3_id_number = $row['id'];
+
+$aa141_4_array = explode(" ", $aa_141_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_4_array[0]." AND fname=\"".$aa141_4_array[1]."\" AND lname=\"".$aa141_4_array[2]."\"";
+$aa141_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_4_result);
+$aa141_4_id_number = $row['id'];
+
+$aa141_5_array = explode(" ", $aa_141_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_5_array[0]." AND fname=\"".$aa141_5_array[1]."\" AND lname=\"".$aa141_5_array[2]."\"";
+$aa141_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_5_result);
+$aa141_5_id_number = $row['id'];
+
+$aa141_6_array = explode(" ", $aa_141_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_6_array[0]." AND fname=\"".$aa141_6_array[1]."\" AND lname=\"".$aa141_6_array[2]."\"";
+$aa141_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_6_result);
+$aa141_6_id_number = $row['id'];
+
+$aa141_7_array = explode(" ", $aa_141_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_7_array[0]." AND fname=\"".$aa141_7_array[1]."\" AND lname=\"".$aa141_7_array[2]."\"";
+$aa141_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_7_result);
+$aa141_7_id_number = $row['id'];
+
+$aa141_8_array = explode(" ", $aa_141_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa141_8_array[0]." AND fname=\"".$aa141_8_array[1]."\" AND lname=\"".$aa141_8_array[2]."\"";
+$aa141_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa141_8_result);
+$aa141_8_id_number = $row['id'];
+
+$aa149_1_array = explode(" ", $aa_149_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_1_array[0]." AND fname=\"".$aa149_1_array[1]."\" AND lname=\"".$aa149_1_array[2]."\"";
+$aa149_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_1_result);
+$aa149_1_id_number = $row['id'];
+
+$aa149_2_array = explode(" ", $aa_149_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_2_array[0]." AND fname=\"".$aa149_2_array[1]."\" AND lname=\"".$aa149_2_array[2]."\"";
+$aa149_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_2_result);
+$aa149_2_id_number = $row['id'];
+
+$aa149_3_array = explode(" ", $aa_149_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_3_array[0]." AND fname=\"".$aa149_3_array[1]."\" AND lname=\"".$aa149_3_array[2]."\"";
+$aa149_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_3_result);
+$aa149_3_id_number = $row['id'];
+
+$aa149_4_array = explode(" ", $aa_149_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_4_array[0]." AND fname=\"".$aa149_4_array[1]."\" AND lname=\"".$aa149_4_array[2]."\"";
+$aa149_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_4_result);
+$aa149_4_id_number = $row['id'];
+
+$aa149_5_array = explode(" ", $aa_149_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_5_array[0]." AND fname=\"".$aa149_5_array[1]."\" AND lname=\"".$aa149_5_array[2]."\"";
+$aa149_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_5_result);
+$aa149_5_id_number = $row['id'];
+
+$aa149_6_array = explode(" ", $aa_149_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_6_array[0]." AND fname=\"".$aa149_6_array[1]."\" AND lname=\"".$aa149_6_array[2]."\"";
+$aa149_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_6_result);
+$aa149_6_id_number = $row['id'];
+
+$aa149_7_array = explode(" ", $aa_149_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_7_array[0]." AND fname=\"".$aa149_7_array[1]."\" AND lname=\"".$aa149_7_array[2]."\"";
+$aa149_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_7_result);
+$aa149_7_id_number = $row['id'];
+
+$aa149_8_array = explode(" ", $aa_149_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa149_8_array[0]." AND fname=\"".$aa149_8_array[1]."\" AND lname=\"".$aa149_8_array[2]."\"";
+$aa149_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa149_8_result);
+$aa149_8_id_number = $row['id'];
+
+$aa157_1_array = explode(" ", $aa_157_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_1_array[0]." AND fname=\"".$aa157_1_array[1]."\" AND lname=\"".$aa157_1_array[2]."\"";
+$aa157_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_1_result);
+$aa157_1_id_number = $row['id'];
+
+$aa157_2_array = explode(" ", $aa_157_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_2_array[0]." AND fname=\"".$aa157_2_array[1]."\" AND lname=\"".$aa157_2_array[2]."\"";
+$aa157_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_2_result);
+$aa157_2_id_number = $row['id'];
+
+$aa157_3_array = explode(" ", $aa_157_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_3_array[0]." AND fname=\"".$aa157_3_array[1]."\" AND lname=\"".$aa157_3_array[2]."\"";
+$aa157_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_3_result);
+$aa157_3_id_number = $row['id'];
+
+$aa157_4_array = explode(" ", $aa_157_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_4_array[0]." AND fname=\"".$aa157_4_array[1]."\" AND lname=\"".$aa157_4_array[2]."\"";
+$aa157_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_4_result);
+$aa157_4_id_number = $row['id'];
+
+$aa157_5_array = explode(" ", $aa_157_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_5_array[0]." AND fname=\"".$aa157_5_array[1]."\" AND lname=\"".$aa157_5_array[2]."\"";
+$aa157_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_5_result);
+$aa157_5_id_number = $row['id'];
+
+$aa157_6_array = explode(" ", $aa_157_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_6_array[0]." AND fname=\"".$aa157_6_array[1]."\" AND lname=\"".$aa157_6_array[2]."\"";
+$aa157_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_6_result);
+$aa157_6_id_number = $row['id'];
+
+$aa157_7_array = explode(" ", $aa_157_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_7_array[0]." AND fname=\"".$aa157_7_array[1]."\" AND lname=\"".$aa157_7_array[2]."\"";
+$aa157_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_7_result);
+$aa157_7_id_number = $row['id'];
+
+$aa157_8_array = explode(" ", $aa_157_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa157_8_array[0]." AND fname=\"".$aa157_8_array[1]."\" AND lname=\"".$aa157_8_array[2]."\"";
+$aa157_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa157_8_result);
+$aa157_8_id_number = $row['id'];
+
+$aa165_1_array = explode(" ", $aa_165_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_1_array[0]." AND fname=\"".$aa165_1_array[1]."\" AND lname=\"".$aa165_1_array[2]."\"";
+$aa165_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_1_result);
+$aa165_1_id_number = $row['id'];
+
+$aa165_2_array = explode(" ", $aa_165_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_2_array[0]." AND fname=\"".$aa165_2_array[1]."\" AND lname=\"".$aa165_2_array[2]."\"";
+$aa165_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_2_result);
+$aa165_2_id_number = $row['id'];
+
+$aa165_3_array = explode(" ", $aa_165_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_3_array[0]." AND fname=\"".$aa165_3_array[1]."\" AND lname=\"".$aa165_3_array[2]."\"";
+$aa165_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_3_result);
+$aa165_3_id_number = $row['id'];
+
+$aa165_4_array = explode(" ", $aa_165_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_4_array[0]." AND fname=\"".$aa165_4_array[1]."\" AND lname=\"".$aa165_4_array[2]."\"";
+$aa165_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_4_result);
+$aa165_4_id_number = $row['id'];
+
+$aa165_5_array = explode(" ", $aa_165_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_5_array[0]." AND fname=\"".$aa165_5_array[1]."\" AND lname=\"".$aa165_5_array[2]."\"";
+$aa165_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_5_result);
+$aa165_5_id_number = $row['id'];
+
+$aa165_6_array = explode(" ", $aa_165_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_6_array[0]." AND fname=\"".$aa165_6_array[1]."\" AND lname=\"".$aa165_6_array[2]."\"";
+$aa165_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_6_result);
+$aa165_6_id_number = $row['id'];
+
+$aa165_7_array = explode(" ", $aa_165_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_7_array[0]." AND fname=\"".$aa165_7_array[1]."\" AND lname=\"".$aa165_7_array[2]."\"";
+$aa165_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_7_result);
+$aa165_7_id_number = $row['id'];
+
+$aa165_8_array = explode(" ", $aa_165_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa165_8_array[0]." AND fname=\"".$aa165_8_array[1]."\" AND lname=\"".$aa165_8_array[2]."\"";
+$aa165_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa165_8_result);
+$aa165_8_id_number = $row['id'];
+
+$aa174_1_array = explode(" ", $aa_174_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_1_array[0]." AND fname=\"".$aa174_1_array[1]."\" AND lname=\"".$aa174_1_array[2]."\"";
+$aa174_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_1_result);
+$aa174_1_id_number = $row['id'];
+
+$aa174_2_array = explode(" ", $aa_174_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_2_array[0]." AND fname=\"".$aa174_2_array[1]."\" AND lname=\"".$aa174_2_array[2]."\"";
+$aa174_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_2_result);
+$aa174_2_id_number = $row['id'];
+
+$aa174_3_array = explode(" ", $aa_174_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_3_array[0]." AND fname=\"".$aa174_3_array[1]."\" AND lname=\"".$aa174_3_array[2]."\"";
+$aa174_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_3_result);
+$aa174_3_id_number = $row['id'];
+
+$aa174_4_array = explode(" ", $aa_174_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_4_array[0]." AND fname=\"".$aa174_4_array[1]."\" AND lname=\"".$aa174_4_array[2]."\"";
+$aa174_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_4_result);
+$aa174_4_id_number = $row['id'];
+
+$aa174_5_array = explode(" ", $aa_174_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_5_array[0]." AND fname=\"".$aa174_5_array[1]."\" AND lname=\"".$aa174_5_array[2]."\"";
+$aa174_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_5_result);
+$aa174_5_id_number = $row['id'];
+
+$aa174_6_array = explode(" ", $aa_174_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_6_array[0]." AND fname=\"".$aa174_6_array[1]."\" AND lname=\"".$aa174_6_array[2]."\"";
+$aa174_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_6_result);
+$aa174_6_id_number = $row['id'];
+
+$aa174_7_array = explode(" ", $aa_174_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_7_array[0]." AND fname=\"".$aa174_7_array[1]."\" AND lname=\"".$aa174_7_array[2]."\"";
+$aa174_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_7_result);
+$aa174_7_id_number = $row['id'];
+
+$aa174_8_array = explode(" ", $aa_174_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa174_8_array[0]." AND fname=\"".$aa174_8_array[1]."\" AND lname=\"".$aa174_8_array[2]."\"";
+$aa174_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa174_8_result);
+$aa174_8_id_number = $row['id'];
+
+$aa184_1_array = explode(" ", $aa_184_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_1_array[0]." AND fname=\"".$aa184_1_array[1]."\" AND lname=\"".$aa184_1_array[2]."\"";
+$aa184_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_1_result);
+$aa184_1_id_number = $row['id'];
+
+$aa184_2_array = explode(" ", $aa_184_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_2_array[0]." AND fname=\"".$aa184_2_array[1]."\" AND lname=\"".$aa184_2_array[2]."\"";
+$aa184_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_2_result);
+$aa184_2_id_number = $row['id'];
+
+$aa184_3_array = explode(" ", $aa_184_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_3_array[0]." AND fname=\"".$aa184_3_array[1]."\" AND lname=\"".$aa184_3_array[2]."\"";
+$aa184_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_3_result);
+$aa184_3_id_number = $row['id'];
+
+$aa184_4_array = explode(" ", $aa_184_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_4_array[0]." AND fname=\"".$aa184_4_array[1]."\" AND lname=\"".$aa184_4_array[2]."\"";
+$aa184_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_4_result);
+$aa184_4_id_number = $row['id'];
+
+$aa184_5_array = explode(" ", $aa_184_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_5_array[0]." AND fname=\"".$aa184_5_array[1]."\" AND lname=\"".$aa184_5_array[2]."\"";
+$aa184_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_5_result);
+$aa184_5_id_number = $row['id'];
+
+$aa184_6_array = explode(" ", $aa_184_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_6_array[0]." AND fname=\"".$aa184_6_array[1]."\" AND lname=\"".$aa184_6_array[2]."\"";
+$aa184_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_6_result);
+$aa184_6_id_number = $row['id'];
+
+$aa184_7_array = explode(" ", $aa_184_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_7_array[0]." AND fname=\"".$aa184_7_array[1]."\" AND lname=\"".$aa184_7_array[2]."\"";
+$aa184_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_7_result);
+$aa184_7_id_number = $row['id'];
+
+$aa184_8_array = explode(" ", $aa_184_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa184_8_array[0]." AND fname=\"".$aa184_8_array[1]."\" AND lname=\"".$aa184_8_array[2]."\"";
+$aa184_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa184_8_result);
+$aa184_8_id_number = $row['id'];
+
+$aa197_1_array = explode(" ", $aa_197_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_1_array[0]." AND fname=\"".$aa197_1_array[1]."\" AND lname=\"".$aa197_1_array[2]."\"";
+$aa197_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_1_result);
+$aa197_1_id_number = $row['id'];
+
+$aa197_2_array = explode(" ", $aa_197_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_2_array[0]." AND fname=\"".$aa197_2_array[1]."\" AND lname=\"".$aa197_2_array[2]."\"";
+$aa197_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_2_result);
+$aa197_2_id_number = $row['id'];
+
+$aa197_3_array = explode(" ", $aa_197_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_3_array[0]." AND fname=\"".$aa197_3_array[1]."\" AND lname=\"".$aa197_3_array[2]."\"";
+$aa197_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_3_result);
+$aa197_3_id_number = $row['id'];
+
+$aa197_4_array = explode(" ", $aa_197_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_4_array[0]." AND fname=\"".$aa197_4_array[1]."\" AND lname=\"".$aa197_4_array[2]."\"";
+$aa197_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_4_result);
+$aa197_4_id_number = $row['id'];
+
+$aa197_5_array = explode(" ", $aa_197_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_5_array[0]." AND fname=\"".$aa197_5_array[1]."\" AND lname=\"".$aa197_5_array[2]."\"";
+$aa197_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_5_result);
+$aa197_5_id_number = $row['id'];
+
+$aa197_6_array = explode(" ", $aa_197_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_6_array[0]." AND fname=\"".$aa197_6_array[1]."\" AND lname=\"".$aa197_6_array[2]."\"";
+$aa197_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_6_result);
+$aa197_6_id_number = $row['id'];
+
+$aa197_7_array = explode(" ", $aa_197_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_7_array[0]." AND fname=\"".$aa197_7_array[1]."\" AND lname=\"".$aa197_7_array[2]."\"";
+$aa197_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_7_result);
+$aa197_7_id_number = $row['id'];
+
+$aa197_8_array = explode(" ", $aa_197_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa197_8_array[0]." AND fname=\"".$aa197_8_array[1]."\" AND lname=\"".$aa197_8_array[2]."\"";
+$aa197_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa197_8_result);
+$aa197_8_id_number = $row['id'];
+
+//////////////////////////
+$aa285_1_array = explode(" ", $aa_285_lb_1);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_1_array[0]." AND fname=\"".$aa285_1_array[1]."\" AND lname=\"".$aa285_1_array[2]."\"";
+$aa285_1_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_1_result);
+$aa285_1_id_number = $row['id'];
+
+$aa285_2_array = explode(" ", $aa_285_lb_2);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_2_array[0]." AND fname=\"".$aa285_2_array[1]."\" AND lname=\"".$aa285_2_array[2]."\"";
+$aa285_2_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_2_result);
+$aa285_2_id_number = $row['id'];
+
+$aa285_3_array = explode(" ", $aa_285_lb_3);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_3_array[0]." AND fname=\"".$aa285_3_array[1]."\" AND lname=\"".$aa285_3_array[2]."\"";
+$aa285_3_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_3_result);
+$aa285_3_id_number = $row['id'];
+
+$aa285_4_array = explode(" ", $aa_285_lb_4);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_4_array[0]." AND fname=\"".$aa285_4_array[1]."\" AND lname=\"".$aa285_4_array[2]."\"";
+$aa285_4_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_4_result);
+$aa285_4_id_number = $row['id'];
+
+$aa285_5_array = explode(" ", $aa_285_lb_5);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_5_array[0]." AND fname=\"".$aa285_5_array[1]."\" AND lname=\"".$aa285_5_array[2]."\"";
+$aa285_5_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_5_result);
+$aa285_5_id_number = $row['id'];
+
+$aa285_6_array = explode(" ", $aa_285_lb_6);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_6_array[0]." AND fname=\"".$aa285_6_array[1]."\" AND lname=\"".$aa285_6_array[2]."\"";
+$aa285_6_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_6_result);
+$aa285_6_id_number = $row['id'];
+
+$aa285_7_array = explode(" ", $aa_285_lb_7);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_7_array[0]." AND fname=\"".$aa285_7_array[1]."\" AND lname=\"".$aa285_7_array[2]."\"";
+$aa285_7_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_7_result);
+$aa285_7_id_number = $row['id'];
+
+$aa285_8_array = explode(" ", $aa_285_lb_8);
+$query = "SELECT id FROM wrestlers WHERE weight=".$aa285_8_array[0]." AND fname=\"".$aa285_8_array[1]."\" AND lname=\"".$aa285_8_array[2]."\"";
+$aa285_8_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($aa285_8_result);
+$aa285_8_id_number = $row['id'];
+
+//////////////////////////
+
+// We need to fix it so the user can not submit more than once on the same user id
+$query = "SELECT user_id FROM pick_all_americans_placement WHERE user_id=".$wcuid;
+$valid_user_id_result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_array($valid_user_id_result);
+$valid_user_id = $row['user_id'];
+
+if( $valid_user_id == $wcuid )
+{
+	// Delete their current picks
+	$query = "DELETE FROM pick_all_americans_placement WHERE user_id=".$wcuid;
+	$success = mysql_query($query) or die(mysql_error());
+	$display_string = "Your old selections have been updated.";
+	$display_string .= "<br/>";
+	$display_string .= "<br/>";
+
+	$query = "INSERT INTO pick_all_americans_placement( user_id, aa_125_1, aa_125_2, aa_125_3, aa_125_4, aa_125_5, aa_125_6, aa_125_7, aa_125_8, aa_133_1, aa_133_2, aa_133_3, aa_133_4, aa_133_5, aa_133_6, aa_133_7, aa_133_8, aa_141_1, aa_141_2, aa_141_3, aa_141_4, aa_141_5, aa_141_6, aa_141_7, aa_141_8, aa_149_1, aa_149_2, aa_149_3, aa_149_4, aa_149_5, aa_149_6, aa_149_7, aa_149_8, aa_157_1, aa_157_2, aa_157_3, aa_157_4, aa_157_5, aa_157_6, aa_157_7, aa_157_8, aa_165_1, aa_165_2, aa_165_3, aa_165_4, aa_165_5, aa_165_6, aa_165_7, aa_165_8, aa_174_1, aa_174_2, aa_174_3, aa_174_4, aa_174_5, aa_174_6, aa_174_7, aa_174_8, aa_184_1, aa_184_2, aa_184_3, aa_184_4, aa_184_5, aa_184_6, aa_184_7, aa_184_8, aa_197_1, aa_197_2, aa_197_3, aa_197_4, aa_197_5, aa_197_6, aa_197_7, aa_197_8, aa_285_1, aa_285_2, aa_285_3, aa_285_4, aa_285_5, aa_285_6, aa_285_7, aa_285_8 ) VALUES ( ".$wcuid.", ".$aa125_1_id_number.", ".$aa125_2_id_number.", ".$aa125_3_id_number.", ".$aa125_4_id_number.", ".$aa125_5_id_number.", ".$aa125_6_id_number.", ".$aa125_7_id_number.", ".$aa125_8_id_number.", ".$aa133_1_id_number.", ".$aa133_2_id_number.", ".$aa133_3_id_number.", ".$aa133_4_id_number.", ".$aa133_5_id_number.", ".$aa133_6_id_number.", ".$aa133_7_id_number.", ".$aa133_8_id_number.", ".$aa141_1_id_number.", ".$aa141_2_id_number.", ".$aa141_3_id_number.", ".$aa141_4_id_number.", ".$aa141_5_id_number.", ".$aa141_6_id_number.", ".$aa141_7_id_number.", ".$aa141_8_id_number.", ".$aa149_1_id_number.", ".$aa149_2_id_number.", ".$aa149_3_id_number.", ".$aa149_4_id_number.", ".$aa149_5_id_number.", ".$aa149_6_id_number.", ".$aa149_7_id_number.", ".$aa149_8_id_number.", ".$aa157_1_id_number.", ".$aa157_2_id_number.", ".$aa157_3_id_number.", ".$aa157_4_id_number.", ".$aa157_5_id_number.", ".$aa157_6_id_number.", ".$aa157_7_id_number.", ".$aa157_8_id_number.", ".$aa165_1_id_number.", ".$aa165_2_id_number.", ".$aa165_3_id_number.", ".$aa165_4_id_number.", ".$aa165_5_id_number.", ".$aa165_6_id_number.", ".$aa165_7_id_number.", ".$aa165_8_id_number.", ".$aa174_1_id_number.", ".$aa174_2_id_number.", ".$aa174_3_id_number.", ".$aa174_4_id_number.", ".$aa174_5_id_number.", ".$aa174_6_id_number.", ".$aa174_7_id_number.", ".$aa174_8_id_number.", ".$aa184_1_id_number.", ".$aa184_2_id_number.", ".$aa184_3_id_number.", ".$aa184_4_id_number.", ".$aa184_5_id_number.", ".$aa184_6_id_number.", ".$aa184_7_id_number.", ".$aa184_8_id_number.", ".$aa197_1_id_number.", ".$aa197_2_id_number.", ".$aa197_3_id_number.", ".$aa197_4_id_number.", ".$aa197_5_id_number.", ".$aa197_6_id_number.", ".$aa197_7_id_number.", ".$aa197_8_id_number.", ".$aa285_1_id_number.", ".$aa285_2_id_number.", ".$aa285_3_id_number.", ".$aa285_4_id_number.", ".$aa285_5_id_number.", ".$aa285_6_id_number.", ".$aa285_7_id_number.", ".$aa285_8_id_number." )";
+	$success = mysql_query($query) or die(mysql_error());
+}
+else
+{
+	$query = "INSERT INTO pick_all_americans_placement( user_id, aa_125_1, aa_125_2, aa_125_3, aa_125_4, aa_125_5, aa_125_6, aa_125_7, aa_125_8, aa_133_1, aa_133_2, aa_133_3, aa_133_4, aa_133_5, aa_133_6, aa_133_7, aa_133_8, aa_141_1, aa_141_2, aa_141_3, aa_141_4, aa_141_5, aa_141_6, aa_141_7, aa_141_8, aa_149_1, aa_149_2, aa_149_3, aa_149_4, aa_149_5, aa_149_6, aa_149_7, aa_149_8, aa_157_1, aa_157_2, aa_157_3, aa_157_4, aa_157_5, aa_157_6, aa_157_7, aa_157_8, aa_165_1, aa_165_2, aa_165_3, aa_165_4, aa_165_5, aa_165_6, aa_165_7, aa_165_8, aa_174_1, aa_174_2, aa_174_3, aa_174_4, aa_174_5, aa_174_6, aa_174_7, aa_174_8, aa_184_1, aa_184_2, aa_184_3, aa_184_4, aa_184_5, aa_184_6, aa_184_7, aa_184_8, aa_197_1, aa_197_2, aa_197_3, aa_197_4, aa_197_5, aa_197_6, aa_197_7, aa_197_8, aa_285_1, aa_285_2, aa_285_3, aa_285_4, aa_285_5, aa_285_6, aa_285_7, aa_285_8 ) VALUES ( ".$wcuid.", ".$aa125_1_id_number.", ".$aa125_2_id_number.", ".$aa125_3_id_number.", ".$aa125_4_id_number.", ".$aa125_5_id_number.", ".$aa125_6_id_number.", ".$aa125_7_id_number.", ".$aa125_8_id_number.", ".$aa133_1_id_number.", ".$aa133_2_id_number.", ".$aa133_3_id_number.", ".$aa133_4_id_number.", ".$aa133_5_id_number.", ".$aa133_6_id_number.", ".$aa133_7_id_number.", ".$aa133_8_id_number.", ".$aa141_1_id_number.", ".$aa141_2_id_number.", ".$aa141_3_id_number.", ".$aa141_4_id_number.", ".$aa141_5_id_number.", ".$aa141_6_id_number.", ".$aa141_7_id_number.", ".$aa141_8_id_number.", ".$aa149_1_id_number.", ".$aa149_2_id_number.", ".$aa149_3_id_number.", ".$aa149_4_id_number.", ".$aa149_5_id_number.", ".$aa149_6_id_number.", ".$aa149_7_id_number.", ".$aa149_8_id_number.", ".$aa157_1_id_number.", ".$aa157_2_id_number.", ".$aa157_3_id_number.", ".$aa157_4_id_number.", ".$aa157_5_id_number.", ".$aa157_6_id_number.", ".$aa157_7_id_number.", ".$aa157_8_id_number.", ".$aa165_1_id_number.", ".$aa165_2_id_number.", ".$aa165_3_id_number.", ".$aa165_4_id_number.", ".$aa165_5_id_number.", ".$aa165_6_id_number.", ".$aa165_7_id_number.", ".$aa165_8_id_number.", ".$aa174_1_id_number.", ".$aa174_2_id_number.", ".$aa174_3_id_number.", ".$aa174_4_id_number.", ".$aa174_5_id_number.", ".$aa174_6_id_number.", ".$aa174_7_id_number.", ".$aa174_8_id_number.", ".$aa184_1_id_number.", ".$aa184_2_id_number.", ".$aa184_3_id_number.", ".$aa184_4_id_number.", ".$aa184_5_id_number.", ".$aa184_6_id_number.", ".$aa184_7_id_number.", ".$aa184_8_id_number.", ".$aa197_1_id_number.", ".$aa197_2_id_number.", ".$aa197_3_id_number.", ".$aa197_4_id_number.", ".$aa197_5_id_number.", ".$aa197_6_id_number.", ".$aa197_7_id_number.", ".$aa197_8_id_number.", ".$aa285_1_id_number.", ".$aa285_2_id_number.", ".$aa285_3_id_number.", ".$aa285_4_id_number.", ".$aa285_5_id_number.", ".$aa285_6_id_number.", ".$aa285_7_id_number.", ".$aa285_8_id_number." )";
+	$success = mysql_query($query) or die(mysql_error());
+
+}
+
+$display_string .= "<table border=\"0\">";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_125_lb_1."<br/>";
+$display_string .= $aa_125_lb_2."<br/>";
+$display_string .= $aa_125_lb_3."<br/>";
+$display_string .= $aa_125_lb_4."<br/>";
+$display_string .= $aa_125_lb_5."<br/>";
+$display_string .= $aa_125_lb_6."<br/>";
+$display_string .= $aa_125_lb_7."<br/>";
+$display_string .= $aa_125_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_133_lb_1."<br/>";
+$display_string .= $aa_133_lb_2."<br/>";
+$display_string .= $aa_133_lb_3."<br/>";
+$display_string .= $aa_133_lb_4."<br/>";
+$display_string .= $aa_133_lb_5."<br/>";
+$display_string .= $aa_133_lb_6."<br/>";
+$display_string .= $aa_133_lb_7."<br/>";
+$display_string .= $aa_133_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_141_lb_1."<br/>";
+$display_string .= $aa_141_lb_2."<br/>";
+$display_string .= $aa_141_lb_3."<br/>";
+$display_string .= $aa_141_lb_4."<br/>";
+$display_string .= $aa_141_lb_5."<br/>";
+$display_string .= $aa_141_lb_6."<br/>";
+$display_string .= $aa_141_lb_7."<br/>";
+$display_string .= $aa_141_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_149_lb_1."<br/>";
+$display_string .= $aa_149_lb_2."<br/>";
+$display_string .= $aa_149_lb_3."<br/>";
+$display_string .= $aa_149_lb_4."<br/>";
+$display_string .= $aa_149_lb_5."<br/>";
+$display_string .= $aa_149_lb_6."<br/>";
+$display_string .= $aa_149_lb_7."<br/>";
+$display_string .= $aa_149_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_157_lb_1."<br/>";
+$display_string .= $aa_157_lb_2."<br/>";
+$display_string .= $aa_157_lb_3."<br/>";
+$display_string .= $aa_157_lb_4."<br/>";
+$display_string .= $aa_157_lb_5."<br/>";
+$display_string .= $aa_157_lb_6."<br/>";
+$display_string .= $aa_157_lb_7."<br/>";
+$display_string .= $aa_157_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_165_lb_1."<br/>";
+$display_string .= $aa_165_lb_2."<br/>";
+$display_string .= $aa_165_lb_3."<br/>";
+$display_string .= $aa_165_lb_4."<br/>";
+$display_string .= $aa_165_lb_5."<br/>";
+$display_string .= $aa_165_lb_6."<br/>";
+$display_string .= $aa_165_lb_7."<br/>";
+$display_string .= $aa_165_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_174_lb_1."<br/>";
+$display_string .= $aa_174_lb_2."<br/>";
+$display_string .= $aa_174_lb_3."<br/>";
+$display_string .= $aa_174_lb_4."<br/>";
+$display_string .= $aa_174_lb_5."<br/>";
+$display_string .= $aa_174_lb_6."<br/>";
+$display_string .= $aa_174_lb_7."<br/>";
+$display_string .= $aa_174_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_184_lb_1."<br/>";
+$display_string .= $aa_184_lb_2."<br/>";
+$display_string .= $aa_184_lb_3."<br/>";
+$display_string .= $aa_184_lb_4."<br/>";
+$display_string .= $aa_184_lb_5."<br/>";
+$display_string .= $aa_184_lb_6."<br/>";
+$display_string .= $aa_184_lb_7."<br/>";
+$display_string .= $aa_184_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "<tr>";
+$display_string .= "<td>";
+$display_string .= $aa_197_lb_1."<br/>";
+$display_string .= $aa_197_lb_2."<br/>";
+$display_string .= $aa_197_lb_3."<br/>";
+$display_string .= $aa_197_lb_4."<br/>";
+$display_string .= $aa_197_lb_5."<br/>";
+$display_string .= $aa_197_lb_6."<br/>";
+$display_string .= $aa_197_lb_7."<br/>";
+$display_string .= $aa_197_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<td> &#160; &#160; &#160; &#160; </td>";
+$display_string .= "<td>";
+$display_string .= $aa_285_lb_1."<br/>";
+$display_string .= $aa_285_lb_2."<br/>";
+$display_string .= $aa_285_lb_3."<br/>";
+$display_string .= $aa_285_lb_4."<br/>";
+$display_string .= $aa_285_lb_5."<br/>";
+$display_string .= $aa_285_lb_6."<br/>";
+$display_string .= $aa_285_lb_7."<br/>";
+$display_string .= $aa_285_lb_8."<br/>";
+$display_string .= "</td>";
+$display_string .= "<tr><td = colspan=\"3\"><br /></td></tr>";
+$display_string .= "</tr>";
+
+$display_string .= "</table>";
+
+echo "$display_string";
+//echo "GOT HERE.";
+
+?>

@@ -1,0 +1,425 @@
+<html>
+<head>
+	<title>NCAA Wrestling Championships - Pick'm Contests - Login</title>
+	<link rel="stylesheet" href="http://www.important-info.com/ncaa/css/wrestlingContestStyle.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.important-info.com/ncaa/css/bracketsStyleSheet.css" type="text/css" />
+	<script type="text/javascript" src="http://www.important-info.com/ncaa/jquery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="http://www.important-info.com/ncaa/jquery/jquery-latest.pack.js"></script>
+</head>
+<script language="javascript" type="text/javascript">
+<!-- 
+
+function getCookie(c_name)
+{
+   var i,x,y,ARRcookies=document.cookie.split(";");
+   for (i=0;i<ARRcookies.length;i++)
+   {
+      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+      if (x==c_name)
+      {
+         return unescape(y);
+      }
+   }
+}
+
+function advanceWrestler( wrestler, wrestler_id, weight, bout_number, winner_bout_number, loser_bout_number ) {
+	var wcuid=getCookie("wcuid");
+	var wrestler1 = wrestler;
+	var winner_data_string = "winner=" + wrestler1 + "&wrestler_id=" + wrestler_id + "&bout_number=" + bout_number + "&weight=" + weight + "&winner_bout_number=" + winner_bout_number + "&loser_bout_number=" + loser_bout_number + "&wcuid=" + wcuid;
+	var loser_data_string = "loser=!" + wrestler1 + "&wrestler_id=" + wrestler_id + "&bout_number=" + bout_number + "&weight=" + weight + "&winner_bout_number=" + winner_bout_number + "&loser_bout_number=" + loser_bout_number + "&wcuid=" + wcuid;
+
+	//alert(wrestler);
+
+	switch(bout_number)
+	{
+		case 1:
+			$('#winner-bout-1,#winner-bout-1A').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { 
+				url: "http://www.important-info.com/ncaa/php/advance_wrester.php", 
+				data: winner_data_string, 
+				async: false,
+				success: function(data) { 
+					$('#winner-bout-1').html(data); 
+					$('#winner-bout-1A').html(data); 
+				}, 
+				error: function() { alert(arguments[2]); } 
+			});
+			$('#loser-bout-1').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { 
+				url: "http://www.important-info.com/ncaa/php/advance_wrester.php", 
+				data: loser_data_string, 
+				success: function(data) { $('#loser-bout-1').html(data); }, 
+				error: function() { alert(arguments[2]); } });
+			break;
+		case 2:
+			$('#winner-bout-2').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-2').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-2').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-2').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 3:
+			$('#winner-bout-3').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-3').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-3').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-3').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 4:
+			$('#winner-bout-4').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-4').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-4').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-4').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 5:
+			$('#winner-bout-5').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-5').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-5').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-5').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 6:
+			$('#winner-bout-6').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-6').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-6').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-6').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 7:
+			$('#winner-bout-7').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-7').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-7').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-7').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 8:
+			$('#winner-bout-8').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-8').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-8').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-8').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 9:
+			$('#winner-bout-9').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-9').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-9').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-9').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 10:
+			$('#winner-bout-10').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-10').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-10').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-10').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 11:
+			$('#winner-bout-11').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-11').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-11').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-11').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 12:
+			$('#winner-bout-12').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-12').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-12').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-12').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 13:
+			$('#winner-bout-13').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-13').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-13').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-13').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 14:
+			$('#winner-bout-14').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-14').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-14').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-14').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 15:
+			$('#winner-bout-15').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-15').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-15').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-15').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 16:
+			$('#winner-bout-16').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-16').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-16').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-16').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 17:
+			$('#winner-bout-17').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-17').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-17').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-17').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 18:
+			$('#winner-bout-18').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-18').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-18').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-18').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 19:
+			$('#winner-bout-19').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-19').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-19').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-19').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 20:
+			$('#winner-bout-20').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-20').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-20').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-20').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 21:
+			$('#winner-bout-21').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-21').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-21').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-21').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 22:
+			$('#winner-bout-22').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-22').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-22').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-22').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 23:
+			$('#winner-bout-23').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-23').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-23').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-23').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 24:
+			$('#winner-bout-24').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-24').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-24').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-24').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 25:
+			$('#winner-bout-25').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-25').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-25').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-25').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 26:
+			$('#winner-bout-26').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-26').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-26').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-26').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 27:
+			$('#winner-bout-27').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-27').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-27').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-27').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 28:
+			$('#winner-bout-28').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-28').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-28').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-28').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 29:
+			$('#winner-bout-29').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-29').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-29').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-29').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 30:
+			$('#winner-bout-30').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-30').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-30').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-30').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 31:
+			$('#winner-bout-31').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-31').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-31').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-31').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 32:
+			$('#winner-bout-32').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-32').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 33:
+			// Needs to be fixed
+			$('#winner-bout-33,#winner-bout-33A').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-33').html(data); $('#winner-bout-33A').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 34:
+			$('#winner-bout-34').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-34').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 35:
+			$('#winner-bout-35').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-35').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 36:
+			$('#winner-bout-36').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-36').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 37:
+			$('#winner-bout-37').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-37').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 38:
+			$('#winner-bout-38').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-38').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 39:
+			$('#winner-bout-39').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-39').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 40:
+			$('#winner-bout-40').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-40').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 41:
+			$('#winner-bout-41').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-41').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 42:
+			$('#winner-bout-42').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-42').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 43:
+			$('#winner-bout-43').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-43').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 44:
+			$('#winner-bout-44').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-44').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 45:
+			$('#winner-bout-45').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-45').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 46:
+			$('#winner-bout-46').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-46').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 47:
+			$('#winner-bout-47').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-47').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 48:
+			$('#winner-bout-48').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-48').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 49:
+			$('#winner-bout-49').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-49').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 50:
+			$('#winner-bout-50').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-50').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 51:
+			$('#winner-bout-51').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-51').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 52:
+			$('#winner-bout-52').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-52').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 53:
+			$('#winner-bout-53').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-53').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 54:
+			$('#winner-bout-54').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-54').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 55:
+			$('#winner-bout-55').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-55').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 56:
+			$('#winner-bout-56').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-56').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 57:
+			$('#winner-bout-57').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-57').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 58:
+			$('#winner-bout-58').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-58').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-58').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-58').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 59:
+			$('#winner-bout-59').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-59').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-59').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-59').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 60:
+			$('#winner-bout-60').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-60').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-60').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-60').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 61:
+			$('#winner-bout-61').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, async: false, success: function(data) { $('#winner-bout-61').html(data); }, error: function() { alert(arguments[2]); } });
+			$('#loser-bout-61').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: loser_data_string, success: function(data) { $('#loser-bout-61').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 62:
+			$('#winner-bout-62').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-62').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 63:
+			$('#winner-bout-63').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-63').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 64:
+			$('#winner-bout-64').html('<img class="center" src="http://www.important-info.com/ncaa/images/ajax-loader-3.gif" />');
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: winner_data_string, success: function(data) { $('#winner-bout-64').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+	}
+
+}
+
+function removeWrestler( wrestler, wrestler_id, weight, bout_number, winner_bout_number, loser_bout_number ) {
+	var wcuid=getCookie("wcuid");
+}
+
+</script>
+
+<body id="body-color-tag">
+	<table border="0">
+		<tr>
+			<td id="masthead" colspan="3"> 
+
+				<div id="masthead_div">
+					<table id="masthead_table" border="0">
+						<tr>
+							<td id="masthead_logo">
+								<image id="logo_image" src="http://www.important-info.com/ncaa/images/wc_logo_small.jpg" class="styled-logo">
+							</td>
+
+							<td id="masthead_title">
+								NCAA Wrestling Championships - Pick'm Contests
+							</td>
+
+							<td id="masthead_username">
+
+							</td>
+
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td id="lsidebar-bracket"> 
+				<div id="left_sidebar_div">
+					Left Sidebar
+				</div>
+			</td>
+
+			<td id="content">
+				<div id="content_div">
+					<!--
+					<image src="./images/Header11.jpg" width="100%" height="300" class="styled-finals-image">
+					-->
+

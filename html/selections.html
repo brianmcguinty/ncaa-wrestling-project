@@ -1,0 +1,185 @@
+<?php
+if (!(isset($_COOKIE["wcuid"])))
+  header("Location: http://www.important-info.com/ncaa/");
+?>
+
+<html>
+<head>
+    <title>NCAA Wrestling Championships - Pick'm Contests - Selections</title>
+    <link rel="stylesheet" href="css/wrestlingContestStyle.css" type="text/css" />
+</head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js?ver=1.4.0"></script>
+	<script language="javascript" type="text/javascript">
+<!-- 
+
+$(document).ready(function() {
+	var wcuid = getCookie('wcuid');
+	var wcun = getCookie('wcun');
+	var targetUrl = 'http://www.important-info.com/ncaa/php/get_user_selections.php?wcuid='+wcuid+'&wcun=brianmcguinty';
+	$.ajaxSetup({ cache: true }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+	var timer = setInterval(function() {
+	$('#show_user_winner_picks').load('http://www.important-info.com/ncaa/php/get_users_winner_picks.php?wcuid='+getCookie("wcuid")+'&wcun='+getCookie("wcun")+'');
+	clearInterval(timer);
+}, 1000); // the "1000" here refers to the time to refresh the div.  it is in milliseconds. 
+});
+
+$(document).ready(function() {
+	var wcuid = getCookie('wcuid');
+	var wcun = getCookie('wcun');
+	var targetUrl = 'http://www.important-info.com/ncaa/php/get_user_selections.php?wcuid='+wcuid+'&wcun=brianmcguinty';
+	$.ajaxSetup({ cache: true }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+	var timer = setInterval(function() {
+	$('#show_user_aa_picks').load('http://www.important-info.com/ncaa/php/get_users_aa_picks.php?wcuid='+getCookie("wcuid")+'&wcun='+getCookie("wcun")+'');
+	clearInterval(timer);
+}, 1000); // the "1000" here refers to the time to refresh the div.  it is in milliseconds. 
+});
+
+$(document).ready(function() {
+	var wcuid = getCookie('wcuid');
+	var wcun = getCookie('wcun');
+	var targetUrl = 'http://www.important-info.com/ncaa/php/get_user_selections.php?wcuid='+wcuid+'&wcun=brianmcguinty';
+	$.ajaxSetup({ cache: true }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+	var timer = setInterval(function() {
+	$('#show_user_aa_placement_picks').load('http://www.important-info.com/ncaa/php/get_users_aa_placement_picks.php?wcuid='+getCookie("wcuid")+'&wcun='+getCookie("wcun")+'');
+	clearInterval(timer);
+}, 1000); // the "1000" here refers to the time to refresh the div.  it is in milliseconds. 
+});
+
+function getCookie(c_name)
+{
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0;i<ARRcookies.length;i++)
+	{
+		x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+		y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+		x=x.replace(/^\s+|\s+$/g,"");
+		if (x==c_name)
+		{
+			return unescape(y);
+		}
+	}
+}
+
+function setCookie(c_name,value,exdays)
+{
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	document.cookie=c_name + "=" + c_value;
+}
+
+function checkCookie()
+{
+	var username=getCookie("username");
+	if (username!=null && username!="")
+	{
+		alert("Welcome again " + username);
+	}
+	else 
+	{
+		username=prompt("Please enter your name:","");
+		if (username!=null && username!="")
+		{
+			setCookie("username",username,365);
+		}
+	}
+}
+
+function deleteCookie() {
+	document.cookie = 'wcuid=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+	document.cookie = 'wcun=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+}
+
+
+//-->
+</script>
+
+<body id="body-color-tag">
+		<table border="0">
+			<tr>
+				<td id="masthead" colspan="3"> 
+
+					<div id="masthead_div">
+						<table id="masthead_table" border="0">
+							<tr>
+								<td id="masthead_logo">
+									<image id="logo_image" src="./images/wc_logo_small.jpg" class="styled-logo">
+								</td>
+
+								<td id="masthead_title">
+									NCAA Wrestling Championships - Pick'm Contests
+								</td>
+
+								<td id="masthead_username">
+
+									<font size="2px">
+									<?php   
+										if (isset($_COOKIE["wcun"]))
+											echo "Welcome " . $_COOKIE["wcun"] . "<br />"; 
+										else    
+									?>  
+									</font>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td id="nav" colspan="3"> 
+					<div id="nav_div">
+						&nbsp; <a href="http://www.important-info.com/ncaa/contest.html"> Contests </a>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+
+				<td id="lsidebar"> 
+					<div id="left_sidebar_div">
+						<div id="show_leaders">
+						</div>
+					</div>
+				</td>
+
+				<td id="content">
+					<div id="content_div">
+						<div id="show_user_winner_picks">
+						LOADING ....
+						</div>
+						<div id="show_user_aa_picks">
+						LOADING ....
+						</div>
+						<div id="show_user_aa_placement_picks">
+						LOADING ....
+						</div>
+					</div>
+				</td>
+
+				<td id="rsidebar"> 
+					<div id="right_sidebar_div">
+
+					</div>
+				</td>
+
+			</tr>
+
+			<tr>
+				<td id="footer" colspan="3">
+					<div id="footer_div">
+						<br />
+						&nbsp; <a href="http://www.important-info.com/ncaa/wip_index.html" onclick='deleteCookie()'> Log out </a>
+						&nbsp;
+						&nbsp;
+						&nbsp;
+						&nbsp; <a href="http://www.important-info.com/ncaa/index.html" onclick='deleteAccount()'> Delete Account </a>
+						<br />
+					<div>
+				<td>
+			</tr>
+	</table>
+</body>
+</html>
+

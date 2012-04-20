@@ -1,0 +1,323 @@
+<html>
+<head>
+    <title>Monty Ajax Work Sign Up/Sign In page</title>
+    <link rel="stylesheet" href="css/wrestlingContestStyle.css" type="text/css" />
+</head>
+	<script type="text/javascript" src="http://www.important-info.com/ncaa/jquery/jquery-1.7.2.min.js"></script>
+	<script language="javascript" type="text/javascript">
+<!-- 
+//Browser Support Code
+function signInFunction(){
+	var ajaxRequest;  // The variable that makes Ajax possible!
+	
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+
+			//var signInBlock = document.getElementById('sign_in_block');
+			//signInBlock.innerHTML = ajaxRequest.responseText;
+			//if( ajaxRequest.responseText == "Success" )
+
+			var signInBlock = document.getElementById('wrapper');
+			if(is_int(ajaxRequest.responseText) && (ajaxRequest.responseText != ""))
+			{
+				// Set the user id cookie value 
+				setCookie( "wcuid", ajaxRequest.responseText, 1 ); 
+				// Set the user name cookie value 
+				setCookie( "wcun", document.getElementById('sign_in_username').value, 1 ); 
+				window.location='http://www.important-info.com/ncaa/wip_contest.html';
+			}
+			else
+			{
+				alert("Incorrect \"username\" or \"password\"");
+			}
+		}
+	}
+	var username = document.getElementById('sign_in_username').value;
+	var password = document.getElementById('sign_in_password').value;
+	var queryString = "?username=" + username + "&password=" + password;
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/sign_in.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function submitNewUser(){
+	if( document.getElementById('username').value == '' )
+	{
+		alert("Username can not be empty");
+		document.getElementById('username').focus();
+		return;
+	}
+	if( document.getElementById('fname').value == '' )
+	{
+		alert("First Name can not be empty");
+		document.getElementById('fname').focus();
+		return;
+	}
+	if( document.getElementById('lname').value == '' )
+	{
+		alert("Last Name can not be empty");
+		document.getElementById('lname').focus();
+		return;
+	}
+	if( document.getElementById('email').value == '' )
+	{
+		alert("Email can not be empty");
+		document.getElementById('email').focus();
+		return;
+	}
+	if( document.getElementById('password').value == '' )
+	{
+		alert("Password can not be empty");
+		document.getElementById('password').focus();
+		return;
+	}
+
+	var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+	if( !(emailPattern.test(document.getElementById('email').value)) )
+	{
+		alert("Invalid email address");
+		document.getElementById('email').focus();
+		return;
+	}
+
+	var ajaxRequest;  // The variable that makes Ajax possible!
+	
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4){
+			var newUserBlock = document.getElementById('wrapper');
+			//newUserBlock.innerHTML = ajaxRequest.responseText;
+			if(is_int(ajaxRequest.responseText) && (ajaxRequest.responseText != ""))
+			{
+				setCookie( "wcuid", ajaxRequest.responseText, 1 ); 
+				setCookie( "wcun", document.getElementById('username').value, 1 ); 
+				window.location='http://www.important-info.com/ncaa/wip_contest.html';
+			}
+			else
+			{
+				alert("Failed to submit user credentials, username may be taken already");
+			}
+		}
+	}
+	var username = document.getElementById('username').value;
+	var fname = document.getElementById('fname').value;
+	var lname = document.getElementById('lname').value;
+	var email = document.getElementById('email').value;
+	var password = document.getElementById('password').value;
+
+	var queryString = "?username=" + username;
+	queryString = queryString + "&fname=" + fname;
+	queryString = queryString + "&lname=" + lname;
+	queryString = queryString + "&email=" + email;
+	queryString = queryString + "&password=" + password;
+	ajaxRequest.open("GET", "http://www.important-info.com/ncaa/php/submit_new_user.php"+queryString, true);
+	ajaxRequest.send(null); 
+}
+
+function is_int(value){ 
+   for (i = 0 ; i < value.length ; i++) { 
+      if ((value.charAt(i) < '0') || (value.charAt(i) > '9')) return false 
+    } 
+   return true; 
+}
+
+function getCookie(c_name)
+{                       
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {       
+                x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+                y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+                x=x.replace(/^\s+|\s+$/g,"");
+                if (x==c_name)
+                {
+                        return unescape(y);
+                }
+        }
+}
+        
+function setCookie(c_name,value,exdays)
+{
+        var exdate=new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+        document.cookie=c_name + "=" + c_value;
+}               
+                        
+function checkCookie()
+{       
+        var username=getCookie("wcuid");
+        if (username!=null && username!="")
+        {
+                alert("Welcome again " + username);
+        }
+        else
+        {
+                username=prompt("Please enter your name:","");
+                if (username!=null && username!="")
+                {
+                        setCookie("username",username,365);
+                }
+        }
+}
+
+function checkUsername()
+{
+	var username = document.getElementById('username').value;
+	var response = '';
+	$.ajax({ type: "GET",   url: "http://www.important-info.com/ncaa/php/username_availablity.php?username=" + username,   async: false, success : function(text) { response = text; } });
+	if( username == response )
+	{
+		alert("Username " + username + " is taken.");
+		document.getElementById('username').value = '';
+		document.getElementById('username').focus();
+	}
+}
+
+$(document).ready(function () {
+    $('input[type="text"], textarea').focus(function () {
+        defaultText = $(this).val();
+        $(this).val('');
+    });
+    $('input[type="text"], textarea').blur(function () {
+        if ($(this).val() == "") {
+            $(this).val(defaultText);
+        }
+    });
+});
+
+$(document).ready(function(){
+	if( !(isNaN(getCookie("wcuid"))) )
+		window.location='http://www.important-info.com/ncaa/wip_contest.html';
+}); 
+
+
+//-->
+</script>
+<body id="body-color-tag">
+	<table border="0">
+		<tr>
+			<td id="masthead" colspan="3"> 
+
+				<div id="masthead_div">
+					<table id="masthead_table" border="0">
+						<tr>
+							<td id="masthead_logo">
+								<image id="logo_image" src="./images/wc_logo_small.jpg" class="styled-logo">
+							</td>
+
+							<td id="masthead_title">
+								NCAA Wrestling Championships - Pick'm Contests
+							</td>
+
+							<td id="masthead_username">
+
+							</td>
+
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td id="lsidebar"> 
+				<div id="left_sidebar_div">
+					<p id="home-content-leaderboard-title"> Leader Board: </p>
+				</div>
+			</td>
+
+			<td id="content">
+				<div id="content_div">
+					<image src="./images/Header11.jpg" width="100%" height="300" class="styled-finals-image">
+
+					<div id="content_text" class="content_text">
+						<p id="home-content-contest-title"> There are 4 contests: </p>
+						<p id="home-content-contest"> Pick The Winners: Pick the individual winners for each weight class. Earn points for how close they finish to the top.</p>
+						<p id="home-content-contest"> Pick The All Americans: Pick the 8 All Americans for each weight class regardless of order. Earn points as long as your picks AA.</p>
+						<p id="home-content-contest">Pick The All Americans and Placement: Pick the All Americans. You only earn points for the wrestlers who's placement you correctly pick.</p>
+						<p id="home-content-contest">Pick Every Bout: Pick the winner of every bout in every weight class including wrestle backs. Earn points for the most bouts correctly picked.</p>
+						<br />
+
+					</div>
+				</div>
+			</td>
+
+			<td id="rsidebar_home"> 
+				<div id="right_sidebar_div">
+					<div id="sign_in_block">
+						<table border="0" align="top">
+							<form name='signInForm'>
+								<tr> <td><font size="2px" face="arial" > Login: </td> </tr>
+								<tr> <td> <input type="text" value="User Name" id="sign_in_username" class="styled-form" /> </td> </tr>
+								<tr> <td> <input type="password" value="Password" id="sign_in_password" class="styled-form" /> </td> </tr>
+								<tr> <td> <input type='button' class="styled-button" onclick='signInFunction()' value='Submit' /> </td> </tr>
+							</form>
+						</table>
+					</div>
+					<br />
+					<br />
+					<div id="new_user_block">
+						<table border="0">
+							<form name='signInForm'>
+								<tr> <td><font size="2px" face="arial" > Or sign up now: </td> </tr>
+								<tr><td> <input type="text" value="User Name" id="username" onChange='checkUsername()' class="styled-form" /></td></tr>
+								<tr><td> <input type="text" value="First Name" id="fname" class="styled-form" /></td></tr>
+								<tr><td> <input type="text" value="Last Name" id="lname" class="styled-form" /></td></tr>
+								<tr><td> <input type="text" value="Email" id="email" class="styled-form" /></td></tr>
+								<tr><td> <input type="password" value="User Name" id="password" class="styled-form" /></td></tr>
+								<tr><td><input type='button' class="styled-button" onclick='submitNewUser()' value='Submit' /></td></tr>
+							</form>
+						</table>
+					</div>
+
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="footer" colspan="3">
+				<div id="footer_div">
+					<br />
+					<br />
+				<div>
+			<td>
+		</tr>
+	</table>
+</body>
+
+</html>
+

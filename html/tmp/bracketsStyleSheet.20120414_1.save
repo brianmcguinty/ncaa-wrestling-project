@@ -1,0 +1,79 @@
+
+#content {
+	float: left; 
+	width: 80%;
+}
+
+#rsidebar-bracket {
+	float: left; 
+	width: 10%;
+	vertical-align:text-top;
+}
+
+#lsidebar-bracket {
+	float: left; 
+	width: 10%;
+	vertical-align:text-top;
+}
+
+.bracket-table {
+	width: 600px;
+	height: 30px;
+}
+
+.bracket-table-wrestle-backs {
+	width: 800px;
+	height: 30px;
+}
+
+.bracket-vertical-line-left {
+	border-left: 2px solid;
+}
+
+.bracket-red-wrestler-r1 {
+	font-size: 12;
+	text-align: left;
+	border-bottom: 2px solid;
+	background-color:#F87594;
+	border-radius: 3px;
+}
+
+.bracket-green-wrestler-r1 {
+	font-size: 12;
+	text-align: left;
+	border-bottom: 2px solid;
+	background-color:#67F867;
+	border-radius: 3px;
+}
+
+.bracket-bout-number-r1 {
+	font-size: 12;
+	text-align: right;
+}
+
+.bracket-bout-number-wbr1 {
+	font-size: 12;
+	text-align: right;
+	border-left: 2px solid;
+}
+
+.bracket-placement {
+	font-size: 12;
+	text-align: center;
+	border-left: 2px solid;
+}
+
+.bracket-winner-r1 {
+	font-size: 12;
+	border-bottom: 2px solid;
+	border-left: 2px solid;
+	text-align: left;
+}
+
+.bracket-winner-r2 {
+	font-size: 12;
+	border-bottom: 2px solid;
+	text-align: left;
+	border-left: 2px solid;
+}
+

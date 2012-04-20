@@ -1,0 +1,16 @@
+Points for the bouts by bout
+Need to put in a hyperlink gif to remove a selection (must also reset the loser if necessary
+   create removeWrestler function
+Need to reconcile the pigtail situation - falls in differecnt spots for differnt weights
+Need Link to start over - drop table then create again
+Need links to update your other selections with your bracket results
+Need to finish prettying up the Brackets
+Modal window on brackets ???
+Learn about MySQL CREATE PROCEDURE
+
+Look at changing the scoring on the Pick All Americans
+1 point for seeds 1-8
+2 points for seeds 9-12
+3 points for NS
+
+Have to put in the notification that you will get 25 bonus points for picking all 8 AA's to their placement

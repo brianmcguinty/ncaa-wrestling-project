@@ -1,0 +1,1132 @@
+<html>
+<head>
+    <title>NCAA Wrestling Championships - Pick'm Contests - Login</title>
+    <link rel="stylesheet" href="css/wrestlingContestStyle.css" type="text/css" />
+    <link rel="stylesheet" href="css/bracketsStyleSheet.css" type="text/css" />
+</head>
+<script type="text/javascript" src="http://www.important-info.com/ncaa/jquery/jquery-1.7.2.min.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- 
+
+function advanceWrestler( wrestler, weight, bout_number ) {
+	//var userid=getCookie("wcuid");
+	var wrestler1 = wrestler;
+	var place_holder = "#winner-bout-1";
+
+	//alert(wrestler);
+
+	switch(bout_number)
+	{
+		case 1:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-1').html(data); }, error: function() { alert(arguments[2]); } });
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-1A').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 2:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-2').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 3:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-3').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 4:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-4').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 5:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-5').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 6:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-6').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 7:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-7').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 8:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-8').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 9:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-9').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 10:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-10').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 11:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-11').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 12:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-12').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 13:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-13').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 14:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-14').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 15:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-15').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 16:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-16').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 17:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-17').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 18:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-18').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 19:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-19').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 20:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-20').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 21:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-21').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 22:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-22').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 23:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-23').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 24:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-24').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 25:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-25').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 26:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-26').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 27:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-27').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 28:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-28').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 29:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-29').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 30:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-30').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 31:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-31').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+		case 32:
+			$.ajax( { url: "http://www.important-info.com/ncaa/php/advance_wrester.php", data: "winner=" + wrestler1 + "&bout_number=" + bout_number + "&weight=" + weight, success: function(data) { $('#winner-bout-32').html(data); }, error: function() { alert(arguments[2]); } });
+			break;
+	}
+
+}
+
+</script>
+
+<body id="body-color-tag">
+	<table border="0">
+		<tr>
+			<td id="masthead" colspan="3"> 
+
+				<div id="masthead_div">
+					<table id="masthead_table" border="0">
+						<tr>
+							<td id="masthead_logo">
+								<image id="logo_image" src="./images/wc_logo_small.jpg" class="styled-logo">
+							</td>
+
+							<td id="masthead_title">
+								NCAA Wrestling Championships - Pick'm Contests
+							</td>
+
+							<td id="masthead_username">
+
+							</td>
+
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td id="lsidebar-bracket"> 
+				<div id="left_sidebar_div">
+					Left Sidebar
+				</div>
+			</td>
+
+			<td id="content">
+				<div id="content_div">
+					<!--
+					<image src="./images/Header11.jpg" width="100%" height="300" class="styled-finals-image">
+					-->
+
+					<div id="content_text" class="content_text">
+
+						<br/>
+						<br/>
+						Championship Bracket
+						<br/>
+						<br/>
+
+
+						<table class="bracket-table" border="0">
+
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#" onclick='advanceWrestler("McDonough", 125, 2)'>McDonough</a></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">Pigtail Match</td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 2</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-2"></div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-red-wrestler-r1"><a href="#winner-bout-1" onclick='advanceWrestler("Patterson", 125, 1)'>Patterson</a></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#" onclick='advanceWrestler("Germaine", 125, 2)'>Germaine</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">bout 1</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-1A">Winner to bout 14</div></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 18</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-18"></div></td>
+								<td></td>
+								<td class="bracket-green-wrestler-r1"><a href="#winner-bout-1" onclick='advanceWrestler("Gentry", 125, 1)'>Gentry</a></td>
+								<td class="bracket-vertical-line-left" ></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#" onclick='advanceWrestler("Sprenkle", 125, 3)'>Sprenkle</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 3</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-3"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#" onclick='advanceWrestler("Rodriguez", 125, 3)'>Rodriguez</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 26</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-26"><div></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#" onclick='advanceWrestler("Mele", 125, 4)'>Mele</a></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 4</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-4"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#" onclick='advanceWrestler("Frey", 125, 4)'>Frey</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 19</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-19"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#" onclick='advanceWrestler("Young", 125, 5)'>Young</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 5</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-5"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#" onclick='advanceWrestler("Mango", 125, 5)'>Mango</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">bout 30</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-30"></div></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Bedelyon", 125, 6)'>Bedelyon</a></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 6</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-6"></div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Finch", 125, 6)'>Finch</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 20</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-20"></div></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Iwamura", 125, 7)'>Iwamura</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 7</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-7"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Bonanno", 125, 7)'>Bonanno</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 27</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-27"><div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Roth", 125, 8)'>Roth</a></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 8</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-8"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Eppert", 125, 8)'>Eppert</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 21</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-21"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Robinson", 125, 9)'>Robinson</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 9</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-9"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-18" onclick='advanceWrestler("Delgado", 125, 9)'>Delgado</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">bout 32</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-32"></div></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Waters", 125, 10)'>Waters</a></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-placement">Champion</td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 10</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-10"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Rollins", 125, 10)'>Rollins</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 22</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-22"></div></td>
+								<td></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Fought", 125, 11)'>Fought</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 11</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-11"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Zanetta", 125, 11)'>Zanetta</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 28</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-28"><div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Snyder", 125, 12)'>Snyder</a></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 12</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-12"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("DiJulius", 125, 12)'>DiJulius</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 23</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-23"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Spjut", 125, 13)'>Spjut</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 13</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-13"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-27" onclick='advanceWrestler("Perrelli", 125, 13)'>Perrelli</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">bout 31</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-31"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-red-wrestler-r1" ><div id="winner-bout-1">Winner bout 1</div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 14</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-14"></div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Soria", 125, 14)'>Soria</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 24</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-24"></div></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Martinez", 125, 15)'>Martinez</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 15</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-15"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Megaludis", 125, 15)'>Megaludis</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 29</td>
+								<td class="bracket-winner-r1"><div id="winner-bout-29"><div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Morrison", 125, 16)'>Morrison</a></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 16</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-16"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Gravely", 125, 16)'>Gravely</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1">bout 25</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-25"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Miller", 125, 17)'>Miller</a></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 17</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-17"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1" > <a href="#winner-bout-12" onclick='advanceWrestler("Sanders", 125, 17)'>Sanders</a></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td id="bottom"></td>
+							</tr>
+
+						</table>
+
+						<br/>
+						<br/>
+						Consolation Bracket
+						<br/>
+						<br/>
+
+						<table class="bracket-table-wrestle-backs" border="0">
+
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+							<col width=100>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-17">Loser bout 17</div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">Pigtail Match</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 34</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-34"></div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-1">Loser bout 1</div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-16">Loser bout 16</div></td>
+								<td class="bracket-bout-number-wbr1">bout 42</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-42"></div></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1">bout 33</td>
+								<td class="bracket-winner-r1"><div id="loser-bout-1">Winner to bout 40</div></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-20">Loser bout 20</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-5">Loser bout 5</div></td>
+								<td class="bracket-vertical-line-left" ></td>
+								<td ></td>
+								<td ></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-15">Loser bout 15</div></td>
+								<td></td>
+								<td class="bracket-bout-number-r1" >bout 50</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-50"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 35</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-35"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-14">Loser bout 14</div></td>
+								<td class="bracket-bout-number-wbr1">bout 43</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-43"></div></td>
+								<td class="bracket-bout-number-wbr1">bout 54</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-54"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-21">Loser bout 21</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-13">Loser bout 13</div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-28">Loser bout 28</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 36</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-36"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-12">Loser bout 12</div></td>
+								<td class="bracket-bout-number-wbr1">bout 44</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-44"></div></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1" >bout 58</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-58"></div></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-22">Loser bout 22</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-11">Loser bout 11</div></td>
+								<td></td>
+								<td class="bracket-bout-number-r1" >bout 51</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-51"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 37</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-37"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-bout-number-wbr1">bout 60</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-60"></div></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-10">Loser bout 10</div></td>
+								<td class="bracket-bout-number-wbr1">bout 45</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-45"></div></td>
+								<td class="bracket-bout-number-wbr1">bout 55</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-55"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-23">Loser bout 23</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-29">Loser bout 29</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-30">Loser bout 30</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-9">Loser bout 9</div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 38</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-38"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-8">Loser bout 8</div></td>
+								<td class="bracket-bout-number-wbr1">bout 46</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-46"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-20">Loser bout 20</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-7">Loser bout 7</div></td>
+								<td></td>
+								<td class="bracket-bout-number-r1" >bout 52</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-52"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 39</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-39"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1" >bout 62</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-62"></div></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-6">Loser bout 6</div></td>
+								<td class="bracket-bout-number-wbr1">bout 47</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-47"></div></td>
+								<td class="bracket-bout-number-wbr1">bout 56</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-56"></div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-placement">3rd Place</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-21">Loser bout 21</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="winner-bout-33">Winner bout 33</div></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-26">Loser bout 26</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 40</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-40"></div></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-4">Loser bout 4</div></td>
+								<td class="bracket-bout-number-wbr1">bout 48</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-48"></div></td>
+								<td ></td>
+								<td class="bracket-bout-number-r1" >bout 59</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-59"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-22">Loser bout 22</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							<tr>	
+
+							<tr>
+								<td class="bracket-red-wrestler-r1"><div id="loser-bout-3">Loser bout 3</div></td>
+								<td></td>
+								<td class="bracket-bout-number-r1" >bout 53</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-53"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-bout-number-r1" >bout 41</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-41"></div></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-bout-number-wbr1">bout 61</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-61"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+							</tr>
+							<tr>
+								<td class="bracket-green-wrestler-r1"><div id="loser-bout-2">Loser bout 2</div></td>
+								<td class="bracket-bout-number-wbr1">bout 49</td>
+								<td class="bracket-winner-r2"><div id="winner-bout-49"></div></td>
+								<td class="bracket-bout-number-wbr1">bout 57</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-57"></div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-23">Loser bout 23</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-27">Loser bout 27</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-31">Loser bout 31</div></td>
+								<td class="bracket-vertical-line-left"></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-green-wrestler-r1" ><div id="loser-bout-58">Loser bout 58</div></td>
+								<td></td>
+								<td></td>
+								<td class="bracket-green-wrestler-r1" ><div id="loser-bout-60">Loser bout 60</div></td>
+								<td></td>
+								<td></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-bout-number-r1" >bout 63</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-63"></div></td>
+								<td></td>
+								<td class="bracket-bout-number-r1" >bout 64</td>
+								<td class="bracket-winner-r1" > <div id="winner-bout-64"></div></td>
+								<td></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-59">Loser bout 59</div></td>
+								<td class="bracket-placement">7th Place</td>
+								<td></td>
+								<td class="bracket-red-wrestler-r1" ><div id="loser-bout-61">Loser bout 61</div></td>
+								<td class="bracket-placement">5th Place</td>
+								<td></td>
+								<td ></td>
+							</tr>
+
+
+						</table>
+
+					</div>
+				</div>
+			</td>
+
+			<td id="rsidebar-bracket"> 
+				<div id="right_sidebar_div">
+				Right Sidebar
+
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="footer" colspan="3">
+				<div id="footer_div">
+					<br />
+					<br />
+				<div>
+			<td>
+		</tr>
+	</table>
+</body>
+
+</html>
+

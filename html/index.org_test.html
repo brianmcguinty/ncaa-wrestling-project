@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+<?php
+// Make a MySQL Connection
+mysql_connect("localhost", "ncaa", "n0rth0f25") or die(mysql_error());
+mysql_select_db("wrestling") or die(mysql_error());
+
+// Retrieve all the data from the "example" table
+$result = mysql_query("SELECT * FROM wrestlers where fname=\"John\"")
+or die(mysql_error());  
+
+echo "<select>";
+// store the record of the "example" table into $row
+while($row = mysql_fetch_array( $result )){
+echo "<option>";
+echo $row['fname'];
+echo " ";
+echo $row['lname'];
+echo "</option>";
+}
+echo "</select>";
+// Print out the contents of the entry 
+
+?>
+
+
+</body>
+</html>
